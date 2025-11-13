@@ -1,0 +1,49 @@
+/* Moderator Button Container */
+.mod-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Moderator Button */
+.mod-buttons button {
+  background-color: #7cb342;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover effect */
+.mod-buttons button:hover {
+  background-color: #8bc34a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Active/Click effect */
+.mod-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mod-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mod-buttons button {
+    width: 80%;
+    font-size: 0.9rem;
+  }
+}

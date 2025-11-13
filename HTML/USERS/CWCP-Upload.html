@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Concern - CWCP</title>
+  <link rel="stylesheet" href="CWCP-Upload.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>CWCP</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">My Reports</a>
+    <a href="#">Report Concern</a>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="header">
+      <h1>Report Concern</h1>
+      🔔
+    </div>
+
+    <div class="form-container">
+      <h2>Submit a New Concern</h2>
+      <form>
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+
+        <label for="area">Select Area:</label>
+        <select id="area" name="area">
+          <option value="">-- Select Area --</option>
+          <option value="mankilam">Mankilam</option>
+          <option value="liboganon">Liboganon</option>
+          <option value="madaum">Madaum</option>
+        </select>
+
+        <label for="severity">Severity:</label>
+        <select id="severity" name="severity">
+          <option value="">-- Select Severity --</option>
+          <option value="inconvenient">Inconvenient</option>
+          <option value="hazard">Hazard</option>
+          <option value="life-threatening">Life-Threatening</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Describe the concern..."></textarea>
+
+        <button type="submit"><a href="../USERS/CWCP-Mainpage.html" style="text-decoration: none; color: black;">Submit Report</a></button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

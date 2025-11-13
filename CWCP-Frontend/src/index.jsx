@@ -1,0 +1,10 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createRoot } from 'react-dom/client'
+import App from "./app.jsx"
+import './index.css'
+
+
+createRoot(document.getElementById('root')).render(
+    <App/>
+
+)

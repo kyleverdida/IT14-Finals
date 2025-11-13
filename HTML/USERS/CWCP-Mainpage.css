@@ -1,0 +1,136 @@
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fdf8f0;
+      display: flex;
+    }
+    .cwcp-logo{
+        display: flex;
+    }
+    .cwcp-logo img{
+        width: 20%;
+        margin: 3px;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #f6f1e8;
+      padding: 20px;
+      height: 100vh;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      color: #1f3d1f;
+      margin-bottom: 20px;
+    }
+
+    .sidebar h3 {
+      font-size: 16px;
+      margin: 15px 0 5px;
+      color: #1f3d1f;
+    }
+
+    .sidebar label {
+      display: block;
+      margin: 4px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      color: #1f3d1f;
+      font-size: 24px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #888;
+      min-width: 280px;
+    }
+
+    .report-btn {
+      margin: 20px 0;
+      padding: 12px 20px;
+      background: #7db343;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      
+    }
+
+    .report-btn:hover {
+      background: #6aa03a;
+    }
+
+    /* Concern Cards */
+    .card {
+      background: #fffefb;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 20px;
+      gap: 15px;
+    }
+
+    .card img {
+      width: 140px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #1f3d1f;
+    }
+
+    .card-content p {
+      margin: 5px 0 10px;
+      color: #444;
+      font-size: 14px;
+    }
+
+    /* Status Labels */
+    .status {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .pending { background: #fce96b; color: #1f3d1f; }
+    .in-progress { background: #d0e2f5; color: #1f3d1f; }
+    .resolved { background: #a5d46a; color: #1f3d1f; }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CWCP - User Dashboard</title>
+ <link rel="stylesheet" href="CWCP-Mainpage.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="cwcp-logo">
+      <img src="..\SVG\CWCP-LOGO.svg" alt="" srcset="" >
+      <h2>City Wide Concern Portal</h2>
+    </div>
+    
+
+    <h3>Severity</h3>
+    <label><input type="radio" name="severity"> Inconvenient</label>
+    <label><input type="radio" name="severity"> Hazard</label>
+    <label><input type="radio" name="severity"> Life-Threatening</label>
+
+    <h3>Status</h3>
+    <label><input type="radio" name="status"> Pending</label>
+    <label><input type="radio" name="status"> In Progress</label>
+    <label><input type="radio" name="status"> Resolved</label>
+
+    <h3>Area</h3>
+    <label><input type="radio" name="area"> Mankilam</label>
+    <label><input type="radio" name="area"> Liboganon</label>
+    <label><input type="radio" name="area"> Madaum</label>
+
+    <footer style="margin-top: 300px; ;">
+      Members:
+      <p>Charles Kent Labrador</p>
+      <p>Charles Ian Danag</p>
+      <p>Lord Anthony Juguilon</p>
+      <p>Princess Karel</p>
+    </footer>
+
+    <a href="../MOD/CWCP-MOD-Login.html">Mod</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="header">
+      <h1>City Wide Concern Portal</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by area, issue, or status...">
+        🔔
+      </div>
+    </div>
+
+    <button class="report-btn">
+      <a href="../USERS/CWCP-Upload.html" style="text-decoration: none; color: black;">+ Report Concern</a>
+    </button>
+
+    
+    <div class="card">
+      <img src="example1.jpg" alt="Concern">
+      <div class="card-content">
+        <h3>Palm Accident</h3>
+        <p>San Miguel</p>
+        <span class="status in-progress">In Progress</span>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <img src="example2.jpg" alt="Concern">
+      <div class="card-content">
+        <h3>Road Damage</h3>
+        <p>Magugpo East</p>
+        <span class="status pending">Pending</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="example2.jpg" alt="Concern">
+      <div class="card-content">
+        <h3>No Lights</h3>
+        <p>Bonifacio St.</p>
+        <span class="status pending">Pending</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="example2.jpg" alt="Concern">
+      <div class="card-content">
+        <h3>Dusty Road</h3>
+        <p>Timog</p>
+        <span class="status in-progress">In Progress</span>
+      </div>
+    </div>
+    
+  </div>
+  
+</body>
+
+</html>

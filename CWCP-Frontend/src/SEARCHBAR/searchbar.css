@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+}
+
+
+.header h1 {
+  color: #1f3d1f;
+  font-size: 24px;
+  margin-left:50px;
+}
+
+
+
+.header input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #888;
+  min-width: 280px;
+}

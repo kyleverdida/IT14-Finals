@@ -1,0 +1,113 @@
+.dashboard-section {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.stats-header h2 {
+  color: rgb(124, 179, 66);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.stats-logo{
+  width: 50px;
+}
+.stats-summary {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  background: #f7f8fa;
+  border-radius: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card h4 {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.summary-card p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(124, 179, 66);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.stats-card {
+  background: #f9fafb;
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card h3 {
+  color: rgb(124, 179, 66);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.stats-card h3 {
+  color: rgb(124, 179, 66);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.stats-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.stats-card h3 {
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.stats-logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recharts-legend-item-text {
+  font-size: 12px;
+  color: #555;
+}

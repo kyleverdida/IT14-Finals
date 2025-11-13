@@ -1,0 +1,50 @@
+/* error.css */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f8faf5;
+  color: #1f3d1f;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  gap: 20px;
+}
+
+.error-page img {
+  width: 160px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+.error-page h1 {
+  font-size: 2.5rem;
+  color: #7db343;
+  margin: 0;
+}
+
+.error-page a {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #7db343;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.error-page a:hover {
+  background-color: #6ca23a;
+  transform: translateY(-2px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
