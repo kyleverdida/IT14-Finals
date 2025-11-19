@@ -7,7 +7,8 @@ import "./main.css";
 
 import Cards from "../CARDS/cards.jsx";
 import Form from "../FORM/form.jsx";
-import SidebarLeft from "../SIDEBAR-LEFT/sidebar_left.jsx";
+// import SidebarLeft from "../SIDEBAR-LEFT/sidebar_left.jsx";
+import Filter from "../filter/filters.jsx";
 import Searchbar from "../SEARCHBAR/searchbar.jsx";
 
 const Main = () => {
@@ -70,7 +71,7 @@ const Main = () => {
 
           <div className="header-right">
             {location.pathname === "/" && <Form />}
-            <SidebarLeft filters={filters} setFilters={setFilters} />
+            <Filter filters={filters} setFilters={setFilters} />
             <Searchbar setPosts={setPosts} />
           </div>
         </header>

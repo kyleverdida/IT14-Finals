@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./sidebar_left.css";
+import "./filters.css";
 
-const Sidebar_Left = ({ filters, setFilters }) => {
+const Filter = ({ filters, setFilters }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleFilterChange = (e) => {
@@ -94,4 +94,4 @@ const Sidebar_Left = ({ filters, setFilters }) => {
   );
 };
 
-export default Sidebar_Left;
+export default Filter;
