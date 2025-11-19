@@ -9,23 +9,23 @@ const credits = () => {
 
                 <div className="member-grid">
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=Charles+Kent" alt="Charles Kent Labrador" />
-                        <p>Charles Kent Labrador</p>
+                        <img src="https://placehold.co/200x200?text=" alt="" />
+                        <p></p>
                     </div>
 
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=Charles+Ian" alt="Charles Ian Danag" />
-                        <p>Charles Ian Danag</p>
+                        <img src="https://placehold.co/200x200?text=" alt="" />
+                        <p></p>
                     </div>
 
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=Lord+Anthony" alt="Lord Anthony Juguilon" />
-                        <p>Lord Anthony Juguilon</p>
+                        <img src="https://placehold.co/200x200?text=" alt="" />
+                        <p></p>
                     </div>
 
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=Princess+Karel" alt="Princess Karel" />
-                        <p>Princess Karel</p>
+                        <img src="https://placehold.co/200x200?text=" alt="" />
+                        <p></p>
                     </div>
                 </div>
             </footer>
