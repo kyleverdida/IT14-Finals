@@ -4,33 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CWCP - Moderator Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Quattrocento+Sans:wght@400&family=Questrial:wght@400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CWCP-MOD-Login.css">
- 
 </head>
 <body>
-  <!-- Left Section -->
-  <div class="left">
-    <div class="logo">
-      <img src="..\SVG\CWCP-LOGO.svg" alt="" srcset="">
-      
+  <div class="login-container">
+    <!-- Background Elements -->
+    <div class="bg-left"></div>
+    
+    <!-- Left Section -->
+    <div class="white-bg-left">
+      <div class="logo-section">
+        <div class="logo-image-container">
+          <img src="../SVG/CWCP-LOGO.svg" alt="City Logo" class="logo-image">
+          <div class="text-republic">
+            <p>REPUBLIC OF THE PHILIPPINES</p>
+            <p>PROVINCE OF DAVAO DEL NORTE</p>
+            <p>CITY OF TAGUM</p>
+          </div>
+        </div>
+        
+        <h1 class="text-portal-title">CITY WIDE CONCERN PORTAL</h1>
+        
+        <p class="text-tagline">KEEPING COMMUNITIES SAFE AND CONNECTED!</p>
+      </div>
     </div>
-    <h2>City Wide Concern Portal</h2>
-    <p>Keeping communities safe and connected</p>
-  </div>
 
-  <!-- Right Section -->
-  <div class="right">
-    <div class="login-box">
-      <h2>Moderator Log In</h2>
+    <!-- Green Background -->
+    <div class="bg-green"></div>
+
+    <!-- Decorative Circles -->
+    <div class="design-moon">
+      <svg fill="none" preserveAspectRatio="none" viewBox="0 0 638 583">
+        <circle cx="359.5" cy="304.5" r="278" />
+        <circle cx="278.5" cy="278.5" r="278" />
+      </svg>
+    </div>
+
+    <!-- Right Section - Login Card -->
+    <div class="login-card">
+      <h2 class="login-title">Hello!</h2>
+      <p class="login-subtitle">CWCP Moderator Login</p>
+
       <form>
         <label for="username">USERNAME/EMAIL</label>
-        <input type="text" id="username" name="username" >
+        <input type="text" id="username" name="username" placeholder="Email Address/Username">
 
         <label for="password">PASSWORD</label>
-        <input type="password" id="password" name="password" >
+        <input type="password" id="password" name="password" placeholder="Password">
 
-        <button >Login</button>
-<a href="../MOD/CWCP-MOD-Dashboard.html" style="text-decoration: none; color: black;">Login</a>
+        <button type="button" onclick="window.location.href='../MOD/CWCP-MOD-Dashboard.html'">Login</button>
+
+        <button type="button" class="btn-signup" onclick="window.location.href='#'">Sign Up</button>
+
         <div class="forgot">
           <a href="#">Forgot Password?</a>
         </div>
