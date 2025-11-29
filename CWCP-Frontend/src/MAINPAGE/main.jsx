@@ -78,7 +78,7 @@ const Main = () => {
 
 
 
-        {/* Sidebar */}
+
 
 
         {/* Show form on homepage */}
