@@ -1,0 +1,9 @@
+Change of Design
+    Main - Pending
+    Loading Screen - Pending
+    Form - Pending
+    Filters - Pending
+    Header - Pending
+    Footer - Pending
+    Mod Login - Pending
+    Analytics = Pending
