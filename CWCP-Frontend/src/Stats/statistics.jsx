@@ -1,133 +1,143 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-} from "recharts";
+import React from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./statistics.css";
 
-const Statistics = () => {
-  const [stats, setStats] = useState(null);
+export default function App() {
+  // Sample data for line chart
+  const lineChartData = [
+    { month: "Jan", resolved: 2400, pending: 1800, rejected: 1200 },
+    { month: "Feb", resolved: 1398, pending: 2100, rejected: 980 },
+    { month: "Mar", resolved: 3800, pending: 2400, rejected: 1500 },
+    { month: "Apr", resolved: 2780, pending: 1908, rejected: 1100 },
+    { month: "May", resolved: 4890, pending: 2800, rejected: 1800 },
+    { month: "Jun", resolved: 3390, pending: 2300, rejected: 1400 },
+  ];
 
-  // Color palettes per chart
-  const STATUS_COLORS = ["#7CB342", "#9CCC65", "#AED581"];  // greens
-  const SEVERITY_COLORS = ["#42A5F5", "#64B5F6", "#90CAF9"]; // blues
-  const AREA_COLORS = [
-    "#8E24AA", "#AB47BC", "#BA68C8", "#CE93D8",
-    "#7B1FA2", "#9C27B0", "#E1BEE7"
-  ]; // purples
-
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/stats`)
-      .then((res) => setStats(res.data))
-      .catch((err) => console.error("Error fetching stats:", err));
-  }, []);
-
-  if (!stats) return <p>Loading statistics...</p>;
+  // Sample data for donut chart
+  const donutData = [
+    { name: "Infrastructure", value: 35, color: "#1B1F50" },
+    { name: "Safety", value: 25, color: "#00B034" },
+    { name: "Environment", value: 20, color: "#FE971B" },
+    { name: "Others", value: 20, color: "#FA8382" },
+  ];
 
   return (
-    <div className="dashboard-section">
-      <div className="stats-header">
-        <img src="CWCP-LOGO.svg" alt="Citywide Concern Logo" className="stats-logo" />
-        <h2>Citywide Concern Analytics</h2>
-        <div className="stats-summary">
-          <div className="summary-card">
-            <h4>Total Posts</h4>
-            <p>{stats.totalPosts}</p>
+    <div className="app-root">
+      {/* ===== HEADER ===== */}
+      <div className="header">
+        <div className="logo-section">
+          <div className="logo-placeholder">LOGO</div>
+          
+          <div className="logo-text">
+            <p className="title">CITY WIDE CONCERN PORTAL</p>
+            <p className="subtitle">KEEPING COMMUNITIES SAFE AND CONNECTED!</p>
+            <div className="location">
+              <p>REPUBLIC OF THE PHILIPPINES</p>
+              <p>PROVINCE OF DAVAO DEL NORTE</p>
+              <p className="city">CITY OF TAGUM</p>
+            </div>
           </div>
-          <div className="summary-card">
-            <h4>Resolved Percentage</h4>
-            <p>{stats.resolvedPercentage}</p>
-          </div>
+        </div>
+
+        <button className="logout-btn">Logout</button>
+
+        <div className="profile">
+          <div className="avatar-placeholder">A</div>
+          <span>ADMIN</span>
         </div>
       </div>
 
-      <div className="stats-grid">
-        {/* Posts by Status */}
-        <div className="stats-card">
-          <h3>By Status</h3>
-          <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={stats.byStatus}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="status" />
-              <YAxis />
+      {/* ===== STAT CARDS ===== */}
+      <div className="cards">
+        <StatCard title="Total Reports Submitted" value="89,935" change="+12.5%" positive={true} />
+        <StatCard title="Resolved Issues" value="23,283" change="+8.2%" positive={true} />
+        <StatCard title="Pending Issues" value="46,827" change="-3.1%" positive={false} />
+        <StatCard title="Rejected / Invalid Reports" value="19,825" change="+5.4%" positive={false} />
+      </div>
+
+      {/* ===== CHARTS CONTAINER ===== */}
+      <div className="charts-wrapper">
+        {/* ===== LINE CHART ===== */}
+        <div className="chart-container">
+          <div className="chart-header">
+            <h2>City Issue Reporting Analytics</h2>
+            <div className="chart-legend">
+              <div className="legend-item">
+                <span className="legend-dot" style={{ background: "#00B034" }}></span>
+                <span>Resolved</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-dot" style={{ background: "#1F2253" }}></span>
+                <span>Pending</span>
+              </div>
+              <div className="legend-item">
+                <span className="legend-dot" style={{ background: "#FE971B" }}></span>
+                <span>Rejected</span>
+              </div>
+            </div>
+          </div>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={lineChartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+              <XAxis dataKey="month" stroke="#7c8db5" />
+              <YAxis stroke="#7c8db5" />
               <Tooltip />
-              <Legend />
-              {stats.byStatus.map((entry, index) => (
-                <Bar
-                  key={`bar-${index}`}
-                  dataKey="count"
-                  fill={STATUS_COLORS[index % STATUS_COLORS.length]}
-                  radius={[6, 6, 0, 0]}
-                />
-              ))}
-            </BarChart>
+              <Line type="monotone" dataKey="resolved" stroke="#00B034" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="pending" stroke="#1F2253" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="rejected" stroke="#FE971B" strokeWidth={2} dot={{ r: 4 }} />
+            </LineChart>
           </ResponsiveContainer>
         </div>
 
-        {/* Posts by Severity */}
-        <div className="stats-card">
-          <h3>By Severity</h3>
-          <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={stats.bySeverity}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="severity" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {stats.bySeverity.map((entry, index) => (
-                <Bar
-                  key={`bar-${index}`}
-                  dataKey="count"
-                  fill={SEVERITY_COLORS[index % SEVERITY_COLORS.length]}
-                  radius={[6, 6, 0, 0]}
-                />
-              ))}
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        {/* ===== DONUT CHART ===== */}
+        <div className="donut-container">
+          <h2>Issue Breakdown</h2>
 
-        {/* Posts by Area (Pie Chart) */}
-        <div className="stats-card">
-          <h3>By Area</h3>
-          <ResponsiveContainer width="100%" height={260}>
+          <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie
-                data={stats.byArea}
-                dataKey="count"
-                nameKey="area"
+                data={donutData}
                 cx="50%"
                 cy="50%"
+                innerRadius={60}
                 outerRadius={90}
-                label={({ name, percent }) =>
-                  `${name} ${(percent * 100).toFixed(1)}%`
-                }
+                paddingAngle={2}
+                dataKey="value"
               >
-                {stats.byArea.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={AREA_COLORS[index % AREA_COLORS.length]}
-                  />
+                {donutData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
               <Tooltip />
-              <Legend layout="vertical" align="right" verticalAlign="middle" />
             </PieChart>
           </ResponsiveContainer>
+
+          <div className="donut-legend">
+            {donutData.map((item, index) => (
+              <div key={index} className="legend-item">
+                <span className="legend-dot" style={{ background: item.color }}></span>
+                <span>{item.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Statistics;
+/* ===== STAT CARD COMPONENT ===== */
+function StatCard({ title, value, change, positive }) {
+  return (
+    <div className="stat-card">
+      <p className="stat-value">{value}</p>
+      <p className="stat-title">{title}</p>
+      {change && (
+        <p className={`stat-change ${positive ? 'positive' : 'negative'}`}>
+          {change} from last month
+        </p>
+      )}
+    </div>
+  );
+}
