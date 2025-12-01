@@ -1,147 +1,485 @@
-/* Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.65);
+/* Main Container from Figma */
+.form-popup {
+  background: #ffffff;
+  position: relative;
+  border-radius: 12px;
+  width: 712px;
+  min-height: 680px; /* Increased to accommodate submit button */
+  padding-bottom: 20px;
+}
+
+/* Submit Button */
+.submit-concern {
+  position: absolute;
+  background: #00b034;
+  box-sizing: border-box;
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  left: 276px;
+  overflow: clip;
+  padding: 10px 24px;
+  border-radius: 8px;
+  top: 575px; /* Adjusted to fit within container */
+  border: none;
+  cursor: pointer;
 }
 
-/* Modal */
-.modal-content-form {
-  background: #fff;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  max-width: 650px;
-  width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
+.submit-concern p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 17.705px;
+  font-style: normal;
   position: relative;
-  animation: fadeInUp 0.3s ease;
+  flex-shrink: 0;
+  font-size: 16.343px;
+  white-space: nowrap;
+  color: white;
+  letter-spacing: 0.2696px;
+  margin: 0;
 }
 
-@keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-content h2 {
-  font-size: 22px;
-  color: #1f3d1f;
-  margin-bottom: 5px;
-}
-
-.modal-subtitle {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* Form grid */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.form-group {
+/* Description */
+.description {
+  position: absolute;
+  background: white;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  min-height: 90px; /* Changed to min-height for flexibility */
+  align-items: flex-start;
+  left: 33px;
+  padding: 18px 26px;
+  border-radius: 30px;
+  top: 445px;
+  width: 636px;
 }
 
-.form-group.full-width {
-  grid-column: span 2;
+.description .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.placeholder {
+  display: inline-grid;
+  grid-template-columns: max-content;
+  grid-template-rows: max-content;
+  line-height: 0;
+  place-items: start;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.placeholder p {
+  grid-area: 1 / 1;
+  font-family: "Outfit", sans-serif;
+  font-weight: 100;
+  line-height: normal;
+  margin-left: 0;
+  margin-top: 0;
+  position: relative;
+  font-size: 14px;
+  color: black;
+  white-space: nowrap;
+}
+
+.placeholder p.light {
+  font-weight: 300;
+}
+
+/* Description Label */
+.description-label {
+  position: absolute;
+  left: 33px;
+  top: 424px;
+  z-index: 1; /* Ensure labels stay on top */
+}
+
+/* Severity */
+.severity {
+  position: absolute;
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 56px; /* Matched to other input heights */
+  align-items: flex-start;
+  justify-content: center;
+  left: 360px;
+  padding: 18px 26px;
+  border-radius: 30px;
+  top: 345px;
+  width: 309px;
+}
+
+.severity .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.severity-label {
+  position: absolute;
+  left: 360px;
+  top: 320px;
+  z-index: 1;
+}
+
+.severity-icon {
+  position: absolute;
+  left: 620px; /* Adjusted to be properly inside the field */
+  width: 14px;
+  height: 14px;
+  top: 366px; /* Adjusted for centered alignment */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.severity-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Select Area */
+.select-area {
+  position: absolute;
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 56px; /* Matched to other input heights */
+  align-items: flex-start;
+  justify-content: center;
+  left: 33px;
+  padding: 18px 26px;
+  border-radius: 30px;
+  top: 345px;
+  width: 309px;
+}
+
+.select-area .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.select-area-label {
+  position: absolute;
+  left: 33px;
+  top: 320px;
+  z-index: 1;
+}
+
+.select-area-icon {
+  position: absolute;
+  left: 293px; /* Adjusted to be properly inside the field */
+  width: 14px;
+  height: 14px;
+  top: 366px; /* Adjusted for centered alignment */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.select-area-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Upload Photo */
+.browse-frame {
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.browse-border {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  inset: 0;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+.browse-frame p {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  height: 18px;
+  line-height: 17.705px;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: black;
+  letter-spacing: 0.2696px;
+  width: 75px;
+  margin: 0;
+}
+
+.upload-photo {
+  position: absolute;
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 56px; /* Matched to other input heights */
+  align-items: flex-start;
+  justify-content: center;
+  left: 360px;
+  padding: 18px 26px;
+  border-radius: 30px;
+  top: 245px;
+  width: 309px;
+}
+
+.upload-photo .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.no-file-text {
+  position: absolute;
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  height: 18px;
+  line-height: 17.705px;
+  left: 386px; /* Adjusted to fit properly within field */
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.6);
+  top: 264px; /* Adjusted for centered alignment */
+  letter-spacing: 0.2696px;
+  width: 93px;
+  pointer-events: none;
+}
+
+.upload-photo-label {
+  position: absolute;
+  left: 360px;
+  top: 220px;
+  z-index: 1;
+}
+
+/* Date */
+.date-field {
+  position: absolute;
+  background: white;
+  height: 56px; /* Matched to other input heights */
+  left: 33px;
+  border-radius: 30px;
+  top: 245px;
+  width: 309px;
+}
+
+.date-field .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.date-content {
+  width: 100%;
+  height: 100%;
+}
+
+.date-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 26px;
+  position: relative;
+  width: 309px;
+}
+
+.date-label {
+  position: absolute;
+  left: 33px;
+  top: 220px;
+  z-index: 1;
+}
+
+.calendar-icon {
+  position: absolute;
+  left: 293px; /* Adjusted to be properly inside the field */
+  width: 14px;
+  height: 14px;
+  top: 266px; /* Adjusted for centered alignment */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.calendar-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Concern Title */
+.concern-title {
+  position: absolute;
+  background: white;
+  height: 56px;
+  left: 33px;
+  border-radius: 30px;
+  top: 150px;
+  width: 636px;
+}
+
+.concern-title .border-overlay {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  inset: 0;
+  pointer-events: none;
+}
+
+.concern-title-content {
+  width: 100%;
+  height: 100%;
+}
+
+.concern-title-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 26px;
+  position: relative;
+  width: 636px;
+}
+
+.concern-title-label {
+  position: absolute;
+  left: 33px;
+  top: 128px;
+  z-index: 1;
 }
 
 /* Labels */
-label {
-  font-weight: 600;
-  color: #2d2d2d;
-  margin-bottom: 6px;
+.label {
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  height: 21px;
+  line-height: 17.705px;
+  font-size: 13px;
+  color: black;
+  letter-spacing: 0.2696px;
+  width: 200px;
 }
 
-/* Inputs */
-input[type="file"],
-textarea,
-select {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background: #fafafa;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input[type="file"]:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border-color: #7db343;
-  box-shadow: 0 0 0 3px rgba(125,179,67,0.2);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* Submit */
-.form-actions {
-  grid-column: span 2;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.submit-btn {
-  background: #7db343;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 22px;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.submit-btn:hover {
-  background: #6aa03a;
-}
-
-/* Close */
-.close-btn {
+/* Subtitle and Main Title */
+.subtitle {
   position: absolute;
-  top: 14px;
-  right: 16px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  left: 33px;
+  font-size: 13px;
+  color: black;
+  top: 77px;
+  letter-spacing: 0.2696px;
+  width: 431px;
+}
+
+.main-title {
+  position: absolute;
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  line-height: 1.4;
+  left: 33px;
+  font-size: 24px;
+  color: black;
+  top: 30px;
+  letter-spacing: 0.2696px;
+  width: 460px;
+  white-space: nowrap;
+}
+
+/* Arrow Right */
+.arrow-right {
+  position: absolute;
+  left: 669px;
+  width: 18px;
+  height: 18px;
+  top: 30px; /* Adjusted to align with title */
+  cursor: pointer;
+  z-index: 2;
+}
+
+.arrow-right svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Inputs embedded in Figma-style fields */
+.concern-title-input,
+.date-input,
+.select-area-select,
+.severity-select,
+.description-textarea {
+  width: 100%;
+  border: none;
+  outline: none;
   background: transparent;
-  border: none;
-  font-size: 22px;
+  font-family: "Outfit", sans-serif;
+  font-size: 13px;
+  color: #000000;
+  padding: 0;
+  margin: 0;
+  resize: none;
+}
+
+.description-textarea {
+  min-height: 50px;
+  line-height: 1.4;
+}
+
+.concern-title-input::placeholder,
+.description-textarea::placeholder,
+.date-input::placeholder,
+.select-area-select::placeholder,
+.severity-select::placeholder {
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+/* Select styling */
+.select-area-select,
+.severity-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
-  color: #666;
-}
-
-.close-btn:hover {
-  color: #000;
-}
-
-/* Main open button */
-.report-btn {
-  margin: 12px;
-  padding: 12px 20px;
-  background: #7db343;
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.report-btn:hover {
-  background: #6aa03a;
 }

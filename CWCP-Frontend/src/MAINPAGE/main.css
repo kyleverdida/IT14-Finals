@@ -1,185 +1,429 @@
-/* Dashboard Container */
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  background-color: #f7f8fa;
+/* Root wrapper for user main page */
+.user-mainpage {
   font-family: "Poppins", sans-serif;
-  overflow: hidden;
 }
 
-/* Main Section */
-.dashboard-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 100%;
-  padding: 20px 40px;
+.user-mainpage *,
+.user-mainpage *::before,
+.user-mainpage *::after {
   box-sizing: border-box;
 }
 
-/* Header Section */
-.dashboard-header {
+/* Dashboard Container */
+.user-mainpage .dashboard {
+  background-color: #e8e8e8;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 15px 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
+  flex-direction: column;
+  position: relative;
+  padding-top: 191px; /* Space for fixed header */
+}
+
+/* Header Frame */
+.user-mainpage .header-frame {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 24px;
+  width: 1380px;
+  height: 143px;
+  background-color: white;
+  border-radius: 21px;
+  overflow: hidden;
   z-index: 100;
-  margin-bottom: 20px;
 }
 
-/* Left side: logo + tagline */
-.header-left {
+/* Logo Section */
+.user-mainpage .logo-section {
+  position: absolute;
+  left: 70px;
+  top: 28px;
+  width: 304px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.user-mainpage .logo-image {
+  position: absolute;
+  top: 4.81%;
+  left: 1.67%;
+  width: 55.434px;
+  height: 46.355px;
+}
+
+.user-mainpage .logo-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* Header Text */
+.user-mainpage .header-text {
+  position: absolute;
+  left: 150px;
+  top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: "Questrial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.2209px;
+}
+
+.user-mainpage .top-text {
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  color: black;
+  margin-bottom: 0;
+}
+
+.user-mainpage .city-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0;
+  line-height: 18.117px;
+  color: black;
+}
+
+.user-mainpage .portal-title {
+  position: absolute;
+  left: 5.85%;
+  top: calc(50% + 12px);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18.117px;
+  color: #00642f;
+  letter-spacing: 0.2209px;
+  margin: 0;
+}
+
+.user-mainpage .portal-subtitle {
+  position: absolute;
+  left: 13.04%;
+  top: calc(50% + 34px);
+  font-family: "Quattrocento Sans", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  margin: 0;
+  line-height: 18.117px;
+  color: black;
+  letter-spacing: 0.2209px;
+}
+
+/* Search Section */
+.user-mainpage .search-section {
+  position: absolute;
+  left: 430px;
+  top: 58px;
+}
+
+.user-mainpage .search-input {
+  position: relative;
+  width: 530px;
+  height: 28px;
+  background-color: #f6f6fb;
+  border-radius: 5px;
+}
+
+.user-mainpage .search-placeholder {
+  position: absolute;
+  left: calc(32.68% - 430px + 430px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  color: #1f384c;
+  opacity: 0.3;
+  letter-spacing: 0.5px;
+  white-space: pre;
+}
+
+.user-mainpage .search-icon {
+  position: absolute;
+  left: 503px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+}
+
+.user-mainpage .search-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Button Section */
+.user-mainpage .button-section {
+  position: absolute;
+  left: 960px;
+  top: 43px;
+  width: 326px;
+  height: 62px;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 14px 27px;
+  box-sizing: border-box;
+}
+
+.user-mainpage .btn {
   display: flex;
   align-items: center;
-  gap: 15px;
-}
-
-.header-logo {
-  height: 50px;
-  width: 50px;
-  object-fit: contain;
-}
-
-.header-tagline {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-  white-space: nowrap;
-}
-
-/* Right side: filters + searchbar */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.open-modal-btn {
-  background-color: #009900;
-  color: white;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 8px;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16.343px;
+  line-height: 17.705px;
+  letter-spacing: 0.2696px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.open-modal-btn:hover {
-  background-color: #007a00;
+.user-mainpage .btn-submit {
+  background-color: #00b034;
+  color: white;
+  padding: 10px 12px;
 }
 
-/* Cards Container */
-.cards {
+.user-mainpage .btn-login {
+  background-color: #256eff;
+  color: white;
+  width: 100px;
+  padding: 10px 30px;
+}
+
+.user-mainpage .btn:hover {
+  opacity: 0.9;
+}
+
+/* Filter Icon */
+.user-mainpage .filter-icon {
+  position: absolute;
+  left: 1299px;
+  top: 55px;
+  width: 38px;
+  height: 38px;
+}
+
+.user-mainpage .filter-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Main Content */
+.user-mainpage .main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 400px;
+}
+
+.user-mainpage .no-concerns-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+  letter-spacing: 0.1395px;
+}
+
+/* Submit Concern modal */
+.user-mainpage .form-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.user-mainpage .form-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 780px;
+  width: min(90%, 780px);
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.user-mainpage .form-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Cards Container (reuse from previous main.css) */
+.user-mainpage .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
   justify-content: space-evenly;
+  width: 100%;
 }
 
-#noposts {
+.user-mainpage #noposts {
   margin: 150px auto;
   font-size: 2rem;
   color: #666;
 }
 
-/* Hide scrollbar but keep scroll functionality */
-.dashboard-main {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-.dashboard-main::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-/* --------------------- Responsive --------------------- */
-
-/* Tablet view */
-@media (max-width: 900px) {
-  .dashboard {
-    flex-direction: column;
-  }
-
-  .dashboard > .sidebar-left {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .dashboard-main {
-    padding: 15px 20px;
-  }
-
-  .dashboard-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .header-right {
-    width: 100%;
-    justify-content: space-between;
-  }
+/* Footer Styles */
+.user-mainpage .footer {
+  background: linear-gradient(90deg, #00642f 17.308%, #00c239 78.846%);
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
 }
 
-/* Mobile view */
-@media (max-width: 480px) {
-  .dashboard-main {
-    padding: 10px 15px;
+
+.user-mainpage .footer-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.user-mainpage .footer-container {
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 29px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.user-mainpage .members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 1400px;
+  flex-wrap: nowrap;
+}
+
+.user-mainpage .members-grid {
+  display: flex;
+  gap: 6.793px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.user-mainpage .member-card {
+  background: #ffffff;
+  width: 274px;
+  height: 152px;
+  border-radius: 9px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.user-mainpage .member-frame {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+}
+
+.user-mainpage .member-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 121.606px;
+  height: 121.606px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-mainpage .member-image img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-mainpage .member-text {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.2;
+  font-size: 8.4px;
+  font-weight: 700;
+  max-width: 140px;
+}
+
+.user-mainpage .member-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.user-mainpage .member-role {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1400px) {
+  .user-mainpage .header-frame {
+    width: 95%;
+    max-width: 1380px;
   }
 
-  .dashboard-header {
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+  .user-mainpage .button-section {
+    left: auto;
+    right: 20px;
   }
 
-  .header-left {
-    width: 100%;
-    justify-content: center;
+  .user-mainpage .filter-icon {
+    left: auto;
+    right: 40px;
   }
+}
 
-  .header-logo {
-    height: 40px;
-    width: 40px;
-  }
-
-  .header-tagline {
-    font-size: 0.85rem;
-    text-align: center;
-    white-space: normal;
-  }
-
-  .header-right {
+@media (max-width: 600px) {
+  .user-mainpage .footer-container {
     flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    padding: 20px;
   }
 
-  .open-modal-btn {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .cards {
+  .user-mainpage .members-grid {
     flex-direction: column;
-    align-items: center;
     gap: 15px;
-  }
-
-  #noposts {
-    margin: 80px auto;
-    font-size: 1.4rem;
-    text-align: center;
   }
 }
