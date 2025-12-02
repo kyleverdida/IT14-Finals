@@ -12,21 +12,24 @@ const credits = () => {
                 <div className="member-grid">
                     <div className="member-card">
                         <img src="https://avatars.githubusercontent.com/u/210122774?v=4" alt="" />
-                        <p></p>
+                        <p>Kyle Christian Verdida</p>
+                        <p>PROJECT MANAGER</p>
                     </div>
 
 
 
                     <div className="member-card">
                         <img src="https://avatars.githubusercontent.com/u/124577578?v=4" alt="" />
-                        <p></p>
+                        <p>Charles Kent Labrador</p>
+                        <p>LEAD PROGRAMMER</p>
                     </div>
 
                     
 
                     <div className="member-card">
                         <img src="https://avatars.githubusercontent.com/u/232481857?v=4" alt="" />
-                        <p></p>
+                        <p>Railey Muyco</p>
+                        <p>UI/UX DESIGNER</p>
                     </div>
 
                     <div className="member-card">
@@ -39,10 +42,7 @@ const credits = () => {
                         <p></p>
                     </div>
 
-                    <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=" alt="" />
-                        <p></p>
-                    </div>
+                
 
                 </div>
             </footer>

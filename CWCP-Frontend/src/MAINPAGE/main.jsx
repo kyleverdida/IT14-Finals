@@ -182,62 +182,6 @@ const Main = () => {
             </div>
           </div>
         )}
-
-       <div className="footer">
-  <div className="members">
-
-    {/* Project Manager */}
-    <div className="member-card member-manager">
-      <div className="member-frame">
-        <div className="member-img"></div>
-        <div className="member-text">
-          KYLE CHRISTIAN VERDIDA<br />PROJECT MANAGER
-        </div>
-      </div>
-    </div>
-
-    {/* Programmer */}
-    <div className="member-card member-programmer">
-      <div className="member-frame">
-        <div className="member-img"></div>
-        <div className="member-text">
-          CHARLES KENT LABRADOR<br />PROGRAMMER
-        </div>
-      </div>
-    </div>
-
-    {/* UI/UX Designer */}
-    <div className="member-card member-uiux">
-      <div className="member-frame">
-        <div className="member-img"></div>
-        <div className="member-text">
-          CHRISON LLOYDFER RARAMA<br />UI/UX DESIGNER
-        </div>
-      </div>
-    </div>
-
-    {/* Database Designer */}
-    <div className="member-card member-database">
-      <div className="member-frame">
-        <div className="member-img"></div>
-        <div className="member-text">
-          RAILEY MUYCO<br />DATABASE DESIGNER
-        </div>
-      </div>
-    </div>
-
-    {/* System Analyst */}
-    <div className="member-card member-analyst">
-      <div className="member-frame">
-        <div className="member-img"></div>
-        <div className="member-text">
-          EMMANUEL ADRIAN SALUDARES<br />SYSTEM ANALYST
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
       </div>
     </div>
   );

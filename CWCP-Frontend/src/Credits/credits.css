@@ -1,81 +1,174 @@
+/* Main Footer */
 .main-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 30px;
   width: 100%;
-  background-color: rgb(124, 179, 66);
-  color: #fff;
-  text-align: center;
-    padding-bottom: 30px;
-  border-top: 4px solid rgba(0, 0, 0, 0.1);
-  font-family: "Poppins", sans-serif;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  min-height: 272px;
+  background: linear-gradient(90deg, #00642F 17.31%, #00C239 78.85%);
 }
 
 .main-footer h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  color: #FFFFFF;
+  margin: 0;
+  text-align: center;
 }
 
-/* Grid Layout for Members */
+/* Member Grid */
 .member-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  gap: 30px;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 15px;
+  max-width: 1400px;
+  width: 100%;
 }
 
-/* Individual Member Card */
+/* Member Card */
 .member-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 15px;
-  width: 180px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 20px;
+  gap: 10px;
+  width: 240px;
+  min-width: 240px;
+  min-height: 152px;
+  background: #FFFFFF;
+  border-radius: 9px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .member-card:hover {
   transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Member Image */
+/* Member Card Image */
 .member-card img {
-  width: 120px;
-  height: 120px;
+  width: 121.61px;
+  height: 121.61px;
   border-radius: 50%;
-  border: 3px solid white;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  margin-bottom: 10px;
+  background: #D9D9D9;
+  flex: none;
 }
 
-/* Member Name */
+/* Member Card Text */
 .member-card p {
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.14px;
+  color: #000000;
   margin: 0;
-  color: #fff;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
   .member-grid {
-    gap: 20px;
+    gap: 12px;
   }
-
+  
   .member-card {
-    width: 140px;
-    padding: 10px;
+    width: 220px;
+    min-width: 220px;
   }
+}
 
+@media (max-width: 1280px) {
+  .member-grid {
+    gap: 10px;
+  }
+  
+  .member-card {
+    width: 200px;
+    min-width: 200px;
+    padding: 15px;
+  }
+  
   .member-card img {
     width: 100px;
     height: 100px;
   }
+}
 
+@media (max-width: 1024px) {
+  .main-footer {
+    padding: 30px 15px;
+  }
+  
+  .member-grid {
+    gap: 8px;
+  }
+  
+  .member-card {
+    width: 180px;
+    min-width: 180px;
+    padding: 12px;
+  }
+  
+  .member-card img {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .member-card p {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 20px 10px;
+  }
+  
   .main-footer h1 {
-    font-size: 1.4rem;
+    font-size: 24px;
+  }
+  
+  .member-grid {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .member-card {
+    width: 160px;
+    min-width: 160px;
+  }
+  
+  .member-card img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .member-grid {
+    flex-direction: column;
+  }
+  
+  .member-card {
+    width: 100%;
+    max-width: 300px;
   }
 }
