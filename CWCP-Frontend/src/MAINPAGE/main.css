@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-top: 191px; /* Space for fixed header */
+  padding-top: 191px;
 }
 
 /* Header Frame */
@@ -26,11 +26,13 @@
   transform: translateX(-50%);
   top: 24px;
   width: 1380px;
+  max-width: 95%;
   height: 143px;
   background-color: white;
   border-radius: 21px;
-  overflow: hidden;
+  overflow: visible;
   z-index: 100;
+  padding: 20px;
 }
 
 /* Logo Section */
@@ -58,7 +60,7 @@
   max-width: none;
 }
 
-/* Header Text - FIXED */
+/* Header Text */
 .user-mainpage .header-text {
   position: absolute;
   left: 75px;
@@ -129,21 +131,6 @@
   border-radius: 5px;
 }
 
-.user-mainpage .search-placeholder {
-  position: absolute;
-  left: calc(32.68% - 430px + 430px);
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 13px;
-  color: #1f384c;
-  opacity: 0.3;
-  letter-spacing: 0.5px;
-  white-space: pre;
-}
-
 .user-mainpage .search-icon {
   position: absolute;
   left: 503px;
@@ -161,13 +148,13 @@
 /* Button Section */
 .user-mainpage .button-section {
   position: absolute;
-  left: 960px;
+  left: 1040px;
   top: 43px;
-  width: 326px;
+  width: auto;
   height: 62px;
   display: flex;
-  gap: 28px;
   align-items: center;
+  justify-content: center;
   padding: 14px 27px;
   box-sizing: border-box;
 }
@@ -176,7 +163,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 12px;
+  padding: 10px 20px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -192,14 +179,6 @@
 .user-mainpage .btn-submit {
   background-color: #00b034;
   color: white;
-  padding: 10px 12px;
-}
-
-.user-mainpage .btn-login {
-  background-color: #256eff;
-  color: white;
-  width: 100px;
-  padding: 10px 30px;
 }
 
 .user-mainpage .btn:hover {
@@ -214,6 +193,9 @@
   width: 38px;
   height: 38px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-mainpage .filter-icon svg {
@@ -290,20 +272,281 @@
   color: #666;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 1400px) {
+/* ========================================
+   TABLET RESPONSIVENESS (768px - 1024px)
+   ======================================== */
+@media (max-width: 1024px) {
+  .user-mainpage .dashboard {
+    padding-top: 160px;
+  }
+
   .user-mainpage .header-frame {
     width: 95%;
-    max-width: 1380px;
+    height: auto;
+    min-height: 120px;
+    padding: 15px;
+  }
+
+  .user-mainpage .logo-section {
+    left: 20px;
+    top: 15px;
+    width: 250px;
+  }
+
+  .user-mainpage .header-text {
+    left: 65px;
+    top: 5px;
+  }
+
+  .user-mainpage .top-text {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .user-mainpage .city-text {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .user-mainpage .portal-title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .user-mainpage .portal-subtitle {
+    font-size: 9px;
+    line-height: 11px;
+  }
+
+  .user-mainpage .search-section {
+    left: 280px;
+    top: 45px;
+  }
+
+  .user-mainpage .search-input {
+    width: 350px;
+    height: 26px;
+  }
+
+  .user-mainpage .search-icon {
+    left: 323px;
+    top: 7px;
   }
 
   .user-mainpage .button-section {
     left: auto;
-    right: 20px;
+    right: 60px;
+    top: 35px;
+    padding: 10px 15px;
+  }
+
+  .user-mainpage .btn {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 
   .user-mainpage .filter-icon {
     left: auto;
-    right: 40px;
+    right: 15px;
+    top: 42px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS (up to 767px)
+   ======================================== */
+@media (max-width: 767px) {
+  .user-mainpage .dashboard {
+    padding-top: 200px;
+  }
+
+  .user-mainpage .header-frame {
+    width: 95%;
+    height: auto;
+    min-height: 160px;
+    top: 10px;
+    padding: 15px 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Logo Section - Mobile */
+  .user-mainpage .logo-section {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .user-mainpage .logo-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 35px;
+    flex-shrink: 0;
+  }
+
+  .user-mainpage .header-text {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-left: 10px;
+    flex: 1;
+  }
+
+  .user-mainpage .top-text {
+    font-size: 8px;
+    line-height: 10px;
+  }
+
+  .user-mainpage .city-text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .user-mainpage .portal-title {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .user-mainpage .portal-subtitle {
+    font-size: 7px;
+    line-height: 9px;
+  }
+
+  /* Search Section - Mobile */
+  .user-mainpage .search-section {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .user-mainpage .search-input {
+    width: 100%;
+    height: 35px;
+  }
+
+  .user-mainpage .search-icon {
+    left: auto;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Button and Filter Section - Mobile */
+  .user-mainpage .button-section {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-mainpage .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+    flex: 1;
+    max-width: calc(100% - 50px);
+  }
+
+  .user-mainpage .filter-icon {
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Main Content - Mobile */
+  .user-mainpage .main-content {
+    padding: 20px 10px;
+  }
+
+  .user-mainpage .no-concerns-text {
+    font-size: 18px;
+  }
+
+  /* Cards - Mobile */
+  .user-mainpage .cards {
+    gap: 15px;
+    justify-content: center;
+  }
+
+  /* Modal - Mobile */
+  .user-mainpage .form-modal {
+    width: 95%;
+    max-height: 85vh;
+    padding: 15px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE (up to 480px)
+   ======================================== */
+@media (max-width: 480px) {
+  .user-mainpage .dashboard {
+    padding-top: 190px;
+  }
+
+  .user-mainpage .header-frame {
+    min-height: 170px;
+  }
+
+  .user-mainpage .top-text {
+    font-size: 7px;
+    line-height: 9px;
+  }
+
+  .user-mainpage .city-text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .user-mainpage .portal-title {
+    font-size: 9px;
+    line-height: 11px;
+  }
+
+  .user-mainpage .portal-subtitle {
+    font-size: 6px;
+    line-height: 8px;
+  }
+
+  .user-mainpage .btn {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .user-mainpage .filter-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user-mainpage .no-concerns-text {
+    font-size: 16px;
   }
 }

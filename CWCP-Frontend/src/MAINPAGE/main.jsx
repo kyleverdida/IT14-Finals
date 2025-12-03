@@ -141,13 +141,6 @@ const Main = () => {
             >
               Submit Concern
             </button>
-            <button
-              className="btn btn-login"
-              type="button"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
           </div>
 
           {/* Filter Icon - NOW FUNCTIONAL */}
