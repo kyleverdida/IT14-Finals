@@ -16,6 +16,8 @@ const Main = () => {
     status: "",
   });
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -51,8 +53,17 @@ const Main = () => {
     const matchesStatus =
       !filters.status ||
       concern.status?.toLowerCase() === filters.status.toLowerCase();
-    return matchesArea && matchesSeverity && matchesStatus;
+    
+    // Search filter
+    const matchesSearch = !searchQuery || 
+      concern.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      concern.description?.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    return matchesArea && matchesSeverity && matchesStatus && matchesSearch;
   });
+
+  // Check if any filters are active
+  const hasActiveFilters = filters.area || filters.severity || filters.status;
 
   return (
     <div className="user-mainpage">
@@ -70,19 +81,32 @@ const Main = () => {
               <p className="top-text">REPUBLIC OF THE PHILIPPINES</p>
               <p className="top-text">PROVINCE OF DAVAO DEL NORTE</p>
               <p className="city-text">CITY OF TAGUM</p>
+              <p className="portal-title">CITY WIDE CONCERN PORTAL</p>
+              <p className="portal-subtitle">
+                KEEPING COMMUNITIES SAFE AND CONNECTED!
+              </p>
             </div>
-
-            <p className="portal-title">CITY WIDE CONCERN PORTAL</p>
-            <p className="portal-subtitle">
-              KEEPING COMMUNITIES SAFE AND CONNECTED!
-            </p>
           </div>
 
           {/* Search Section */}
           <div className="search-section">
             <div className="search-input">
-              {/* Keep placeholder text for visual parity; Searchbar handles actual search */}
-              <p className="search-placeholder">Search</p>
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                  outline: 'none',
+                  background: 'transparent',
+                  fontSize: '14px',
+                  padding: '0 10px',
+                  color: '#262222'
+                }}
+              />
             </div>
             <div className="search-icon">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -126,16 +150,118 @@ const Main = () => {
             </button>
           </div>
 
-          {/* Filter Icon (purely decorative here) */}
-          <div className="filter-icon">
+          {/* Filter Icon - NOW FUNCTIONAL */}
+          <button
+            className="filter-icon"
+            type="button"
+            onClick={() => setIsFilterOpen(true)}
+            aria-label="Open filters"
+            style={{ 
+              position: 'relative', 
+              background: 'none', 
+              border: 'none', 
+              cursor: 'pointer',
+              padding: '5px'
+            }}
+          >
             <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
               <path
                 d="M20.5438 13.8542L7.91667 1.22708H27.1938C27.8535 1.22708 28.3285 1.51736 28.6188 2.09792C28.909 2.67847 28.8563 3.23264 28.4604 3.76042L20.5438 13.8542ZM19.2771 21.5333V24.9771C19.2771 25.4257 19.1251 25.802 18.8211 26.106C18.5171 26.41 18.1413 26.5615 17.6938 26.5604H14.5271C14.0785 26.5604 13.7027 26.4084 13.3998 26.1044C13.0968 25.8004 12.9448 25.4246 12.9438 24.9771V15.2L0.435416 2.69167C0.145139 2.40139 0 2.03881 0 1.60392C0 1.16903 0.145139 0.792723 0.435416 0.475C0.752083 0.158334 1.12839 0 1.56433 0C2.00028 0 2.37606 0.158334 2.69167 0.475L29.5688 27.3521C29.8854 27.6688 30.0374 28.0382 30.0248 28.4604C30.0121 28.8826 29.8469 29.2521 29.5292 29.5687C29.2125 29.859 28.8431 30.011 28.4208 30.0247C27.9986 30.0385 27.6292 29.8865 27.3125 29.5687L19.2771 21.5333Z"
                 fill="#262222"
               />
             </svg>
-          </div>
+            {/* Active filter indicator */}
+            {hasActiveFilters && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '5px',
+                  right: '5px',
+                  width: '10px',
+                  height: '10px',
+                  backgroundColor: '#3b82f6',
+                  borderRadius: '50%',
+                  border: '2px solid white'
+                }}
+              />
+            )}
+          </button>
         </div>
+
+        {/* Filter Modal */}
+        {isFilterOpen && (
+          <div className="modal-overlay-sidebar" onClick={() => setIsFilterOpen(false)}>
+            <div
+              className="modal-content-sidebar"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-header">
+                <h2>Filters</h2>
+                <button className="close-btn-sidebar" onClick={() => setIsFilterOpen(false)}>
+                  ✖
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <label>Area:</label>
+                <select
+                  name="area"
+                  value={filters?.area || ""}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, area: e.target.value }))}
+                >
+                  <option value="">All Areas</option>
+                  <option value="apokon">Apokon</option>
+                  <option value="bincungan">Bincungan</option>
+                  <option value="busaon">Busaon</option>
+                  <option value="canocotan">Canocotan</option>
+                  <option value="cuambogan">Cuambogan</option>
+                  <option value="la-filipina">La Filipina</option>
+                  <option value="liboganon">Liboganon</option>
+                  <option value="madaum">Madaum</option>
+                  <option value="magdum">Magdum</option>
+                  <option value="mankilam">Mankilam</option>
+                  <option value="new-balamban">New Balamban</option>
+                  <option value="nueva-fuerza">Nueva Fuerza</option>
+                  <option value="pagsabangan">Pagsabangan</option>
+                  <option value="pandapan">Pandapan</option>
+                  <option value="magugpo-poblacion">Magugpo Poblacion</option>
+                  <option value="san-agustin">San Agustin</option>
+                  <option value="san-isidro">San Isidro</option>
+                  <option value="san-miguel-camp-4">San Miguel (Camp 4)</option>
+                  <option value="visayan-village">Visayan Village</option>
+                  <option value="magugpo-east">Magugpo East</option>
+                  <option value="magugpo-north">Magugpo North</option>
+                  <option value="magugpo-south">Magugpo South</option>
+                  <option value="magugpo-west">Magugpo West</option>
+                </select>
+
+                <label>Severity:</label>
+                <select
+                  name="severity"
+                  value={filters?.severity || ""}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, severity: e.target.value }))}
+                >
+                  <option value="">All Severity</option>
+                  <option value="inconvenient">Inconvenient</option>
+                  <option value="hazard">Hazard</option>
+                  <option value="life-threatening">Life-Threatening</option>
+                </select>
+
+                <label>Status:</label>
+                <select
+                  name="status"
+                  value={filters?.status || ""}
+                  onChange={(e) => setFilters((prev) => ({ ...prev, status: e.target.value }))}
+                >
+                  <option value="">All Status</option>
+                  <option value="pending">Pending</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="resolved">Resolved</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Main Content */}
         <div className="main-content">

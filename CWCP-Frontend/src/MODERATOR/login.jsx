@@ -47,14 +47,12 @@ const Login = () => {
               <p>REPUBLIC OF THE PHILIPPINES</p>
               <p>PROVINCE OF DAVAO DEL NORTE</p>
               <p>CITY OF TAGUM</p>
+              <h1 className="text-portal-title">CITY WIDE CONCERN PORTAL</h1>
+              <p className="text-tagline">
+                KEEPING COMMUNITIES SAFE AND CONNECTED!
+              </p>
             </div>
           </div>
-
-          <h1 className="text-portal-title">CITY WIDE CONCERN PORTAL</h1>
-
-          <p className="text-tagline">
-            KEEPING COMMUNITIES SAFE AND CONNECTED!
-          </p>
         </div>
       </div>
 

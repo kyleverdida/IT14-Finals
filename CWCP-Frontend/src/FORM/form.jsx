@@ -5,8 +5,7 @@ import "./form.css";
 const Form = ({ onClose }) => {
   const [formData, setFormData] = useState({
     title: "",
-    // 👇 Only store date string (no time)
-    timestamp: new Date().toISOString().split("T")[0], // "2025-10-06"
+    timestamp: new Date().toISOString().split("T")[0],
     photo: null,
     area: "",
     severity: "",
@@ -14,24 +13,20 @@ const Form = ({ onClose }) => {
     approved: false,
   });
 
-  // handle text/select inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // handle file input
   const handleFileChange = (e) => {
     setFormData({ ...formData, photo: e.target.files[0] });
   };
 
-  // submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const data = new FormData();
 
-      // 👇 Convert to MM/DD/YYYY before sending (optional)
       const formattedDate = new Date(formData.timestamp).toLocaleDateString("en-US", {
         year: "numeric",
         month: "2-digit",
@@ -39,7 +34,7 @@ const Form = ({ onClose }) => {
       });
 
       data.append("title", formData.title);
-      data.append("timestamp", formattedDate); // now sends "10/06/2025"
+      data.append("timestamp", formattedDate);
       data.append("photo", formData.photo);
       data.append("area", formData.area);
       data.append("severity", formData.severity);
@@ -266,28 +261,6 @@ const Form = ({ onClose }) => {
       <button type="submit" className="submit-concern">
         <p>Submit Concern</p>
       </button>
-
-      {/* Arrow icon in top right */}
-      <div className="arrow-right">
-        <svg fill="none" preserveAspectRatio="none" viewBox="0 0 18 18">
-          <g>
-            <path
-              d="M3.75 9H14.25"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-            />
-            <path
-              d="M9 3.75L14.25 9L9 14.25"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-            />
-          </g>
-        </svg>
-      </div>
     </form>
   );
 };

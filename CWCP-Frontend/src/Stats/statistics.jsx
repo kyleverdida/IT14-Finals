@@ -23,29 +23,7 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {/* ===== HEADER ===== */}
-      <div className="header">
-        <div className="logo-section">
-          <div className="logo-placeholder">LOGO</div>
-          
-          <div className="logo-text">
-            <p className="title">CITY WIDE CONCERN PORTAL</p>
-            <p className="subtitle">KEEPING COMMUNITIES SAFE AND CONNECTED!</p>
-            <div className="location">
-              <p>REPUBLIC OF THE PHILIPPINES</p>
-              <p>PROVINCE OF DAVAO DEL NORTE</p>
-              <p className="city">CITY OF TAGUM</p>
-            </div>
-          </div>
-        </div>
-
-        <button className="logout-btn">Logout</button>
-
-        <div className="profile">
-          <div className="avatar-placeholder">A</div>
-          <span>ADMIN</span>
-        </div>
-      </div>
+      <h1>City Issue Reporting Statistics</h1>
 
       {/* ===== STAT CARDS ===== */}
       <div className="cards">

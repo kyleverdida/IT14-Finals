@@ -4,7 +4,7 @@
   position: relative;
   border-radius: 12px;
   width: 712px;
-  min-height: 680px; /* Increased to accommodate submit button */
+  min-height: 680px;
   padding-bottom: 20px;
 }
 
@@ -21,7 +21,7 @@
   overflow: clip;
   padding: 10px 24px;
   border-radius: 8px;
-  top: 575px; /* Adjusted to fit within container */
+  top: 575px;
   border: none;
   cursor: pointer;
 }
@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 90px; /* Changed to min-height for flexibility */
+  min-height: 90px;
   align-items: flex-start;
   left: 33px;
   padding: 18px 26px;
@@ -96,8 +96,8 @@
 .description-label {
   position: absolute;
   left: 33px;
-  top: 424px;
-  z-index: 1; /* Ensure labels stay on top */
+  top: 415px;
+  z-index: 1;
 }
 
 /* Severity */
@@ -107,7 +107,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 56px; /* Matched to other input heights */
+  height: 56px;
   align-items: flex-start;
   justify-content: center;
   left: 360px;
@@ -128,16 +128,16 @@
 .severity-label {
   position: absolute;
   left: 360px;
-  top: 320px;
+  top: 317px;
   z-index: 1;
 }
 
 .severity-icon {
   position: absolute;
-  left: 620px; /* Adjusted to be properly inside the field */
+  left: 620px;
   width: 14px;
   height: 14px;
-  top: 366px; /* Adjusted for centered alignment */
+  top: 366px;
   z-index: 2;
   pointer-events: none;
 }
@@ -155,7 +155,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 56px; /* Matched to other input heights */
+  height: 56px;
   align-items: flex-start;
   justify-content: center;
   left: 33px;
@@ -176,16 +176,16 @@
 .select-area-label {
   position: absolute;
   left: 33px;
-  top: 320px;
+  top: 317px;
   z-index: 1;
 }
 
 .select-area-icon {
   position: absolute;
-  left: 293px; /* Adjusted to be properly inside the field */
+  left: 293px;
   width: 14px;
   height: 14px;
-  top: 366px; /* Adjusted for centered alignment */
+  top: 366px;
   z-index: 2;
   pointer-events: none;
 }
@@ -210,6 +210,7 @@
   padding: 4px 10px;
   border-radius: 6px;
   z-index: 2;
+  cursor: pointer;
 }
 
 .browse-border {
@@ -240,7 +241,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 56px; /* Matched to other input heights */
+  height: 56px;
   align-items: flex-start;
   justify-content: center;
   left: 360px;
@@ -264,19 +265,22 @@
   font-weight: 300;
   height: 18px;
   line-height: 17.705px;
-  left: 386px; /* Adjusted to fit properly within field */
+  left: 386px;
   font-size: 11px;
   color: rgba(0, 0, 0, 0.6);
-  top: 264px; /* Adjusted for centered alignment */
+  top: 264px;
   letter-spacing: 0.2696px;
-  width: 93px;
+  width: 200px; /* Increased width for longer filenames */
   pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .upload-photo-label {
   position: absolute;
   left: 360px;
-  top: 220px;
+  top: 217px;
   z-index: 1;
 }
 
@@ -284,7 +288,7 @@
 .date-field {
   position: absolute;
   background: white;
-  height: 56px; /* Matched to other input heights */
+  height: 56px;
   left: 33px;
   border-radius: 30px;
   top: 245px;
@@ -319,16 +323,16 @@
 .date-label {
   position: absolute;
   left: 33px;
-  top: 220px;
+  top: 217px;
   z-index: 1;
 }
 
 .calendar-icon {
   position: absolute;
-  left: 293px; /* Adjusted to be properly inside the field */
+  left: 293px;
   width: 14px;
   height: 14px;
-  top: 266px; /* Adjusted for centered alignment */
+  top: 266px;
   z-index: 2;
   pointer-events: none;
 }
@@ -346,7 +350,7 @@
   height: 56px;
   left: 33px;
   border-radius: 30px;
-  top: 150px;
+  top: 155px;
   width: 636px;
 }
 
@@ -378,7 +382,7 @@
 .concern-title-label {
   position: absolute;
   left: 33px;
-  top: 128px;
+  top: 127px;
   z-index: 1;
 }
 
@@ -422,13 +426,13 @@
   white-space: nowrap;
 }
 
-/* Arrow Right */
-.arrow-right {
+/* Arrow Right - REMOVED */
+/* .arrow-right {
   position: absolute;
   left: 669px;
   width: 18px;
   height: 18px;
-  top: 30px; /* Adjusted to align with title */
+  top: 30px;
   cursor: pointer;
   z-index: 2;
 }
@@ -437,7 +441,7 @@
   display: block;
   width: 100%;
   height: 100%;
-}
+} */
 
 /* Inputs embedded in Figma-style fields */
 .concern-title-input,
@@ -482,4 +486,13 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+}
+
+/* Date input styling */
+.date-input {
+  cursor: pointer;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  display: none;
 }
