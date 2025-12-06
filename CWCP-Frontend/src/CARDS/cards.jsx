@@ -19,12 +19,33 @@ const getSeverityColor = (severity) => {
   }
 };
 
-const Cards = ({ _id, title, area, comment, status, severity, timestamp, photo, approved }) => {
+const formatAreaName = (area) => {
+  if (!area) return "";
+
+  return area
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+const Cards = ({
+  _id,
+  title,
+  area,
+  comment,
+  status,
+  severity,
+  timestamp,
+  photo,
+  approved,
+}) => {
   const location = useLocation();
   const severityClass = getSeverityColor(severity);
   const API_URL = import.meta.env.VITE_API_URL;
   const API_URL_UPLOAD = import.meta.env.VITE_API_URL_UPLOAD;
-  const imageSrc = photo ? `${API_URL_UPLOAD}/${photo}` : "https://placehold.co/600x400?text=No+Image";
+  const imageSrc = photo
+    ? `${API_URL_UPLOAD}/${photo}`
+    : "https://placehold.co/600x400?text=No+Image";
 
   const handleAPIAction = async (url, method, successMsg, errorMsg) => {
     try {
@@ -42,11 +63,30 @@ const Cards = ({ _id, title, area, comment, status, severity, timestamp, photo, 
     }
   };
 
-  const handleApprove = () => handleAPIAction(`${API_URL}/approve/${_id}`, "PUT", "✅ Approved!", "Failed to approve post");
-  const handleReject = () => handleAPIAction(`${API_URL}/reject/${_id}`, "PUT", "❌ Rejected!", "Failed to reject post");
+  const handleApprove = () =>
+    handleAPIAction(
+      `${API_URL}/approve/${_id}`,
+      "PUT",
+      "✅ Approved!",
+      "Failed to approve post"
+    );
+
+  const handleReject = () =>
+    handleAPIAction(
+      `${API_URL}/reject/${_id}`,
+      "PUT",
+      "❌ Rejected!",
+      "Failed to reject post"
+    );
+
   const handleDelete = () => {
     if (confirm("⚠️ Delete this post permanently?")) {
-      handleAPIAction(`${API_URL}/delete/${_id}`, "DELETE", "🗑️ Deleted!", "Failed to delete post");
+      handleAPIAction(
+        `${API_URL}/delete/${_id}`,
+        "DELETE",
+        "🗑️ Deleted!",
+        "Failed to delete post"
+      );
     }
   };
 
@@ -69,13 +109,23 @@ const Cards = ({ _id, title, area, comment, status, severity, timestamp, photo, 
       return (
         <div className="mod-buttons">
           {!approved ? (
-            <button className="btn approve" onClick={handleApprove}>Approve</button>
+            <button className="btn approve" onClick={handleApprove}>
+              Approve
+            </button>
           ) : (
-            <button className="btn reject" onClick={handleReject}>Reject</button>
+            <button className="btn reject" onClick={handleReject}>
+              Reject
+            </button>
           )}
-          <button className="btn delete" onClick={handleDelete}>Delete</button>
+          <button className="btn delete" onClick={handleDelete}>
+            Delete
+          </button>
 
-          <select className="status-dropdown" value={status} onChange={(e) => handleChangeStatus(e.target.value)}>
+          <select
+            className="status-dropdown"
+            value={status}
+            onChange={(e) => handleChangeStatus(e.target.value)}
+          >
             <option value="pending">Pending</option>
             <option value="ongoing">Ongoing</option>
             <option value="resolved">Resolved</option>
@@ -87,30 +137,36 @@ const Cards = ({ _id, title, area, comment, status, severity, timestamp, photo, 
   };
 
   return (
-    <div className={`card ${severityClass}`}>
-      <div className="card-image">
-        <img src={imageSrc} alt={title} />
-        <div className="severity-bar"></div>
-      </div>
-
-      <div className="card-body">
-        <div className="card-header">
-          <h3>{title}</h3>
-          <span className={`status-tag status-${status?.toLowerCase()}`}>{status}</span>
+    <div className="card-wrapper">   {/* ✅ ADDED THIS WRAPPER */}
+      <div className={`card ${severityClass}`}>
+        <div className="card-image">
+          <img src={imageSrc} alt={title} />
+          <div className="severity-bar"></div>
         </div>
 
-        <p className="card-area">{area}</p>
+        <div className="card-body">
+          <div className="card-header">
+            <h3>{title}</h3>
+            <span className={`status-tag status-${status?.toLowerCase()}`}>
+              {status}
+            </span>
+          </div>
 
-        <div className="meta">
-          <span>Severity: {severity}</span>
-          <span>Reported: {new Date(timestamp).toLocaleDateString()}</span>
+          <p className="card-area">{formatAreaName(area)}</p>
+
+          <div className="meta">
+            <span>Severity: {severity}</span>
+            <span>Reported: {new Date(timestamp).toLocaleDateString()}</span>
+          </div>
+
+          <p className="comment">
+            <strong>Comment:</strong> {comment}
+          </p>
+
+          {renderButtons()}
         </div>
-
-        <p className="comment"><strong>Comment:</strong> {comment}</p>
-
-        {renderButtons()}
       </div>
-    </div>
+    </div>                                
   );
 };
 

@@ -15,10 +15,12 @@
 .mod-login .login-container {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 1024px;
+  min-height: 100vh;
   background: white;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Background Elements */
@@ -27,7 +29,7 @@
   top: -3px;
   right: 678px;
   width: 762px;
-  height: 1024px;
+  height: 100%;
   background: white;
 }
 
@@ -36,7 +38,7 @@
   top: 0;
   left: 0;
   width: 723px;
-  height: 1024px;
+  height: 100%;
   background: white;
   overflow: hidden;
 }
@@ -46,7 +48,7 @@
   top: 0;
   right: -42px;
   width: 762px;
-  height: 1024px;
+  height: 100%;
   background: #00b034;
   border-radius: 24px;
 }
@@ -58,12 +60,13 @@
   top: 50%;
   transform: translateY(-50%);
   max-width: 450px;
+  z-index: 10;
 }
 
 .mod-login .logo-image-container {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .mod-login .logo-image {
@@ -95,7 +98,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .mod-login .text-portal-title {
@@ -124,6 +127,7 @@
   top: 738px;
   width: 638px;
   height: 583px;
+  pointer-events: none;
 }
 
 .mod-login .design-moon svg {
@@ -141,15 +145,17 @@
 .mod-login .login-card {
   position: absolute;
   left: 884px;
-  top: 277px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 434px;
-  height: 528px;
   background: white;
   border-radius: 12px;
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
   gap: 22px;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .mod-login .login-title {
@@ -244,7 +250,6 @@
 
 .mod-login .login-card button:hover {
   background: #004d24;
-  color: black;
 }
 
 .mod-login .btn-signup {
@@ -268,7 +273,6 @@
 .mod-login .btn-signup:hover {
   background: #f5f5f5;
   border-color: #00642f;
-  color: black;
 }
 
 .mod-login .btn-signup-text {
@@ -301,41 +305,359 @@
   padding: 0;
 }
 
-.mod-login .forgot a:hover {
+.mod-login .forgot a:hover,
+.mod-login .forgot-password:hover {
   opacity: 1;
 }
 
 .mod-login .login-message {
   font-size: 0.85rem;
   color: #b91c1c;
+  margin: 0;
 }
 
-/* Responsive adjustments */
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+/* Large Desktop (1440px and below) */
 @media (max-width: 1440px) {
-  .mod-login .login-card {
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
+  .mod-login .logo-section {
+    left: 40px;
+    max-width: 400px;
   }
-}
 
-@media (max-width: 768px) {
-  .mod-login .white-bg-left {
-    width: 100%;
+  .mod-login .login-card {
+    left: auto;
+    right: 100px;
   }
 
   .mod-login .bg-green {
+    right: -20px;
+    width: 700px;
+  }
+
+  .mod-login .design-moon {
+    left: 1000px;
+    width: 500px;
+    height: 500px;
+  }
+}
+
+/* Desktop (1200px and below) */
+@media (max-width: 1200px) {
+  .mod-login .white-bg-left {
+    width: 600px;
+  }
+
+  .mod-login .bg-left {
+    right: 500px;
+    width: 650px;
+  }
+
+  .mod-login .bg-green {
+    width: 650px;
+  }
+
+  .mod-login .logo-section {
+    left: 30px;
+    max-width: 350px;
+  }
+
+  .mod-login .text-republic p:nth-child(3) {
+    font-size: 28px;
+  }
+
+  .mod-login .text-portal-title {
+    font-size: 28px;
+  }
+
+  .mod-login .login-card {
+    right: 60px;
+    width: 400px;
+  }
+
+  .mod-login .design-moon {
+    left: 850px;
+    width: 450px;
+    height: 450px;
+  }
+}
+
+/* Tablet Landscape (1024px and below) */
+@media (max-width: 1024px) {
+  .mod-login .login-container {
+    flex-direction: column;
+    padding: 0;
+    background: white;
+    align-items: stretch;
+  }
+
+  .mod-login .bg-left,
+  .mod-login .white-bg-left {
     display: none;
+  }
+
+  .mod-login .bg-green {
+    position: relative;
+    width: 100%;
+    right: 0;
+    border-radius: 0;
+    background: #00b034;
+    min-height: auto;
+  }
+
+  .mod-login .logo-section {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    max-width: 100%;
+    padding: 25px 30px;
+    text-align: center;
+    width: 100%;
+    background: white;
+  }
+
+  .mod-login .logo-image-container {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .mod-login .logo-image {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .mod-login .text-republic p:nth-child(3) {
+    margin-bottom: 3px;
+  }
+
+  .mod-login .login-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 15px auto 60px;
+    width: 90%;
+    max-width: 450px;
   }
 
   .mod-login .design-moon {
     display: none;
   }
+}
+
+/* Tablet Portrait (768px and below) */
+@media (max-width: 768px) {
+  .mod-login .logo-section {
+    padding: 20px;
+  }
+
+  .mod-login .logo-image {
+    width: 70px;
+    margin-bottom: 8px;
+  }
+
+  .mod-login .logo-image-container {
+    margin-bottom: 10px;
+  }
+
+  .mod-login .text-republic p:nth-child(1),
+  .mod-login .text-republic p:nth-child(2) {
+    font-size: 11px;
+  }
+
+  .mod-login .text-republic p:nth-child(3) {
+    font-size: 22px;
+    margin-bottom: 2px;
+  }
+
+  .mod-login .text-portal-title {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .mod-login .text-tagline {
+    font-size: 13px;
+  }
 
   .mod-login .login-card {
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 12px auto 50px;
     width: 90%;
-    max-width: 400px;
+    padding: 20px 24px;
+    gap: 18px;
+  }
+
+  .mod-login .login-title {
+    font-size: 22px;
+  }
+
+  .mod-login .login-subtitle {
+    font-size: 16px;
+  }
+
+  .mod-login .login-card form {
+    gap: 18px;
+  }
+
+  .mod-login .login-card input[type="text"],
+  .mod-login .login-card input[type="password"] {
+    padding: 15px 22px;
+    font-size: 13px;
+  }
+
+  .mod-login .btn-login,
+  .mod-login .login-card button,
+  .mod-login .btn-signup {
+    padding: 15px 22px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .mod-login .logo-section {
+    padding: 18px 15px;
+  }
+
+  .mod-login .logo-image {
+    width: 65px;
+    margin-bottom: 8px;
+  }
+
+  .mod-login .logo-image-container {
+    margin-bottom: 8px;
+  }
+
+  .mod-login .text-republic p:nth-child(1),
+  .mod-login .text-republic p:nth-child(2) {
+    font-size: 10px;
+  }
+
+  .mod-login .text-republic p:nth-child(3) {
+    font-size: 20px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .mod-login .text-portal-title {
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .mod-login .text-tagline {
+    font-size: 12px;
+  }
+
+  .mod-login .login-card {
+    margin: 10px auto 45px;
+    width: 95%;
+    padding: 18px 20px;
+    gap: 16px;
+  }
+
+  .mod-login .login-title {
+    font-size: 20px;
+  }
+
+  .mod-login .login-subtitle {
+    font-size: 14px;
+  }
+
+  .mod-login .login-card label {
+    font-size: 11px;
+  }
+
+  .mod-login .login-card input[type="text"],
+  .mod-login .login-card input[type="password"] {
+    padding: 14px 20px;
+    font-size: 12px;
+  }
+
+  .mod-login .btn-login,
+  .mod-login .login-card button,
+  .mod-login .btn-signup {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .mod-login .forgot a,
+  .mod-login .forgot-password {
+    font-size: 12px;
+  }
+
+  .mod-login .login-message {
+    font-size: 0.75rem;
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .mod-login .logo-section {
+    padding: 15px 12px;
+  }
+
+  .mod-login .logo-image {
+    width: 55px;
+    margin-bottom: 6px;
+  }
+
+  .mod-login .logo-image-container {
+    margin-bottom: 6px;
+  }
+
+  .mod-login .text-republic p:nth-child(1),
+  .mod-login .text-republic p:nth-child(2) {
+    font-size: 9px;
+  }
+
+  .mod-login .text-republic p:nth-child(3) {
+    font-size: 18px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .mod-login .text-portal-title {
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .mod-login .text-tagline {
+    font-size: 11px;
+  }
+
+  .mod-login .login-card {
+    margin: 8px auto 40px;
+    padding: 16px 18px;
+    gap: 14px;
+  }
+
+  .mod-login .login-title {
+    font-size: 18px;
+  }
+
+  .mod-login .login-subtitle {
+    font-size: 13px;
+  }
+
+  .mod-login .login-card label {
+    font-size: 10px;
+  }
+
+  .mod-login .login-card input[type="text"],
+  .mod-login .login-card input[type="password"] {
+    padding: 12px 18px;
+    font-size: 11px;
+  }
+
+  .mod-login .btn-login,
+  .mod-login .login-card button,
+  .mod-login .btn-signup {
+    padding: 12px 18px;
+    font-size: 13px;
   }
 }

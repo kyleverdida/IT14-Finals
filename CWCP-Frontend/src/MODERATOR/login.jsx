@@ -31,11 +31,20 @@ const Login = () => {
   return (
     <div className="mod-login">
       <div className="login-container">
-      {/* Background elements */}
-      <div className="bg-left"></div>
+        {/* Background elements - Desktop only */}
+        <div className="bg-left"></div>
+        <div className="white-bg-left"></div>
+        <div className="bg-green"></div>
+        
+        {/* Decorative Circles - Desktop only */}
+        <div className="design-moon">
+          <svg fill="none" preserveAspectRatio="none" viewBox="0 0 638 583">
+            <circle cx="359.5" cy="304.5" r="278" />
+            <circle cx="278.5" cy="278.5" r="278" />
+          </svg>
+        </div>
 
-      {/* Left Section */}
-      <div className="white-bg-left">
+        {/* Logo Section */}
         <div className="logo-section">
           <div className="logo-image-container">
             <img
@@ -47,27 +56,15 @@ const Login = () => {
               <p>REPUBLIC OF THE PHILIPPINES</p>
               <p>PROVINCE OF DAVAO DEL NORTE</p>
               <p>CITY OF TAGUM</p>
-              <h1 className="text-portal-title">CITY WIDE CONCERN PORTAL</h1>
-              <p className="text-tagline">
-                KEEPING COMMUNITIES SAFE AND CONNECTED!
-              </p>
             </div>
           </div>
+          <h1 className="text-portal-title">CITY WIDE CONCERN PORTAL</h1>
+          <p className="text-tagline">
+            KEEPING COMMUNITIES SAFE AND CONNECTED!
+          </p>
         </div>
-      </div>
 
-      {/* Green Background */}
-      <div className="bg-green"></div>
-
-      {/* Decorative Circles */}
-      <div className="design-moon">
-        <svg fill="none" preserveAspectRatio="none" viewBox="0 0 638 583">
-          <circle cx="359.5" cy="304.5" r="278" />
-          <circle cx="278.5" cy="278.5" r="278" />
-        </svg>
-      </div>
-
-        {/* Right Section - Login Card */}
+        {/* Login Card */}
         <div className="login-card">
           <h2 className="login-title">Hello!</h2>
           <p className="login-subtitle">CWCP Moderator Login</p>
