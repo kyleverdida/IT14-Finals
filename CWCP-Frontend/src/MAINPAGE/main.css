@@ -33,24 +33,24 @@
   overflow: visible;
   z-index: 100;
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 /* Logo Section */
 .user-mainpage .logo-section {
-  position: absolute;
-  left: 70px;
-  top: 28px;
-  width: 304px;
-  height: 120px;
-  overflow: visible;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
 }
 
 .user-mainpage .logo-image {
-  position: absolute;
-  top: 4.81%;
-  left: 1.67%;
   width: 55.434px;
   height: 46.355px;
+  flex-shrink: 0;
 }
 
 .user-mainpage .logo-image img {
@@ -62,9 +62,6 @@
 
 /* Header Text */
 .user-mainpage .header-text {
-  position: absolute;
-  left: 75px;
-  top: 8px;
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -118,14 +115,16 @@
 
 /* Search Section */
 .user-mainpage .search-section {
-  position: absolute;
-  left: 430px;
-  top: 58px;
+  position: relative;
+  flex: 1;
+  max-width: 530px;
+  display: flex;
+  align-items: center;
 }
 
 .user-mainpage .search-input {
   position: relative;
-  width: 530px;
+  width: 100%;
   height: 28px;
   background-color: #f6f6fb;
   border-radius: 5px;
@@ -133,10 +132,12 @@
 
 .user-mainpage .search-icon {
   position: absolute;
-  left: 503px;
-  top: 8px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 12px;
   height: 12px;
+  pointer-events: none;
 }
 
 .user-mainpage .search-icon svg {
@@ -147,16 +148,10 @@
 
 /* Button Section */
 .user-mainpage .button-section {
-  position: absolute;
-  left: 1040px;
-  top: 43px;
-  width: auto;
-  height: 62px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 27px;
-  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .user-mainpage .btn {
@@ -187,15 +182,13 @@
 
 /* Filter Icon */
 .user-mainpage .filter-icon {
-  position: absolute;
-  left: 1299px;
-  top: 55px;
   width: 38px;
   height: 38px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .user-mainpage .filter-icon svg {
@@ -362,15 +355,15 @@
    ======================================== */
 @media (max-width: 767px) {
   .user-mainpage .dashboard {
-    padding-top: 200px;
+    padding-top: 180px;
   }
 
   .user-mainpage .header-frame {
     width: 95%;
     height: auto;
-    min-height: 160px;
+    min-height: auto;
     top: 10px;
-    padding: 15px 10px;
+    padding: 12px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -386,15 +379,15 @@
     height: auto;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .user-mainpage .logo-image {
     position: relative;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 35px;
+    width: 35px;
+    height: 30px;
     flex-shrink: 0;
   }
 
@@ -402,28 +395,28 @@
     position: relative;
     left: 0;
     top: 0;
-    margin-left: 10px;
+    margin-left: 8px;
     flex: 1;
   }
 
   .user-mainpage .top-text {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 7px;
+    line-height: 9px;
   }
 
   .user-mainpage .city-text {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 13px;
+    line-height: 15px;
   }
 
   .user-mainpage .portal-title {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 9px;
+    line-height: 11px;
   }
 
   .user-mainpage .portal-subtitle {
-    font-size: 7px;
-    line-height: 9px;
+    font-size: 6.5px;
+    line-height: 8px;
   }
 
   /* Search Section - Mobile */
@@ -432,12 +425,12 @@
     left: 0;
     top: 0;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .user-mainpage .search-input {
     width: 100%;
-    height: 35px;
+    height: 32px;
   }
 
   .user-mainpage .search-icon {
@@ -458,13 +451,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
   }
 
   .user-mainpage .btn {
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 13px;
+    padding: 10px 16px;
     flex: 1;
-    max-width: calc(100% - 50px);
+    min-width: 0;
   }
 
   .user-mainpage .filter-icon {
@@ -472,9 +466,8 @@
     left: 0;
     top: 0;
     right: 0;
-    width: 45px;
-    height: 45px;
-    margin-left: 10px;
+    width: 42px;
+    height: 42px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -509,16 +502,30 @@
    ======================================== */
 @media (max-width: 480px) {
   .user-mainpage .dashboard {
-    padding-top: 190px;
+    padding-top: 170px;
   }
 
   .user-mainpage .header-frame {
-    min-height: 170px;
+    min-height: auto;
+    padding: 10px;
+  }
+
+  .user-mainpage .logo-section {
+    margin-bottom: 8px;
+  }
+
+  .user-mainpage .logo-image {
+    width: 32px;
+    height: 28px;
+  }
+
+  .user-mainpage .header-text {
+    margin-left: 6px;
   }
 
   .user-mainpage .top-text {
-    font-size: 7px;
-    line-height: 9px;
+    font-size: 6.5px;
+    line-height: 8px;
   }
 
   .user-mainpage .city-text {
@@ -527,23 +534,35 @@
   }
 
   .user-mainpage .portal-title {
-    font-size: 9px;
-    line-height: 11px;
+    font-size: 8.5px;
+    line-height: 10px;
   }
 
   .user-mainpage .portal-subtitle {
     font-size: 6px;
-    line-height: 8px;
+    line-height: 7.5px;
+  }
+
+  .user-mainpage .search-section {
+    margin-bottom: 8px;
+  }
+
+  .user-mainpage .search-input {
+    height: 30px;
+  }
+
+  .user-mainpage .button-section {
+    gap: 6px;
   }
 
   .user-mainpage .btn {
     font-size: 12px;
-    padding: 8px 15px;
+    padding: 9px 14px;
   }
 
   .user-mainpage .filter-icon {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 
   .user-mainpage .no-concerns-text {

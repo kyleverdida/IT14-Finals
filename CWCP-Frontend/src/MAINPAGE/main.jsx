@@ -21,6 +21,9 @@ const Main = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Determine if we're on moderator page
+  const isModeratorPage = location.pathname !== "/";
+
   // Fetch posts periodically
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +71,7 @@ const Main = () => {
   return (
     <div className="user-mainpage">
       <div className="dashboard">
-        {/* Header Frame (from CWCP-Mainpage.html) */}
+        {/* Header Frame */}
         <div className="header-frame">
           {/* Logo Section */}
           <div className="logo-section">
@@ -132,18 +135,20 @@ const Main = () => {
             </div>
           </div>
 
-          {/* Buttons */}
-          <div className="button-section">
-            <button
-              className="btn btn-submit"
-              type="button"
-              onClick={() => setIsFormOpen(true)}
-            >
-              Submit Concern
-            </button>
-          </div>
+          {/* Buttons - Only show Submit Concern on main page */}
+          {!isModeratorPage && (
+            <div className="button-section">
+              <button
+                className="btn btn-submit"
+                type="button"
+                onClick={() => setIsFormOpen(true)}
+              >
+                Submit Concern
+              </button>
+            </div>
+          )}
 
-          {/* Filter Icon - NOW FUNCTIONAL */}
+          {/* Filter Icon */}
           <button
             className="filter-icon"
             type="button"
@@ -280,8 +285,8 @@ const Main = () => {
           )}
         </div>
 
-        {/* Submit Concern Modal */}
-        {isFormOpen && (
+        {/* Submit Concern Modal - Only show on main page */}
+        {isFormOpen && !isModeratorPage && (
           <div
             className="form-modal-backdrop"
             onClick={() => setIsFormOpen(false)}
