@@ -5,7 +5,7 @@ const credits = () => {
     return (
         <>
             <footer className="main-footer">
-                <h1>Members:</h1>
+                <h1>Website Development Team</h1>
 
                 
 
