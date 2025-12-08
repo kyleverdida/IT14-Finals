@@ -33,15 +33,22 @@ const credits = () => {
                     </div>
 
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=" alt="" />
-                        <p></p>
+                        <img src="https://avatars.githubusercontent.com/u/187724128?v=4" alt="" />
+                        <p>Emmanuel Saludares</p>
+                        <p>SYSTEM TESTER</p>
                     </div>
+
+                    {/* <div className="member-card">
+                        <img src="https://avatars.githubusercontent.com/u/230759622?v=4" alt="" />
+                        <p>Christian Saycon</p>
+                        <p>Analyst</p>
+                    </div> */}
 
                     <div className="member-card">
-                        <img src="https://placehold.co/200x200?text=" alt="" />
-                        <p></p>
+                        <img src="https://avatars.githubusercontent.com/u/244971521?v=4" alt="" />
+                        <p>Khrisopher Lloyd Rarama</p>
+                        <p>LEAD DESIGNER</p>
                     </div>
-
                 
 
                 </div>

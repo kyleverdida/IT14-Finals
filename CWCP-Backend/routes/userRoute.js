@@ -4,7 +4,7 @@ import { createPost } from "../controller/createPost.js";
 import { fetchPosts,getApprovedPosts, fetchPostsViaSearchbar } from "../controller/fetchPosts.js";
 import { approvePost, rejectPost, deletePost, changeStatus } from "../controller/postController.js";
 import { adminLogin } from "../authentication/adminLogin.js";
-import { getPostStats } from "../statistics/statistics.js";
+import { getPostStats,getAreaStats } from "../statistics/statistics.js";
 
 
 
@@ -14,6 +14,8 @@ route.post("/post", upload.single("photo"), createPost); //  handle file
 route.get("/fetch", fetchPosts);
 route.get("/getApproved", getApprovedPosts);
 route.get("/search", fetchPostsViaSearchbar);
+route.get("/posts/area/:area", getAreaStats);
+
 route.post("/login", adminLogin);
 route.put("/approve/:id", approvePost);
 route.put("/reject/:id", rejectPost);

@@ -1,0 +1,55 @@
+/* ====== LAYOUT ====== */
+.gmap-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* ====== MAP ====== */
+.map-wrapper {
+  width: 100%;
+  height: 400px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ====== SIDE PANEL ====== */
+.side-panel {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+/* ====== AREA SELECTOR ====== */
+.area-selector {
+  margin-bottom: 20px;
+}
+
+.area-selector h3 {
+  margin-bottom: 8px;
+}
+
+.area-selector select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ====== AREA STATS ====== */
+.area-stats {
+  margin-top: 10px;
+}
+
+.area-stats h3 {
+  margin-bottom: 6px;
+}
+
+.area-stats p {
+  margin: 4px 0;
+}
