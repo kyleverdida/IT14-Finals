@@ -270,7 +270,7 @@
   color: rgba(0, 0, 0, 0.6);
   top: 264px;
   letter-spacing: 0.2696px;
-  width: 200px; /* Increased width for longer filenames */
+  width: 200px;
   pointer-events: none;
   white-space: nowrap;
   overflow: hidden;
@@ -426,23 +426,6 @@
   white-space: nowrap;
 }
 
-/* Arrow Right - REMOVED */
-/* .arrow-right {
-  position: absolute;
-  left: 669px;
-  width: 18px;
-  height: 18px;
-  top: 30px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.arrow-right svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-} */
-
 /* Inputs embedded in Figma-style fields */
 .concern-title-input,
 .date-input,
@@ -495,4 +478,109 @@
 
 .date-input::-webkit-calendar-picker-indicator {
   display: none;
+}
+
+/* ================================================================== */
+/* RESPONSIVE MODAL SYSTEM                                            */
+/* ================================================================== */
+
+@media (max-width: 768px) {
+  .form-popup {
+    width: 90%;
+    min-height: auto;
+    padding: 24px 16px 40px 16px;
+    position: relative;
+  }
+
+  .concern-title,
+  .date-field,
+  .upload-photo,
+  .select-area,
+  .severity,
+  .description {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 20px;
+  }
+
+  .concern-title-label,
+  .date-label,
+  .upload-photo-label,
+  .select-area-label,
+  .severity-label,
+  .description-label {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 6px;
+  }
+
+  .calendar-icon,
+  .select-area-icon,
+  .severity-icon {
+    position: absolute;
+    right: 20px !important;
+    left: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  .no-file-text {
+    position: relative !important;
+    left: 0 !important;
+    top: -10px !important;
+    width: 100% !important;
+  }
+
+  .submit-concern {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .main-title {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-bottom: 8px;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .subtitle {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+/* ------------------------------ */
+/* Phones (Very Small Screens)    */
+/* ------------------------------ */
+@media (max-width: 480px) {
+  .form-popup {
+    padding: 20px 12px 32px 12px;
+  }
+
+  .main-title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .concern-title-input,
+  .date-input,
+  .select-area-select,
+  .severity-select,
+  .description-textarea {
+    font-size: 12px;
+  }
 }
