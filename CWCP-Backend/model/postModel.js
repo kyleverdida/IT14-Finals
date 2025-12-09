@@ -34,6 +34,6 @@ const postSchema = new mongoose.Schema({
     default: "pending", // default status
     enum: ["pending", "ongoing", "resolved"] 
   }
-});
+}, { timestamps: true });
 
 export default mongoose.model("userconcern", postSchema);
