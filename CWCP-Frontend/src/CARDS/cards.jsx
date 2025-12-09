@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./cards.css";
 import { useLocation } from "react-router-dom";
+import CustomAlert from "../Custom Alert/customalert.jsx";
+import RejectionModal from "../Rejection Modal/rejectionmodal.jsx";     // Add this import
 
 const getSeverityColor = (severity) => {
   switch (severity?.toLowerCase()) {
@@ -21,7 +23,6 @@ const getSeverityColor = (severity) => {
 
 const formatAreaName = (area) => {
   if (!area) return "";
-
   return area
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -40,25 +41,42 @@ const Cards = ({
   approved,
 }) => {
   const location = useLocation();
+  const [alertMessage, setAlertMessage] = useState(null);
+  const [showRejectionModal, setShowRejectionModal] = useState(false); // Add this state
   const severityClass = getSeverityColor(severity);
   const API_URL = import.meta.env.VITE_API_URL;
   const API_URL_UPLOAD = import.meta.env.VITE_API_URL_UPLOAD;
+
   const imageSrc = photo
     ? `${API_URL_UPLOAD}/${photo}`
     : "https://placehold.co/600x400?text=No+Image";
 
-  const handleAPIAction = async (url, method, successMsg, errorMsg) => {
+  const showAlert = (message) => {
+    setAlertMessage(message);
+  };
+
+  const closeAlert = () => {
+    setAlertMessage(null);
+    window.location.reload();
+  };
+
+  const handleAPIAction = async (url, method, successMsg, errorMsg, body = null) => {
     try {
-      const res = await fetch(url, { method });
+      const options = { method };
+      if (body) {
+        options.headers = { "Content-Type": "application/json" };
+        options.body = JSON.stringify(body);
+      }
+      
+      const res = await fetch(url, options);
       if (res.ok) {
-        alert(successMsg);
-        location.reload();
+        showAlert(successMsg);
       } else {
         const err = await res.json().catch(() => ({}));
-        alert(`Error: ${err.message || err.errorMessage || errorMsg}`);
+        showAlert(`Error: ${err.message || err.errorMessage || errorMsg}`);
       }
     } catch (err) {
-      alert("⚠️ Network error.");
+      showAlert("⚠️ Network error.");
       console.error(err);
     }
   };
@@ -71,13 +89,24 @@ const Cards = ({
       "Failed to approve post"
     );
 
-  const handleReject = () =>
+  const handleReject = () => {
+    setShowRejectionModal(true); // Show modal instead of immediate rejection
+  };
+
+  const handleRejectConfirm = (reason) => {
+    setShowRejectionModal(false);
     handleAPIAction(
       `${API_URL}/reject/${_id}`,
       "PUT",
       "❌ Rejected!",
-      "Failed to reject post"
+      "Failed to reject post",
+      { reason } // Send rejection reason to backend
     );
+  };
+
+  const handleRejectCancel = () => {
+    setShowRejectionModal(false);
+  };
 
   const handleDelete = () => {
     if (confirm("⚠️ Delete this post permanently?")) {
@@ -97,10 +126,9 @@ const Cards = ({
       body: JSON.stringify({ status: newStatus }),
     });
     if (res.ok) {
-      alert(`🔁 Status changed to "${newStatus}"`);
-      location.reload();
+      showAlert(`🔁 Status changed to "${newStatus}"`);
     } else {
-      alert("Failed to change status");
+      showAlert("Failed to change status");
     }
   };
 
@@ -108,17 +136,12 @@ const Cards = ({
     if (location.pathname === "/dashboard") {
       return (
         <div className="mod-buttons">
-          {!approved ? (
-            <button className="btn approve" onClick={handleApprove}>
-              Approve
-            </button>
-          ) : (
-            <button className="btn reject" onClick={handleReject}>
-              Reject
-            </button>
-          )}
-          <button className="btn delete" onClick={handleDelete}>
-            Delete
+          <button className="btn approve" onClick={handleApprove}>
+            Resolved
+          </button>
+          
+          <button className="btn reject" onClick={handleReject}>
+            Reject
           </button>
 
           <select
@@ -128,7 +151,6 @@ const Cards = ({
           >
             <option value="pending">Pending</option>
             <option value="ongoing">Ongoing</option>
-            <option value="resolved">Resolved</option>
           </select>
         </div>
       );
@@ -137,36 +159,48 @@ const Cards = ({
   };
 
   return (
-    <div className="card-wrapper">   {/* ✅ ADDED THIS WRAPPER */}
-      <div className={`card ${severityClass}`}>
-        <div className="card-image">
-          <img src={imageSrc} alt={title} />
-          <div className="severity-bar"></div>
-        </div>
-
-        <div className="card-body">
-          <div className="card-header">
-            <h3>{title}</h3>
-            <span className={`status-tag status-${status?.toLowerCase()}`}>
-              {status}
-            </span>
+    <>
+      {alertMessage && (
+        <CustomAlert message={alertMessage} onClose={closeAlert} />
+      )}
+      
+      {showRejectionModal && (
+        <RejectionModal 
+          onConfirm={handleRejectConfirm}
+          onCancel={handleRejectCancel}
+        />
+      )}
+      
+      <div className="card-wrapper">
+        <div className={`card ${severityClass}`}>
+          <div className="card-image">
+            <img src={imageSrc} alt={title} />
+            <div className="severity-bar"></div>
           </div>
 
-          <p className="card-area">{formatAreaName(area)}</p>
+          <div className="card-body">
+            <div className="card-header">
+              <h3>{title}</h3>
+              <span className={`status-tag status-${status?.toLowerCase()}`}>
+                {status}
+              </span>
+            </div>
 
-          <div className="meta">
-            <span>Severity: {severity}</span>
-            <span>Reported: {new Date(timestamp).toLocaleDateString()}</span>
+            {/* Area */}
+            <p className="info-line">
+              <span className="info-label">Area:</span> {formatAreaName(area)}
+            </p>
+
+            {/* Description - directly under Area, no box */}
+            <p className="comment-plain">
+              <strong>Description:</strong> {comment}
+            </p>
+
+            {renderButtons()}
           </div>
-
-          <p className="comment">
-            <strong>Comment:</strong> {comment}
-          </p>
-
-          {renderButtons()}
         </div>
       </div>
-    </div>                                
+    </>
   );
 };
 

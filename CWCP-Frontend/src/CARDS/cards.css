@@ -14,7 +14,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Card Image Section */
+/* Card Image */
 .card-image {
   position: relative;
   width: 100%;
@@ -26,10 +26,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Severity Bar */
 .severity-bar {
   position: absolute;
   width: 100%;
@@ -39,7 +37,7 @@
   background: linear-gradient(90deg, #00B034 0%, #004A16 100%);
 }
 
-/* Severity Colors - Apply gradient to severity bar based on severity */
+/* Severity Colors */
 .card.critical .severity-bar {
   background: linear-gradient(90deg, #FF0000 0%, #8B0000 100%);
 }
@@ -56,12 +54,12 @@
   background: linear-gradient(90deg, #00B034 0%, #004A16 100%);
 }
 
-/* Card Body */
+/* Body */
 .card-body {
   padding: 30px;
 }
 
-/* Card Header */
+/* Header */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -72,10 +70,8 @@
 
 .card-header h3 {
   font-family: 'Poppins', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 21.96px;
-  line-height: 1.4;
   color: #000000;
   margin: 0;
   flex: 1;
@@ -83,30 +79,22 @@
 
 /* Status Tag */
 .status-tag {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 10px 20px;
   background: #FF0000;
   border-radius: 16px;
   font-family: 'Poppins', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   color: #FFFFFF;
-  white-space: nowrap;
   text-transform: capitalize;
   min-width: 100px;
-  height: fit-content;
 }
 
 .status-tag.status-pending {
   background: #FFA500;
 }
 
-.status-tag.status-ongoing,
-.status-tag.status-in-progress {
+.status-tag.status-ongoing {
   background: #2196F3;
 }
 
@@ -114,63 +102,40 @@
   background: #4CAF50;
 }
 
-/* Card Area */
-.card-area {
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16.47px;
-  color: #848484;
-  margin: 8px 0;
-}
-
-/* Meta Information */
-.meta {
+/* UNIFIED INFO (Area, Severity, Reported) */
+.info-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 15px 0;
+  margin: 12px 0;
 }
 
-.meta span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.info-line {
   font-family: 'Poppins', sans-serif;
-  font-style: normal;
   font-weight: 300;
   font-size: 16.47px;
   color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.meta span::before {
-  content: '';
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
+.info-label {
+  font-weight: 500;
 }
 
-/* Comment Section */
-.comment {
+/* Description */
+.comment-plain {
   font-family: 'Poppins', sans-serif;
-  font-style: normal;
   font-weight: 300;
   font-size: 16.47px;
   color: #000000;
   line-height: 1.5;
-  margin: 15px 0;
-  padding: 12px;
-  background: #F9F9F9;
-  border: 1.37px solid #D3D3D3;
-  border-radius: 16.47px;
-  word-wrap: break-word;
+  margin: 12px 0;
 }
 
-.comment strong {
+.comment-plain strong {
   font-weight: 500;
-  margin-right: 5px;
 }
 
 /* Divider */
@@ -180,14 +145,13 @@
   width: 100%;
   height: 1px;
   background: #D9D9D9;
-  border-radius: 11.57px;
   margin: 20px 0;
 }
 
-/* Moderator Buttons */
+/* Mod Buttons */
 .mod-buttons {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin-top: 20px;
   padding-top: 20px;
@@ -205,35 +169,21 @@
   font-size: 14px;
   color: #FFFFFF;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.mod-buttons .btn.approve {
+.btn.approve {
   background: #4CAF50;
+  order: 2; /* Center */
 }
 
-.mod-buttons .btn.approve:hover {
-  background: #45a049;
-}
-
-.mod-buttons .btn.reject {
-  background: #FF9800;
-}
-
-.mod-buttons .btn.reject:hover {
-  background: #e68900;
-}
-
-.mod-buttons .btn.delete {
+.btn.reject {
   background: #F44336;
+  order: 3; /* Right */
 }
 
-.mod-buttons .btn.delete:hover {
-  background: #da190b;
-}
-
-/* Status Dropdown in Moderator Buttons */
-.mod-buttons .status-dropdown {
+/* Dropdown */
+.status-dropdown {
   flex: 1;
   min-width: 120px;
   padding: 12px 20px;
@@ -241,89 +191,41 @@
   border: 1px solid #D3D3D3;
   border-radius: 16px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 500;
   font-size: 14px;
-  color: #000000;
+  order: 1; /* Left */
+
+   
+  /* Arrow styling */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center; /* Adjust these values */
+  background-size: 12px;
+  padding-right: 40px; /* Make room for the arrow */
   cursor: pointer;
-  outline: none;
-  transition: border-color 0.3s ease;
 }
 
-.mod-buttons .status-dropdown:hover {
-  border-color: #999999;
-}
 
-.mod-buttons .status-dropdown:focus {
-  border-color: #666666;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .card {
     width: 100%;
-    max-width: 618px;
-  }
-
-  .card-body {
-    padding: 20px;
-  }
-
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .status-tag {
-    align-self: flex-start;
-  }
-
-  .card-header h3 {
-    font-size: 18px;
-  }
-
-  .card-area,
-  .meta span,
-  .comment {
-    font-size: 14px;
-  }
-
-  .mod-buttons {
-    flex-direction: column;
-  }
-
-  .mod-buttons .btn,
-  .mod-buttons .status-dropdown {
-    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .card {
-    border-radius: 20px;
-  }
-
-  .card-image {
-    height: 200px;
-  }
-
-  .card-body {
-    padding: 15px;
-  }
-
-  .card-header h3 {
-    font-size: 16px;
-  }
-
-  .status-tag {
-    font-size: 12px;
-    padding: 8px 15px;
-  }
-}
-
-/* ★★★ Responsive Wrapper — DO NOT REMOVE ★★★ */
+/* Wrapper */
 .card-wrapper {
   width: 100%;
   max-width: 618px;
   margin: 0 auto;
-  padding: 0 12px; /* mobile-friendly padding */
+  padding: 0 12px;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
 }

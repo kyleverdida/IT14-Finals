@@ -1,4 +1,6 @@
-/* Main Container from Figma */
+  .date-inner {
+    padding-right: 40px !important;
+  }/* Main Container from Figma */
 .form-popup {
   background: #ffffff;
   position: relative;
@@ -197,44 +199,6 @@
 }
 
 /* Upload Photo */
-.browse-frame {
-  background: rgba(0, 0, 0, 0.05);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 26px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 4px 10px;
-  border-radius: 6px;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.browse-border {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  inset: 0;
-  pointer-events: none;
-  border-radius: 6px;
-}
-
-.browse-frame p {
-  font-family: "Outfit", sans-serif;
-  font-weight: 400;
-  height: 18px;
-  line-height: 17.705px;
-  position: relative;
-  flex-shrink: 0;
-  font-size: 11px;
-  color: black;
-  letter-spacing: 0.2696px;
-  width: 75px;
-  margin: 0;
-}
-
 .upload-photo {
   position: absolute;
   background: white;
@@ -249,6 +213,7 @@
   border-radius: 30px;
   top: 245px;
   width: 309px;
+  cursor: pointer;
 }
 
 .upload-photo .border-overlay {
@@ -259,22 +224,41 @@
   pointer-events: none;
 }
 
-.no-file-text {
-  position: absolute;
+.upload-photo-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.upload-photo-text {
   font-family: "Outfit", sans-serif;
   font-weight: 300;
-  height: 18px;
   line-height: 17.705px;
-  left: 386px;
-  font-size: 11px;
-  color: rgba(0, 0, 0, 0.6);
-  top: 264px;
+  font-size: 14px;
+  color: black;
   letter-spacing: 0.2696px;
-  width: 200px; /* Increased width for longer filenames */
-  pointer-events: none;
+  margin: 0;
+  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.upload-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.upload-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .upload-photo-label {
@@ -327,17 +311,18 @@
   z-index: 1;
 }
 
-.calendar-icon {
+.date-field .calendar-icon {
   position: absolute;
-  left: 293px;
+  right: 26px;
   width: 14px;
   height: 14px;
-  top: 266px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
 }
 
-.calendar-icon svg {
+.date-field .calendar-icon svg {
   display: block;
   width: 100%;
   height: 100%;
@@ -392,7 +377,7 @@
   font-weight: 500;
   height: 21px;
   line-height: 17.705px;
-  font-size: 13px;
+  font-size: 14px;
   color: black;
   letter-spacing: 0.2696px;
   width: 200px;
@@ -405,7 +390,7 @@
   font-weight: 300;
   line-height: 1.4;
   left: 33px;
-  font-size: 13px;
+  font-size: 14px;
   color: black;
   top: 77px;
   letter-spacing: 0.2696px;
@@ -426,23 +411,6 @@
   white-space: nowrap;
 }
 
-/* Arrow Right - REMOVED */
-/* .arrow-right {
-  position: absolute;
-  left: 669px;
-  width: 18px;
-  height: 18px;
-  top: 30px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.arrow-right svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-} */
-
 /* Inputs embedded in Figma-style fields */
 .concern-title-input,
 .date-input,
@@ -454,7 +422,7 @@
   outline: none;
   background: transparent;
   font-family: "Outfit", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: #000000;
   padding: 0;
   margin: 0;
@@ -491,8 +459,189 @@
 /* Date input styling */
 .date-input {
   cursor: pointer;
+  padding-right: 30px;
 }
 
 .date-input::-webkit-calendar-picker-indicator {
-  display: none;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ================================================================== */
+/* RESPONSIVE MODAL SYSTEM                                            */
+/* ================================================================== */
+
+@media (max-width: 768px) {
+  .form-popup {
+    width: 90%;
+    min-height: auto;
+    padding: 24px 16px 40px 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-title {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-bottom: 8px;
+    font-size: 20px;
+    width: 100%;
+    order: 1;
+  }
+
+  .subtitle {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin-bottom: 20px;
+    width: 100%;
+    order: 2;
+  }
+
+  .concern-title-label {
+    order: 3;
+  }
+
+  .concern-title {
+    order: 4;
+  }
+
+  .date-label {
+    order: 5;
+  }
+
+  .date-field {
+    order: 6;
+  }
+
+  .upload-photo-label {
+    order: 7;
+  }
+
+  .upload-photo {
+    order: 8;
+  }
+
+  .select-area-label {
+    order: 9;
+  }
+
+  .select-area {
+    order: 10;
+  }
+
+  .severity-label {
+    order: 11;
+  }
+
+  .severity {
+    order: 12;
+  }
+
+  .description-label {
+    order: 13;
+  }
+
+  .description {
+    order: 14;
+  }
+
+  .submit-concern {
+    order: 15;
+  }
+
+  .concern-title,
+  .date-field,
+  .upload-photo,
+  .select-area,
+  .severity,
+  .description {
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 20px;
+  }
+
+  .concern-title-label,
+  .date-label,
+  .upload-photo-label,
+  .select-area-label,
+  .severity-label,
+  .description-label {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 6px;
+  }
+
+  .date-inner {
+    padding-right: 40px !important;
+  }
+
+  .date-field .calendar-icon {
+    right: 26px !important;
+  }
+
+  .select-area-icon,
+  .severity-icon {
+    position: absolute;
+    right: 20px !important;
+    left: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+  }
+
+  .upload-icon {
+    position: absolute;
+    right: 26px;
+  }
+
+  .upload-photo-text {
+    font-size: 14px;
+  }
+
+  .submit-concern {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* ------------------------------ */
+/* Phones (Very Small Screens)    */
+/* ------------------------------ */
+@media (max-width: 480px) {
+  .form-popup {
+    padding: 20px 12px 32px 12px;
+  }
+
+  .main-title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .concern-title-input,
+  .date-input,
+  .select-area-select,
+  .severity-select,
+  .description-textarea {
+    font-size: 12px;
+  }
+
+  .upload-photo-text {
+    font-size: 10px;
+  }
 }

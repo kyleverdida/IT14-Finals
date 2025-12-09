@@ -1,25 +1,43 @@
 /* ===== ROOT CONTAINER ===== */
 .app-root {
   min-height: 100vh;
-  background: #e8e8e8;
-  padding: 24px;
-  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  padding: clamp(1rem, 3vw, 2rem);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.loading-container,
+.error-container {
+  padding: 2rem;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+}
+
+.error-container {
+  color: #d32f2f;
 }
 
 /* ===== HEADER ===== */
+.title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: #1F2253;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+}
 
 /* ===== STAT CARDS ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
 .stat-card {
   background: white;
   border-radius: 12px;
-  padding: 24px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #e6edff;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -31,140 +49,218 @@
 }
 
 .stat-value {
-  margin: 0 0 8px 0;
-  font-size: 32px;
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: #1f2253;
+  color: #1F2253;
 }
 
 .stat-title {
-  margin: 0 0 8px 0;
-  font-size: 14px;
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(0.85rem, 1.5vw, 0.9rem);
   color: #7c8db5;
   line-height: 1.4;
 }
 
-.stat-change {
+.stat-subtitle {
   margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.stat-change.positive {
-  color: #00b034;
-}
-
-.stat-change.negative {
-  color: #ff4444;
+  font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+  color: #00B034;
+  font-weight: 500;
 }
 
 /* ===== CHARTS WRAPPER ===== */
 .charts-wrapper {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* ===== LINE CHART ===== */
-.chart-container {
-  flex: 1;
+/* Desktop: 2fr 1fr layout for larger screens */
+@media (min-width: 1024px) {
+  .charts-wrapper {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* ===== CHART CONTAINERS ===== */
+.chart-container,
+.donut-container,
+.severity-container {
   background: white;
   border-radius: 12px;
-  padding: 24px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #e6edff;
 }
 
 .chart-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
-.chart-header h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #1f2253;
-}
-
-.chart-legend {
-  display: flex;
-  gap: 20px;
+.chart-title {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: #1F2253;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
+  gap: 0.5rem;
+  font-size: clamp(0.85rem, 1.5vw, 0.9rem);
   color: #7c8db5;
 }
 
 .legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-}
-
-/* ===== DONUT CHART ===== */
-.donut-container {
-  width: 350px;
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e6edff;
-  display: flex;
-  flex-direction: column;
-}
-
-.donut-container h2 {
-  margin: 0 0 20px 0;
-  font-size: 20px;
-  color: #1f2253;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .donut-legend {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1200px) {
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Extra Small Devices (Phones, less than 480px) */
+@media (max-width: 479px) {
+  .app-root {
+    padding: 1rem;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .chart-container,
+  .donut-container,
+  .severity-container {
+    padding: 1rem;
+  }
+  
   .charts-wrapper {
-    flex-direction: column;
-  }
-
-  .donut-container {
-    width: 100%;
+    gap: 1rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Small Devices (Landscape Phones, 480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .header {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-
-  .logo-section {
-    flex-direction: column;
+  
+  .charts-wrapper {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 480px) {
+/* Medium Devices (Tablets, 768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .charts-wrapper {
     grid-template-columns: 1fr;
   }
+}
 
+/* Large Devices (Desktops, 1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
   .app-root {
-    padding: 12px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Ultra Wide Screens (1920px and above) */
+@media (min-width: 1920px) {
+  .app-root {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .charts-wrapper {
+    gap: 2rem;
+  }
+}
+
+/* Portrait Tablet Adjustments */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Landscape Tablet Adjustments */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Small Laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.75rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .app-root {
+    padding: 1rem;
+    background: white;
+  }
+  
+  .stat-card,
+  .chart-container,
+  .donut-container,
+  .severity-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
   }
 }

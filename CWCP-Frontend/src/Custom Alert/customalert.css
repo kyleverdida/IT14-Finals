@@ -1,0 +1,80 @@
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-start; /* Changed from center to flex-start */
+  justify-content: center;
+  padding-top: 50px; /* Add spacing from top */
+  z-index: 9999;
+}
+
+.custom-alert-box {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideDown 0.3s ease; /* Changed animation name */
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100px); /* Slide from above */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.custom-alert-header {
+  background: #4CAF50;
+  color: white;
+  padding: 20px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-icon {
+  font-size: 24px;
+}
+
+.custom-alert-body {
+  padding: 30px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.custom-alert-btn {
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  padding: 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.custom-alert-btn:hover {
+  background: #45A049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 95, 232, 0.3);
+}

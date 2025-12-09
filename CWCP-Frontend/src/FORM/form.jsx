@@ -98,54 +98,62 @@ const Form = ({ onClose }) => {
             />
           </div>
         </div>
+        <div className="calendar-icon">
+          <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
+            <g clipPath="url(#clip0_1_81)">
+              <path
+                d="M11.0833 2.33333H2.91667C2.27233 2.33333 1.75 2.85566 1.75 3.5V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.5C12.25 2.85566 11.7277 2.33333 11.0833 2.33333Z"
+                stroke="#1E1E1E"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M9.33334 1.16667V3.5"
+                stroke="#1E1E1E"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M4.66666 1.16667V3.5"
+                stroke="#1E1E1E"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+              <path
+                d="M1.75 5.83333H12.25"
+                stroke="#1E1E1E"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_1_81">
+                <rect fill="white" height="14" width="14" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
       </div>
       <p className="label date-label">Date</p>
-      <div className="calendar-icon">
-        <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-          <g clipPath="url(#clip0_1_81)">
-            <path
-              d="M11.0833 2.33333H2.91667C2.27233 2.33333 1.75 2.85566 1.75 3.5V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.5C12.25 2.85566 11.7277 2.33333 11.0833 2.33333Z"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-            <path
-              d="M9.33334 1.16667V3.5"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-            <path
-              d="M4.66666 1.16667V3.5"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-            <path
-              d="M1.75 5.83333H12.25"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_1_81">
-              <rect fill="white" height="14" width="14" />
-            </clipPath>
-          </defs>
-        </svg>
-      </div>
 
       {/* Upload Photo */}
-      <div className="upload-photo">
+      <div className="upload-photo" onClick={() => document.getElementById("photo-input")?.click()}>
         <div className="border-overlay" />
-        <div className="browse-frame" onClick={() => document.getElementById("photo-input")?.click()}>
-          <div className="browse-border" />
-          <p>Browse Photo</p>
+        <div className="upload-photo-content">
+          <p className="upload-photo-text">
+            {formData.photo ? formData.photo.name : "-- No File Selected --"}
+          </p>
+          <div className="upload-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 10V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V10" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M11.3333 5.33333L8 2L4.66667 5.33333" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M8 2V10" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
         <input
           id="photo-input"
@@ -156,9 +164,6 @@ const Form = ({ onClose }) => {
           onChange={handleFileChange}
         />
       </div>
-      <p className="no-file-text">
-        {formData.photo ? formData.photo.name : "No File Selected"}
-      </p>
       <p className="label upload-photo-label">Upload Photo</p>
 
       {/* Select Area */}
