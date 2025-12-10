@@ -27,24 +27,28 @@
   top: 24px;
   width: 1380px;
   max-width: 95%;
-  height: 143px;
+  min-height: 143px;
   background-color: white;
   border-radius: 21px;
   overflow: visible;
   z-index: 100;
-  padding: 20px;
+  padding: 33px 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-/* Logo Section */
+/* ========================================
+   LOGO SECTION
+   ======================================== */
 .user-mainpage .logo-section {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 18px;
   flex-shrink: 0;
+  max-width: 304px;
 }
 
 .user-mainpage .logo-image {
@@ -58,66 +62,110 @@
   width: 100%;
   height: 100%;
   max-width: none;
+  object-fit: contain;
 }
 
-/* Header Text */
+/* ========================================
+   HEADER TEXT
+   ======================================== */
 .user-mainpage .header-text {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  font-family: "Questrial", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.2209px;
+  gap: 4px;
 }
 
 .user-mainpage .top-text {
-  font-size: 12px;
-  line-height: 14px;
+  font-family: 'Poppins', 'Questrial', sans-serif;
+  font-weight: bold;
+  font-size: 10.605px;
+  line-height: 12.815px;
+  color: black;
   margin: 0;
   padding: 0;
-  color: black;
 }
 
 .user-mainpage .city-text {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 22px;
+  font-family: 'Poppins', 'Questrial', sans-serif;
+  font-weight: bold;
+  font-size: 21.211px;
+  line-height: 18.117px;
+  color: black;
   margin: 0;
   padding: 0;
-  line-height: 24px;
-  color: black;
 }
 
 .user-mainpage .portal-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  color: #00642f;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 15.908px;
+  line-height: 18.117px;
   letter-spacing: 0.2209px;
-  margin: 2px 0 0 0;
+  color: #00642f;
+  margin: 6px 0 0 0;
   padding: 0;
-  position: relative;
 }
 
 .user-mainpage .portal-subtitle {
-  font-family: "Quattrocento Sans", sans-serif;
-  font-weight: 400;
-  font-size: 10px;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: normal;
+  font-size: 8.838px;
+  line-height: 18.117px;
+  letter-spacing: 0.2209px;
+  color: black;
   margin: 0;
   padding: 0;
-  line-height: 12px;
-  color: black;
-  letter-spacing: 0.2209px;
-  position: relative;
 }
 
-/* Search Section */
+/* ========================================
+   NAVIGATION BUTTONS SECTION
+   ======================================== */
+.user-mainpage .nav-buttons-section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.user-mainpage .nav-btn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #03045e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 8px 0;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.user-mainpage .nav-btn:hover {
+  opacity: 0.7;
+}
+
+.user-mainpage .nav-btn.active {
+  color: #00642f;
+  font-weight: 600;
+}
+
+.user-mainpage .nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #00642f;
+}
+
+/* ========================================
+   SEARCH SECTION
+   ======================================== */
 .user-mainpage .search-section {
   position: relative;
   flex: 1;
-  max-width: 530px;
+  max-width: 280px;
   display: flex;
   align-items: center;
 }
@@ -125,19 +173,44 @@
 .user-mainpage .search-input {
   position: relative;
   width: 100%;
-  height: 28px;
+  height: 40px;
   background-color: #f6f6fb;
-  border-radius: 5px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+.user-mainpage .search-input:focus-within {
+  border-color: #03045e;
+}
+
+.user-mainpage .search-input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  padding: 0 40px 0 16px;
+  color: #262222;
+  font-family: 'Poppins', sans-serif;
+}
+
+.user-mainpage .search-input input::placeholder {
+  color: #999;
 }
 
 .user-mainpage .search-icon {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-mainpage .search-icon svg {
@@ -146,49 +219,62 @@
   height: 100%;
 }
 
-/* Button Section */
+/* ========================================
+   BUTTON SECTION
+   ======================================== */
 .user-mainpage .button-section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  gap: 16px;
 }
 
 .user-mainpage .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 11px 35px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 16.343px;
-  line-height: 17.705px;
-  letter-spacing: 0.2696px;
+  font-weight: bold;
+  font-size: 18px;
   white-space: nowrap;
   flex-shrink: 0;
+  transition: background-color 0.3s ease;
 }
 
 .user-mainpage .btn-submit {
-  background-color: #00b034;
+  background-color: #34c759;
   color: white;
 }
 
-.user-mainpage .btn:hover {
-  opacity: 0.9;
+.user-mainpage .btn-submit:hover {
+  background-color: #2db34d;
 }
 
-/* Filter Icon */
+/* ========================================
+   FILTER ICON
+   ======================================== */
 .user-mainpage .filter-icon {
-  width: 38px;
-  height: 38px;
+  position: relative;
+  width: 31px;
+  height: 31px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.user-mainpage .filter-icon:hover {
+  opacity: 0.7;
 }
 
 .user-mainpage .filter-icon svg {
@@ -197,7 +283,9 @@
   height: 100%;
 }
 
-/* Main Content */
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
 .user-mainpage .main-content {
   flex: 1;
   display: flex;
@@ -216,7 +304,49 @@
   letter-spacing: 0.1395px;
 }
 
-/* Submit Concern modal */
+/* ========================================
+   HOME VIEW
+   ======================================== */
+.user-mainpage .home-view {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.user-mainpage .home-section {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-mainpage .home-section h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #00642f;
+  margin: 0 0 20px 0;
+}
+
+.user-mainpage .home-section p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.user-mainpage .home-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   SUBMIT CONCERN MODAL
+   ======================================== */
 .user-mainpage .form-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -249,7 +379,98 @@
   cursor: pointer;
 }
 
-/* Cards Container */
+/* ========================================
+   FILTER MODAL
+   ======================================== */
+.user-mainpage .modal-overlay-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-mainpage .modal-content-sidebar {
+  background: white;
+  width: 400px;
+  max-width: 90%;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-mainpage .modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-mainpage .modal-header h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+  color: #262222;
+}
+
+.user-mainpage .close-btn-sidebar {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-mainpage .modal-body {
+  padding: 20px;
+}
+
+.user-mainpage .modal-body label {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #262222;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.user-mainpage .modal-body label:first-child {
+  margin-top: 0;
+}
+
+.user-mainpage .modal-body select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #262222;
+  background: white;
+  cursor: pointer;
+}
+
+.user-mainpage .modal-body select:focus {
+  outline: none;
+  border-color: #03045e;
+}
+
+/* ========================================
+   CARDS CONTAINER
+   ======================================== */
 .user-mainpage .cards {
   display: flex;
   flex-wrap: wrap;
@@ -270,83 +491,82 @@
    ======================================== */
 @media (max-width: 1024px) {
   .user-mainpage .dashboard {
-    padding-top: 160px;
+    padding-top: 180px;
   }
 
   .user-mainpage .header-frame {
     width: 95%;
-    height: auto;
     min-height: 120px;
-    padding: 15px;
+    padding: 20px 30px;
+    gap: 20px;
   }
 
   .user-mainpage .logo-section {
-    left: 20px;
-    top: 15px;
-    width: 250px;
+    max-width: 250px;
+    gap: 12px;
   }
 
-  .user-mainpage .header-text {
-    left: 65px;
-    top: 5px;
+  .user-mainpage .logo-image {
+    width: 45px;
+    height: 38px;
   }
 
   .user-mainpage .top-text {
-    font-size: 10px;
-    line-height: 12px;
-  }
-
-  .user-mainpage .city-text {
-    font-size: 18px;
-    line-height: 20px;
-  }
-
-  .user-mainpage .portal-title {
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .user-mainpage .portal-subtitle {
     font-size: 9px;
     line-height: 11px;
   }
 
+  .user-mainpage .city-text {
+    font-size: 18px;
+    line-height: 16px;
+  }
+
+  .user-mainpage .portal-title {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .user-mainpage .portal-subtitle {
+    font-size: 7.5px;
+    line-height: 16px;
+  }
+
+  .user-mainpage .nav-buttons-section {
+    gap: 25px;
+  }
+
+  .user-mainpage .nav-btn {
+    font-size: 14px;
+  }
+
   .user-mainpage .search-section {
-    left: 280px;
-    top: 45px;
+    max-width: 220px;
   }
 
   .user-mainpage .search-input {
-    width: 350px;
-    height: 26px;
-  }
-
-  .user-mainpage .search-icon {
-    left: 323px;
-    top: 7px;
-  }
-
-  .user-mainpage .button-section {
-    left: auto;
-    right: 60px;
-    top: 35px;
-    padding: 10px 15px;
+    height: 36px;
   }
 
   .user-mainpage .btn {
-    font-size: 14px;
-    padding: 8px 16px;
+    font-size: 16px;
+    padding: 10px 28px;
   }
 
   .user-mainpage .filter-icon {
-    left: auto;
-    right: 15px;
-    top: 42px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .user-mainpage .home-section {
+    padding: 25px;
+  }
+
+  .user-mainpage .home-section h2 {
+    font-size: 20px;
+  }
+
+  .user-mainpage .home-section p {
+    font-size: 14px;
   }
 }
 
@@ -355,48 +575,29 @@
    ======================================== */
 @media (max-width: 767px) {
   .user-mainpage .dashboard {
-    padding-top: 180px;
+    padding-top: 200px;
   }
 
   .user-mainpage .header-frame {
     width: 95%;
-    height: auto;
     min-height: auto;
     top: 10px;
-    padding: 12px;
+    padding: 15px;
     border-radius: 15px;
-    display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 12px;
   }
 
   /* Logo Section - Mobile */
   .user-mainpage .logo-section {
-    position: relative;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    max-width: 100%;
+    gap: 10px;
   }
 
   .user-mainpage .logo-image {
-    position: relative;
-    top: 0;
-    left: 0;
     width: 35px;
     height: 30px;
-    flex-shrink: 0;
-  }
-
-  .user-mainpage .header-text {
-    position: relative;
-    left: 0;
-    top: 0;
-    margin-left: 8px;
-    flex: 1;
   }
 
   .user-mainpage .top-text {
@@ -419,59 +620,43 @@
     line-height: 8px;
   }
 
+  /* Navigation Buttons - Mobile */
+  .user-mainpage .nav-buttons-section {
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .user-mainpage .nav-btn {
+    font-size: 14px;
+  }
+
   /* Search Section - Mobile */
   .user-mainpage .search-section {
-    position: relative;
-    left: 0;
-    top: 0;
     width: 100%;
-    margin-bottom: 10px;
+    max-width: 100%;
   }
 
   .user-mainpage .search-input {
-    width: 100%;
-    height: 32px;
-  }
-
-  .user-mainpage .search-icon {
-    left: auto;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 38px;
   }
 
   /* Button and Filter Section - Mobile */
   .user-mainpage .button-section {
-    position: relative;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: auto;
-    padding: 0;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .user-mainpage .btn {
-    font-size: 13px;
-    padding: 10px 16px;
+    font-size: 14px;
+    padding: 11px 20px;
     flex: 1;
-    min-width: 0;
   }
 
   .user-mainpage .filter-icon {
-    position: relative;
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 38px;
+    height: 38px;
   }
 
   /* Main Content - Mobile */
@@ -481,6 +666,25 @@
 
   .user-mainpage .no-concerns-text {
     font-size: 18px;
+  }
+
+  .user-mainpage .home-view {
+    padding: 15px;
+    gap: 25px;
+  }
+
+  .user-mainpage .home-section {
+    padding: 20px;
+  }
+
+  .user-mainpage .home-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .user-mainpage .home-section p {
+    font-size: 13px;
+    margin-bottom: 12px;
   }
 
   /* Cards - Mobile */
@@ -495,6 +699,10 @@
     max-height: 85vh;
     padding: 15px;
   }
+
+  .user-mainpage .modal-content-sidebar {
+    width: 320px;
+  }
 }
 
 /* ========================================
@@ -502,25 +710,21 @@
    ======================================== */
 @media (max-width: 480px) {
   .user-mainpage .dashboard {
-    padding-top: 170px;
+    padding-top: 220px;
   }
 
   .user-mainpage .header-frame {
-    min-height: auto;
-    padding: 10px;
+    padding: 12px;
+    gap: 10px;
   }
 
   .user-mainpage .logo-section {
-    margin-bottom: 8px;
+    gap: 8px;
   }
 
   .user-mainpage .logo-image {
     width: 32px;
     height: 28px;
-  }
-
-  .user-mainpage .header-text {
-    margin-left: 6px;
   }
 
   .user-mainpage .top-text {
@@ -543,29 +747,56 @@
     line-height: 7.5px;
   }
 
-  .user-mainpage .search-section {
-    margin-bottom: 8px;
+  .user-mainpage .nav-buttons-section {
+    gap: 25px;
+  }
+
+  .user-mainpage .nav-btn {
+    font-size: 13px;
   }
 
   .user-mainpage .search-input {
-    height: 30px;
+    height: 36px;
   }
 
   .user-mainpage .button-section {
-    gap: 6px;
+    gap: 8px;
   }
 
   .user-mainpage .btn {
-    font-size: 12px;
-    padding: 9px 14px;
+    font-size: 13px;
+    padding: 10px 16px;
   }
 
   .user-mainpage .filter-icon {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .user-mainpage .no-concerns-text {
     font-size: 16px;
+  }
+
+  .user-mainpage .home-view {
+    padding: 12px;
+    gap: 20px;
+  }
+
+  .user-mainpage .home-section {
+    padding: 16px;
+  }
+
+  .user-mainpage .home-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .user-mainpage .home-section p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .user-mainpage .modal-content-sidebar {
+    width: 280px;
   }
 }
