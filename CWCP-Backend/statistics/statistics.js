@@ -75,3 +75,49 @@ export const getAreaStats = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const getTodayPostCount = async (req, res) => {
+  try {
+    // Start of today (00:00:00)
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0);
+
+    // End of today (23:59:59)
+    const endOfToday = new Date();
+    endOfToday.setHours(23, 59, 59, 999);
+
+    const count = await userconcern.countDocuments({
+      timestamp: {
+        $gte: startOfToday,
+        $lte: endOfToday,
+      },
+    });
+
+    res.status(200).json({ count });
+  } catch (error) {
+    res.status(500).json({ errorMessage: error.message });
+  }
+};
+
+
+export const getResolvedPostPercentage = async (req, res) => {
+  try {
+    const totalPosts = await userconcern.countDocuments();
+
+    if (totalPosts === 0) {
+      return res.status(200).json({ percentage: 0 });
+    }
+
+    const resolvedPosts = await userconcern.countDocuments({
+      status: "resolved",
+    });
+
+    const percentage = ((resolvedPosts / totalPosts) * 100).toFixed(2);
+
+    res.status(200).json({
+      percentage: Number(percentage),
+    });
+  } catch (error) {
+    res.status(500).json({ errorMessage: error.message });
+  }
+};
