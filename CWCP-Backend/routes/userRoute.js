@@ -5,8 +5,6 @@ import {
   fetchPosts,
   getApprovedPosts,
   fetchPostsViaSearchbar,
-  getTodayPostCount,
-  getResolvedPostPercentage,
   getResolvedPosts,
   getPendingPosts,
   getRejectedPosts,
@@ -14,11 +12,10 @@ import {
 import {
   approvePost,
   rejectPost,
-  deletePost,
   changeStatus,
 } from "../controller/postController.js";
 import { adminLogin } from "../authentication/adminLogin.js";
-import { getPostStats, getAreaStats } from "../statistics/statistics.js";
+import { getPostStats, getAreaStats , getResolvedPostPercentage, getTodayPostCount} from "../statistics/statistics.js";
 
 const route = express.Router();
 
@@ -39,7 +36,7 @@ route.put("/approve/:id", approvePost);
 route.put("/reject/:id", rejectPost);
 route.put("/status/:id", changeStatus);
 
-route.delete("/delete/:id", deletePost);
+
 
 route.get("/stats", getPostStats);
 

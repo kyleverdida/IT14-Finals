@@ -67,7 +67,7 @@ const Cards = ({
         options.headers = { "Content-Type": "application/json" };
         options.body = JSON.stringify(body);
       }
-      
+
       const res = await fetch(url, options);
       if (res.ok) {
         showAlert(successMsg);
@@ -108,16 +108,7 @@ const Cards = ({
     setShowRejectionModal(false);
   };
 
-  const handleDelete = () => {
-    if (confirm("⚠️ Delete this post permanently?")) {
-      handleAPIAction(
-        `${API_URL}/delete/${_id}`,
-        "DELETE",
-        "🗑️ Deleted!",
-        "Failed to delete post"
-      );
-    }
-  };
+
 
   const handleChangeStatus = async (newStatus) => {
     const res = await fetch(`${API_URL}/status/${_id}`, {
@@ -136,10 +127,14 @@ const Cards = ({
     if (location.pathname === "/dashboard") {
       return (
         <div className="mod-buttons">
-          <button className="btn approve" onClick={handleApprove}>
+          <button
+            className="btn approve"
+            onClick={() => handleChangeStatus("resolved")}
+          >
             Resolved
           </button>
-          
+
+
           <button className="btn reject" onClick={handleReject}>
             Reject
           </button>
@@ -163,14 +158,14 @@ const Cards = ({
       {alertMessage && (
         <CustomAlert message={alertMessage} onClose={closeAlert} />
       )}
-      
+
       {showRejectionModal && (
-        <RejectionModal 
+        <RejectionModal
           onConfirm={handleRejectConfirm}
           onCancel={handleRejectCancel}
         />
       )}
-      
+
       <div className="card-wrapper">
         <div className={`card ${severityClass}`}>
           <div className="card-image">
