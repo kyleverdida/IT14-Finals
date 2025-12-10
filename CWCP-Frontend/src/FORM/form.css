@@ -1,6 +1,9 @@
-  .date-inner {
-    padding-right: 40px !important;
-  }/* Main Container from Figma */
+/* Date Inner Fix (Kept from previous input) */
+.date-inner {
+  padding-right: 40px !important;
+}
+
+/* Main Container from Figma */
 .form-popup {
   background: #ffffff;
   position: relative;
@@ -102,9 +105,28 @@
   z-index: 1;
 }
 
+/* New Flex Container Styles for Side-by-Side Fields */
+.field-row {
+  position: absolute;
+  top: 317px;
+  left: 33px;
+  width: 636px; 
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  z-index: 1; /* Ensure this row is above description */
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column; 
+    width: 309px;
+}
+
+
 /* Severity */
 .severity {
-  position: absolute;
+  position: relative; 
   background: white;
   box-sizing: border-box;
   display: flex;
@@ -112,10 +134,9 @@
   height: 56px;
   align-items: flex-start;
   justify-content: center;
-  left: 360px;
+  /* REMOVED: left: 360px; top: 345px; (Now controlled by .field-row) */
   padding: 18px 26px;
   border-radius: 30px;
-  top: 345px;
   width: 309px;
 }
 
@@ -128,31 +149,22 @@
 }
 
 .severity-label {
-  position: absolute;
-  left: 360px;
-  top: 317px;
+  /* REMOVED: position: absolute; left: 360px; top: 317px; (Now controlled by .field-group) */
+  font-family: "Outfit", sans-serif; /* Added to retain label style */
+  font-weight: 500;
+  height: 21px;
+  line-height: 17.705px;
+  font-size: 14px;
+  color: black;
+  letter-spacing: 0.2696px;
+  width: 200px;
+  margin-bottom: 6px; /* Space between label and input */
   z-index: 1;
-}
-
-.severity-icon {
-  position: absolute;
-  left: 620px;
-  width: 14px;
-  height: 14px;
-  top: 366px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.severity-icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 /* Select Area */
 .select-area {
-  position: absolute;
+  position: relative; 
   background: white;
   box-sizing: border-box;
   display: flex;
@@ -160,10 +172,9 @@
   height: 56px;
   align-items: flex-start;
   justify-content: center;
-  left: 33px;
+  /* REMOVED: left: 33px; top: 345px; (Now controlled by .field-row) */
   padding: 18px 26px;
   border-radius: 30px;
-  top: 345px;
   width: 309px;
 }
 
@@ -176,29 +187,41 @@
 }
 
 .select-area-label {
-  position: absolute;
-  left: 33px;
-  top: 317px;
+  /* REMOVED: position: absolute; left: 33px; top: 317px; (Now controlled by .field-group) */
+  font-family: "Outfit", sans-serif; /* Added to retain label style */
+  font-weight: 500;
+  height: 21px;
+  line-height: 17.705px;
+  font-size: 14px;
+  color: black;
+  letter-spacing: 0.2696px;
+  width: 200px;
+  margin-bottom: 6px; /* Space between label and input */
   z-index: 1;
 }
 
-.select-area-icon {
+/* * UNIFIED ICON POSITIONING (Applies to all select/dropdown icons) */
+.select-area-icon,
+.severity-icon {
   position: absolute;
-  left: 293px;
+  right: 25px; 
+  left: auto;
+  top: 50%; 
+  transform: translateY(-50%); 
   width: 14px;
   height: 14px;
-  top: 366px;
   z-index: 2;
   pointer-events: none;
 }
 
-.select-area-icon svg {
+.select-area-icon svg,
+.severity-icon svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* Upload Photo */
+/* Upload Photo (No changes needed, kept for context) */
 .upload-photo {
   position: absolute;
   background: white;
@@ -229,7 +252,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  position: relative;
 }
 
 .upload-photo-text {
@@ -244,16 +266,18 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: 30px;
 }
 
 .upload-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10px;
+  position: absolute;
+  right: 26px;
+  width: 14px;
+  height: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .upload-icon svg {
@@ -268,7 +292,7 @@
   z-index: 1;
 }
 
-/* Date */
+/* Date (No changes needed, kept for context) */
 .date-field {
   position: absolute;
   background: white;
@@ -328,7 +352,7 @@
   height: 100%;
 }
 
-/* Concern Title */
+/* Concern Title (No changes needed, kept for context) */
 .concern-title {
   position: absolute;
   background: white;
@@ -371,7 +395,7 @@
   z-index: 1;
 }
 
-/* Labels */
+/* Labels (Kept generic label for other elements, but specific labels modified above) */
 .label {
   font-family: "Outfit", sans-serif;
   font-weight: 500;
@@ -383,7 +407,7 @@
   width: 200px;
 }
 
-/* Subtitle and Main Title */
+/* Subtitle and Main Title (No changes needed, kept for context) */
 .subtitle {
   position: absolute;
   font-family: "Outfit", sans-serif;
@@ -454,6 +478,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  /* CRITICAL: Add padding to clear the icon space */
+  padding-right: 40px; 
 }
 
 /* Date input styling */
@@ -477,6 +503,7 @@
 /* ================================================================== */
 
 @media (max-width: 768px) {
+  /* Re-ordering for Mobile */
   .form-popup {
     width: 90%;
     min-height: auto;
@@ -504,64 +531,45 @@
     width: 100%;
     order: 2;
   }
+  
+  /* Date and Upload photo labels are side-by-side on desktop but stack on mobile
+     We need to reorder them in the flow:
+     Date Label (5) -> Date Field (6) -> Upload Label (7) -> Upload Field (8)
+     This is already handled by the mobile order below.
+  */
 
-  .concern-title-label {
-    order: 3;
-  }
-
-  .concern-title {
-    order: 4;
-  }
-
-  .date-label {
-    order: 5;
-  }
-
-  .date-field {
-    order: 6;
-  }
-
-  .upload-photo-label {
-    order: 7;
-  }
-
-  .upload-photo {
-    order: 8;
-  }
-
-  .select-area-label {
+  /* Force field row (Select Area/Severity) to display vertically on mobile */
+  .field-row {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    flex-direction: column;
+    gap: 20px; /* Adjust spacing for vertical stack */
+    margin-bottom: 20px;
     order: 9;
   }
 
-  .select-area {
-    order: 10;
-  }
+  /* Break the field-group order to match the rest of the form flow */
+  .field-group:nth-child(1) { order: 1; } /* Select Area */
+  .field-group:nth-child(2) { order: 2; } /* Severity */
 
-  .severity-label {
-    order: 11;
-  }
+  /* Re-ordering for the single-column layout flow */
+  .concern-title-label { order: 3; }
+  .concern-title { order: 4; }
+  .date-label { order: 5; }
+  .date-field { order: 6; }
+  .upload-photo-label { order: 7; }
+  .upload-photo { order: 8; }
+  
+  .description-label { order: 10; }
+  .description { order: 11; }
+  .submit-concern { order: 12; }
 
-  .severity {
-    order: 12;
-  }
-
-  .description-label {
-    order: 13;
-  }
-
-  .description {
-    order: 14;
-  }
-
-  .submit-concern {
-    order: 15;
-  }
-
+  /* Reset relative positioning for other elements */
   .concern-title,
   .date-field,
   .upload-photo,
-  .select-area,
-  .severity,
   .description {
     position: relative !important;
     width: 100% !important;
@@ -570,16 +578,30 @@
     margin-bottom: 20px;
   }
 
+  /* Reset relative positioning for labels */
   .concern-title-label,
   .date-label,
   .upload-photo-label,
-  .select-area-label,
-  .severity-label,
   .description-label {
     position: relative !important;
     left: 0 !important;
     top: 0 !important;
     margin-bottom: 6px;
+  }
+
+  /* Ensure elements inside field-group take full width on mobile */
+  .select-area,
+  .severity {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Reset label margins within field-group */
+  .select-area-label,
+  .severity-label {
+      margin-bottom: 6px !important;
+      position: relative !important;
+      width: 100% !important;
   }
 
   .date-inner {
@@ -589,21 +611,7 @@
   .date-field .calendar-icon {
     right: 26px !important;
   }
-
-  .select-area-icon,
-  .severity-icon {
-    position: absolute;
-    right: 20px !important;
-    left: auto !important;
-    top: 50% !important;
-    transform: translateY(-50%);
-  }
-
-  .upload-icon {
-    position: absolute;
-    right: 26px;
-  }
-
+  
   .upload-photo-text {
     font-size: 14px;
   }

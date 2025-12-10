@@ -166,86 +166,94 @@ const Form = ({ onClose }) => {
       </div>
       <p className="label upload-photo-label">Upload Photo</p>
 
-      {/* Select Area */}
-      <div className="select-area">
-        <div className="border-overlay" />
-        <select
-          id="area"
-          name="area"
-          className="select-area-select"
-          value={formData.area}
-          onChange={handleChange}
-        >
-          <option value="">-- Choose an Area --</option>
-          <option value="apokon">Apokon</option>
-          <option value="bincungan">Bincungan</option>
-          <option value="busaon">Busaon</option>
-          <option value="canocotan">Canocotan</option>
-          <option value="cuambogan">Cuambogan</option>
-          <option value="la-filipina">La Filipina</option>
-          <option value="liboganon">Liboganon</option>
-          <option value="madaum">Madaum</option>
-          <option value="magdum">Magdum</option>
-          <option value="mankilam">Mankilam</option>
-          <option value="new-balamban">New Balamban</option>
-          <option value="nueva-fuerza">Nueva Fuerza</option>
-          <option value="pagsabangan">Pagsabangan</option>
-          <option value="pandapan">Pandapan</option>
-          <option value="magugpo-poblacion">Magugpo Poblacion</option>
-          <option value="san-agustin">San Agustin</option>
-          <option value="san-isidro">San Isidro</option>
-          <option value="san-miguel-camp-4">San Miguel (Camp 4)</option>
-          <option value="visayan-village">Visayan Village</option>
-          <option value="magugpo-east">Magugpo East</option>
-          <option value="magugpo-north">Magugpo North</option>
-          <option value="magugpo-south">Magugpo South</option>
-          <option value="magugpo-west">Magugpo West</option>
-        </select>
-      </div>
-      <p className="label select-area-label">Select Area</p>
-      <div className="select-area-icon">
-        <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-          <g>
-            <path
-              d="M3.5 5.25L7 8.75L10.5 5.25"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-            />
-          </g>
-        </svg>
-      </div>
+      {/* NEW FLEX CONTAINER: Groups Select Area and Severity for horizontal alignment */}
+      <div className="field-row">
+          
+          {/* Select Area Group */}
+          <div className="field-group">
+            <p className="label select-area-label">Select Area</p>
+            <div className="select-area">
+              <div className="border-overlay" />
+              <select
+                id="area"
+                name="area"
+                className="select-area-select"
+                value={formData.area}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose an Area --</option>
+                <option value="apokon">Apokon</option>
+                <option value="bincungan">Bincungan</option>
+                <option value="busaon">Busaon</option>
+                <option value="canocotan">Canocotan</option>
+                <option value="cuambogan">Cuambogan</option>
+                <option value="la-filipina">La Filipina</option>
+                <option value="liboganon">Liboganon</option>
+                <option value="madaum">Madaum</option>
+                <option value="magdum">Magdum</option>
+                <option value="mankilam">Mankilam</option>
+                <option value="new-balamban">New Balamban</option>
+                <option value="nueva-fuerza">Nueva Fuerza</option>
+                <option value="pagsabangan">Pagsabangan</option>
+                <option value="pandapan">Pandapan</option>
+                <option value="magugpo-poblacion">Magugpo Poblacion</option>
+                <option value="san-agustin">San Agustin</option>
+                <option value="san-isidro">San Isidro</option>
+                <option value="san-miguel-camp-4">San Miguel (Camp 4)</option>
+                <option value="visayan-village">Visayan Village</option>
+                <option value="magugpo-east">Magugpo East</option>
+                <option value="magugpo-north">Magugpo North</option>
+                <option value="magugpo-south">Magugpo South</option>
+                <option value="magugpo-west">Magugpo West</option>
+              </select>
+              <div className="select-area-icon">
+                <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
+                  <g>
+                    <path
+                      d="M3.5 5.25L7 8.75L10.5 5.25"
+                      stroke="#1E1E1E"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.5"
+                    />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
 
-      {/* Severity */}
-      <div className="severity">
-        <div className="border-overlay" />
-        <select
-          id="severity"
-          name="severity"
-          className="severity-select"
-          value={formData.severity}
-          onChange={handleChange}
-        >
-          <option value="">-- Choose Severity --</option>
-          <option value="inconvenient">Inconvenient</option>
-          <option value="hazard">Hazard</option>
-          <option value="life-threatening">Life-Threatening</option>
-        </select>
-      </div>
-      <p className="label severity-label">Severity</p>
-      <div className="severity-icon">
-        <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-          <g>
-            <path
-              d="M3.5 5.25L7 8.75L10.5 5.25"
-              stroke="#1E1E1E"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-            />
-          </g>
-        </svg>
+          {/* Severity Group */}
+          <div className="field-group">
+            <p className="label severity-label">Severity</p>
+            <div className="severity">
+              <div className="border-overlay" />
+              <select
+                id="severity"
+                name="severity"
+                className="severity-select"
+                value={formData.severity}
+                onChange={handleChange}
+              >
+                <option value="">-- Choose Severity --</option>
+                <option value="inconvenient">Inconvenient</option>
+                <option value="hazard">Hazard</option>
+                <option value="life-threatening">Life-Threatening</option>
+              </select>
+              <div className="severity-icon">
+                <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
+                  <g>
+                    <path
+                      d="M3.5 5.25L7 8.75L10.5 5.25"
+                      stroke="#1E1E1E"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2.5"
+                    />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
       </div>
 
       {/* Description */}
