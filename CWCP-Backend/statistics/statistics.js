@@ -60,6 +60,7 @@ export const getAreaStats = async (req, res) => {
     const resolved = statusCounts.find(s => s.status === "resolved")?.count || 0;
     const pending = statusCounts.find(s => s.status === "pending")?.count || 0;
     const ongoing = statusCounts.find(s => s.status === "ongoing")?.count || 0;
+    const rejected = statusCounts.find(s => s.status === "rejected")?.count || 0;
 
     res.status(200).json({
       area,
@@ -67,7 +68,8 @@ export const getAreaStats = async (req, res) => {
       status: {
         resolved,
         pending,
-        ongoing
+        ongoing,
+        rejected
       }
     });
 
@@ -76,18 +78,17 @@ export const getAreaStats = async (req, res) => {
   }
 };
 
+
 export const getTodayPostCount = async (req, res) => {
   try {
-    // Start of today (00:00:00)
     const startOfToday = new Date();
     startOfToday.setHours(0, 0, 0, 0);
 
-    // End of today (23:59:59)
     const endOfToday = new Date();
     endOfToday.setHours(23, 59, 59, 999);
 
     const count = await userconcern.countDocuments({
-      timestamp: {
+      createdAt: {
         $gte: startOfToday,
         $lte: endOfToday,
       },
@@ -98,6 +99,7 @@ export const getTodayPostCount = async (req, res) => {
     res.status(500).json({ errorMessage: error.message });
   }
 };
+
 
 
 export const getResolvedPostPercentage = async (req, res) => {

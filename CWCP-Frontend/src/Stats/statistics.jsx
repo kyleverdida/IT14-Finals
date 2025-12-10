@@ -51,8 +51,8 @@ export default function Statistics() {
       </div>
 
       <div className="charts-wrapper">
-        <StatusBarChart data={stats.byStatus} />
-        <AreaDonut data={stats.byArea || []} />
+        {/* <StatusBarChart data={stats.byStatus} /> */}
+        {/* <AreaDonut data={stats.byArea || []} /> */}
       </div>
     </div>
   );

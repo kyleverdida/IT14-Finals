@@ -79,7 +79,7 @@ const GMap = () => {
   const [areaStats, setAreaStats] = useState(null);
 
   return (
-    <APIProvider apiKey="AIzaSyDk9Jxg3BB7u3gD9bJSl99GWMbcA12hqOg">
+    <APIProvider apiKey={`${import.meta.env.VITE_GMAP_API}`}>
       <div className="gmap-container">
 
         {/* MAP */}
@@ -110,6 +110,8 @@ const GMap = () => {
               <p><strong>Resolved:</strong> {areaStats.status.resolved}</p>
               <p><strong>Pending:</strong> {areaStats.status.pending}</p>
               <p><strong>Ongoing:</strong> {areaStats.status.ongoing}</p>
+              <p><strong>Rejected: </strong> {areaStats.status.rejected}</p>
+
             </div>
           )}
         </div>

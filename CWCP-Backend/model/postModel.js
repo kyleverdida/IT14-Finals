@@ -1,39 +1,52 @@
 import mongoose from "mongoose";
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    timestamp: {
+      type: Date,
+      required: true,
+    },
+    photo: {
+      type: String,
+    },
+    area: {
+      type: String,
+      required: true,
+    },
+    severity: {
+      type: String,
+      enum: ["inconvenient", "hazard", "life-threatening"],
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
 
-const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
+    approved: {
+      type: Boolean,
+      default: false,
+    },
+    rejection_reason: {
+      type: String,
+      required: function () {
+        return this.status === "rejected";
+      },
+    },
+    status: {
+      type: String,
+      enum: ["pending", "ongoing", "resolved", "rejected"],
+      default: "pending",
+    },
+
+    action_taken: {
+      type: String,
+    },
   },
-  timestamp: {
-    type: Date,
-    required: true
-  },
-  photo: {
-    type: String // Store image URL or file path
-  },
-  area: {
-    type: String,
-    required: true
-  },
-  severity: {
-    type: String,
-    enum: ["inconvenient", "hazard", "life-threatening"],
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  approved: {
-    type: Boolean,
-    default: false // ensure every doc has this
-  },
-  status: {
-    type: String,
-    default: "pending", // default status
-    enum: ["pending", "ongoing", "resolved"] 
-  }
-}, { timestamps: true });
+  { timestamps: true }
+);
 
 export default mongoose.model("userconcern", postSchema);

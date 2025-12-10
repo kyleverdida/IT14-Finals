@@ -28,22 +28,38 @@ export const approvePost = async (req, res) => {
 
 export const rejectPost = async (req, res) => {
   try {
-    const { id } = req.params;
+    console.log("req.body:", req.body);
+const { reason } = req.body || {};
+console.log("reason:", reason);
 
-    const post = await userconcern.findById(id);
+
+    
+    if (!reason || reason.trim() === "") {
+      return res.status(400).json({
+        message: "Rejection reason is required"
+      });
+    }
+
+    const post = await userconcern.findByIdAndUpdate(
+      req.params.id,
+      {
+        status: "rejected",
+        approved: false,
+        rejection_reason: reason
+      },
+      { new: true, runValidators: true }
+    );
+
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    
-    post.approved = false;
-    await post.save();
-
-    res.status(200).json({ message: "Post rejected/removed successfully" });
+    res.status(200).json(post);
   } catch (error) {
-    res.status(500).json({ errorMessage: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
+
 
 
 

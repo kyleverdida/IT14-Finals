@@ -29,10 +29,7 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const endpoint =
-          location.pathname === "/"
-            ? `${import.meta.env.VITE_API_URL}/getApproved`
-            : `${import.meta.env.VITE_API_URL}/fetch`;
+        const endpoint = `${import.meta.env.VITE_API_URL}/fetch`; // Always fetch all posts
 
         const response = await axios.get(endpoint);
         setPosts(response.data);
@@ -40,6 +37,7 @@ const Main = () => {
         console.log("Unable to retrieve data", error);
       }
     };
+
 
     fetchData();
     const interval = setInterval(fetchData, 2000);
@@ -57,12 +55,12 @@ const Main = () => {
     const matchesStatus =
       !filters.status ||
       concern.status?.toLowerCase() === filters.status.toLowerCase();
-    
+
     // Search filter
-    const matchesSearch = !searchQuery || 
+    const matchesSearch = !searchQuery ||
       concern.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       concern.description?.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     return matchesArea && matchesSeverity && matchesStatus && matchesSearch;
   });
 
@@ -178,10 +176,10 @@ const Main = () => {
               type="button"
               onClick={() => setIsFilterOpen(true)}
               aria-label="Open filters"
-              style={{ 
-                position: 'relative', 
-                background: 'none', 
-                border: 'none', 
+              style={{
+                position: 'relative',
+                background: 'none',
+                border: 'none',
                 cursor: 'pointer',
                 padding: '5px'
               }}
@@ -337,7 +335,7 @@ const Main = () => {
                     severity={concern.severity}
                     timestamp={concern.timestamp}
                     photo={concern.photo}
-                    approved={concern.approved}
+                    rejection_reason={concern.rejection_reason}
                   />
                 ))}
               </div>
