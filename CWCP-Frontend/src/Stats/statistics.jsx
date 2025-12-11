@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./statistics.css";
 
-import TotalPostsSubmitted from "./statistics-totalpostsubmitted";
-import ResolvedIssues from "./statistics-resolved";
-import PendingIssues from "./statistics-pending";
-import RejectedIssues from "./statistics-rejected";
-import StatusBarChart from "./statistics-status-barchart";
-import AreaDonut from "./statistics-area-donut";
-import TodayPosts from "./statistics-todayposts";
+import TotalPostsSubmitted from "./stats-elements/statistics-totalpostsubmitted";
+import ResolvedIssues from "./stats-elements/statistics-resolved";
+import PendingIssues from "./stats-elements/statistics-pending";
+import RejectedIssues from "./stats-elements/statistics-rejected";
+import StatusBarChart from "./stats-elements/statistics-status-barchart";
+import AreaDonut from "./stats-elements/statistics-area-donut";
+import TodayPosts from "./stats-elements/statistics-todayposts";
+import GMap2 from "../GMAP/gmap2";
+import GMap from "../GMAP/gmap";
 
 export default function Statistics() {
   const [stats, setStats] = useState(null);
@@ -41,13 +43,19 @@ export default function Statistics() {
     <div className="app-root">
       <h1 className="title">City Issue Reporting Statistics</h1>
 
-      <div className="cards">
-        <TodayPosts />
-        <TotalPostsSubmitted total={stats.totalPosts} />
-        <ResolvedIssues/>
+      <div className="stats-cards">
+        <div>
+          <GMap2 />
+          {/* <GMap/> */}
+        </div>
 
-        <PendingIssues count={pending} />
-        <RejectedIssues count={rejected} />
+        <div className="stats-sidebar">
+          <TotalPostsSubmitted total={stats.totalPosts} />
+          <TodayPosts />
+          <ResolvedIssues />
+          <RejectedIssues count={rejected} />
+        </div>
+
       </div>
 
       <div className="charts-wrapper">

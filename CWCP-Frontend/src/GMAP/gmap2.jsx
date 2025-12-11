@@ -5,7 +5,7 @@ import {
     Marker,
     useMap
 } from "@vis.gl/react-google-maps";
-import "./GMap.css";
+import "./gmap.css";
 
 const AreaSelector = ({ setMarkerPos, setAreaStats }) => {
     const map = useMap("main-map");
@@ -44,37 +44,12 @@ const AreaSelector = ({ setMarkerPos, setAreaStats }) => {
     return (
         <div className="area-selector">
             <h3>Select Area</h3>
-            <select onChange={handleChange}>
-                <option value="">-- Choose an Area --</option>
-                <option value="apokon">Apokon</option>
-                <option value="bincungan">Bincungan</option>
-                <option value="busaon">Busaon</option>
-                <option value="canocotan">Canocotan</option>
-                <option value="cuambogan">Cuambogan</option>
-                <option value="la-filipina">La Filipina</option>
-                <option value="liboganon">Liboganon</option>
-                <option value="madaum">Madaum</option>
-                <option value="magdum">Magdum</option>
-                <option value="mankilam">Mankilam</option>
-                <option value="new-balamban">New Balamban</option>
-                <option value="nueva-fuerza">Nueva Fuerza</option>
-                <option value="pagsabangan">Pagsabangan</option>
-                <option value="pandapan">Pandapan</option>
-                <option value="magugpo-poblacion">Magugpo Poblacion</option>
-                <option value="san-agustin">San Agustin</option>
-                <option value="san-isidro">San Isidro</option>
-                <option value="san-miguel-camp-4">San Miguel Camp 4</option>
-                <option value="visayan-village">Visayan Village</option>
-                <option value="magugpo-east">Magugpo East</option>
-                <option value="magugpo-north">Magugpo North</option>
-                <option value="magugpo-south">Magugpo South</option>
-                <option value="magugpo-west">Magugpo West</option>
-            </select>
+            {/* imbis na location, mga concerns nalang na wala pa na resolved */}
         </div>
     );
 };
 
-const GMap = () => {
+const GMap2 = () => {
     const [markerPos, setMarkerPos] = useState(null);
     const [areaStats, setAreaStats] = useState(null);
 
@@ -87,38 +62,41 @@ const GMap = () => {
                     <Map
                         id="main-map"
                         className="map"
-                        defaultZoom={12}
-                        defaultCenter={{ lat: 7.44848, lng: 125.80031 }}
+                        defaultZoom={15}
+                        defaultCenter={{ lat: 7.414009271231644, lng: 125.76651193774056 }}
+                        options={{
+                            disableDefaultUI: true,  // hides default UI buttons
+                            zoomControl: false,
+                            styles: [
+                                {
+                                    featureType: "poi",   // points of interest
+                                    elementType: "all",
+                                    stylers: [{ visibility: "off" }] // hide all POIs
+                                },
+                                {
+                                    featureType: "transit",  // hide transit stations
+                                    elementType: "all",
+                                    stylers: [{ visibility: "off" }]
+                                },
+                                {
+                                    featureType: "road",  // optional: simplify roads
+                                    elementType: "labels",
+                                    stylers: [{ visibility: "off" }]
+                                }
+                            ]
+                        }}
                     >
-                        {markerPos && <Marker position={markerPos} />}
+                        {/* No markers */}
                     </Map>
+
                 </div>
 
                 {/* SIDE PANEL */}
-                <div className="side-panel">
-                    <AreaSelector
-                        setMarkerPos={setMarkerPos}
-                        setAreaStats={setAreaStats}
-                    />
 
-                    {areaStats && (
-                        <div className="area-stats">
-                            <h3>Area Stats</h3>
-                            <p><strong>Area:</strong> {areaStats.area}</p>
-                            <p><strong>Total Concerns:</strong> {areaStats.totalConcerns}</p>
-
-                            <p><strong>Resolved:</strong> {areaStats.status.resolved}</p>
-                            <p><strong>Pending:</strong> {areaStats.status.pending}</p>
-                            <p><strong>Ongoing:</strong> {areaStats.status.ongoing}</p>
-                            <p><strong>Rejected: </strong> {areaStats.status.rejected}</p>
-
-                        </div>
-                    )}
-                </div>
 
             </div>
         </APIProvider>
     );
 };
 
-export default GMap;
+export default GMap2;

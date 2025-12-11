@@ -777,24 +777,7 @@
     font-size: 16px;
   }
 
-  .user-mainpage .home-view {
-    padding: 12px;
-    gap: 20px;
-  }
 
-  .user-mainpage .home-section {
-    padding: 16px;
-  }
-
-  .user-mainpage .home-section h2 {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-
-  .user-mainpage .home-section p {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
 
   .user-mainpage .modal-content-sidebar {
     width: 280px;

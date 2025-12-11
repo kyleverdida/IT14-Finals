@@ -6,7 +6,7 @@
   align-items: center;
   padding: 40px 20px;
   gap: 30px;
-  width: 100%;
+  
   min-height: 272px;
   background: linear-gradient(90deg, #00642F 17.31%, #00C239 78.85%);
 }
