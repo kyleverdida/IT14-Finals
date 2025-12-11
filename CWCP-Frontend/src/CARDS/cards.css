@@ -253,3 +253,35 @@
   color: #333;
   
 }
+
+
+/* Severity Tag (similar to status tag) */
+.severity-tag {
+  padding: 10px 20px;
+  background: #FF0000;
+  border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  text-align: center;
+  min-width: 100px;
+}
+
+/* Colors matching severity-bar */
+.severity-critical {
+  background: #d9534f; /* red */
+}
+
+.severity-high {
+  background: #f0ad4e; /* orange */
+}
+
+.severity-low {
+  background: #5bc0de; /* blue */
+}
+
+.severity-neutral {
+  background: #777; /* gray */
+}

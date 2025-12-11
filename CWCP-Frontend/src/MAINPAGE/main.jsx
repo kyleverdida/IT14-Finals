@@ -157,7 +157,7 @@ const Main = () => {
           )}
 
           {/* Buttons - Submit Concern button on both views */}
-          {!isModeratorPage && (
+          
             <div className="button-section">
               <button
                 className="btn btn-submit"
@@ -167,7 +167,7 @@ const Main = () => {
                 Submit Concern
               </button>
             </div>
-          )}
+          
 
           {/* Filter Icon - Only show on concerns view */}
           {(isModeratorPage || activeView === 'concerns') && (

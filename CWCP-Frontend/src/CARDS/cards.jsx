@@ -47,7 +47,7 @@ const Cards = ({
   const API_URL_UPLOAD = import.meta.env.VITE_API_URL_UPLOAD;
   const rejectionReason = rejection_reason || "";
 
-  
+
   const imageSrc = photo
     ? `${API_URL_UPLOAD}/${photo}`
     : "https://placehold.co/600x400?text=No+Image";
@@ -125,49 +125,50 @@ const Cards = ({
     }
   };
 
-const renderButtons = () => {
-  // If rejected, show reason regardless of page
-  if (status === "rejected") {
+  const renderButtons = () => {
+    // If rejected, show reason regardless of page
+    if (status === "resolved") return null;
+    if (status === "rejected") {
+      return (
+        <div className="cards-rejection-info">
+          <label>Rejection Reason:</label>
+          <textarea
+            className="cards-rejection-textarea"
+            value={rejectionReason}
+            readOnly
+            rows={4}
+          />
+        </div>
+      );
+    }
+
+    // Otherwise, show buttons only on dashboard
+    if (location.pathname !== "/dashboard") return null;
+
     return (
-      <div className="cards-rejection-info">
-        <label>Rejection Reason:</label>
-        <textarea
-          className="cards-rejection-textarea"
-          value={rejectionReason} 
-          readOnly
-          rows={4}
-        />
+      <div className="mod-buttons">
+        <button
+          className="btn approve"
+          onClick={() => handleChangeStatus("resolved")}
+        >
+          Resolved
+        </button>
+
+        <button className="btn reject" onClick={handleReject}>
+          Reject
+        </button>
+
+        <select
+          className="status-dropdown"
+          value={status}
+          onChange={(e) => handleChangeStatus(e.target.value)}
+        >
+          <option value="pending">Pending</option>
+          <option value="ongoing">Ongoing</option>
+        </select>
       </div>
     );
-  }
-
-  // Otherwise, show buttons only on dashboard
-  if (location.pathname !== "/dashboard") return null;
-
-  return (
-    <div className="mod-buttons">
-      <button
-        className="btn approve"
-        onClick={() => handleChangeStatus("resolved")}
-      >
-        Resolved
-      </button>
-
-      <button className="btn reject" onClick={handleReject}>
-        Reject
-      </button>
-
-      <select
-        className="status-dropdown"
-        value={status}
-        onChange={(e) => handleChangeStatus(e.target.value)}
-      >
-        <option value="pending">Pending</option>
-        <option value="ongoing">Ongoing</option>
-      </select>
-    </div>
-  );
-};
+  };
 
 
 
@@ -194,8 +195,15 @@ const renderButtons = () => {
           <div className="card-body">
             <div className="card-header">
               <h3>{title}</h3>
+
+              {/* Status Tag */}
               <span className={`status-tag status-${status?.toLowerCase()}`}>
                 {status}
+              </span>
+
+              {/* NEW Severity Tag */}
+              <span className={`severity-tag severity-${severityClass}`}>
+                {severity}
               </span>
             </div>
 
