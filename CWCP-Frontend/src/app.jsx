@@ -24,10 +24,13 @@ function App() {
             path: "/",
             element: (
                 <>
-                    <div id="main">
+                    <div id="main" style={{ display: 'flex', flexDirection: 'row' }}>
+                        
                         <Main />
-                        {/* GMap removed from the main user view */}
-                        <Credits />
+                        <div style={{ position: 'sticky', top: 0, height: '100vw', overflowY: 'visible', flex: '0 0 350px' }}>
+                            <Statistics />
+                        </div>
+                        {/* GMap added to the /dashboard view */}
                     </div>
 
                 </>
@@ -41,12 +44,12 @@ function App() {
             path: "/dashboard",
             element: (
                 <>
-                    <div id="main">
-                        <Statistics />
-
+                    <div id="main" style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{ position: 'sticky', top: 0, height: '100vh', overflowY: 'visible', flex: '0 0 350px' }}>
+                            <Statistics />
+                        </div>
                         <Main />
                         {/* GMap added to the /dashboard view */}
-                        <GMap apiKey={import.meta.env.VITE_GMAP_API} />
                     </div>
                 </>
             ),

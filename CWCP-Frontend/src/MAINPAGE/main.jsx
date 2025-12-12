@@ -9,6 +9,11 @@ import Filter from "../filter/filters.jsx";
 import Searchbar from "../SEARCHBAR/searchbar.jsx";
 import Home from "../home/home.jsx"
 import HeaderFrame from "../HeaderFrame/HeaderFrame.jsx";
+import AllConcerns from "../CARDS/Categories/AllConcerns.jsx";
+import Resolved from "../CARDS/Categories/Resolved.jsx";
+import Pending from "../CARDS/Categories/Pending.jsx";
+import Rejected from "../CARDS/Categories/Rejected.jsx";
+
 
 const Main = () => {
   const [posts, setPosts] = useState([]);
@@ -26,6 +31,15 @@ const Main = () => {
 
   // Determine if we're on moderator page
   const isModeratorPage = location.pathname !== "/";
+
+  // Set activeView based on location
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setActiveView("all");
+    } else {
+      setActiveView("home");
+    }
+  }, [location.pathname]);
 
   // Fetch posts periodically
   useEffect(() => {
@@ -164,36 +178,30 @@ const Main = () => {
 
         {/* Main Content */}
         <div className="main-content">
-          {!isModeratorPage && activeView === 'home' ? (
-            // Home View - Description of City and System
+          {activeView === "home" && !isModeratorPage && (
             <Home />
-          ) : (
-            // Concerns View - Display Cards (for both moderator and user concerns view)
-            filteredPosts.length === 0 ? (
-              <p className="no-concerns-text">No concerns found.</p>
-            ) : (
-              <div className="cards">
-                {filteredPosts.map((concern) => (
-                  <Cards
-                    key={concern._id}
-                    _id={concern._id}
-                    title={concern.title}
-                    area={concern.area}
-                    comment={concern.description}
-                    status={concern.status || "pending"}
-                    severity={concern.severity}
-                    timestamp={concern.timestamp}
-                    photo={concern.photo}
-                    rejection_reason={concern.rejection_reason}
-                  />
-                ))}
-              </div>
-            )
+          )}
+
+          {activeView === "all" && (
+            <AllConcerns posts={filteredPosts} />
+          )}
+
+          {activeView === "resolved" && (
+            <Resolved posts={filteredPosts} />
+          )}
+
+          {activeView === "pending" && (
+            <Pending posts={filteredPosts} />
+          )}
+
+          {activeView === "rejected" && (
+            <Rejected posts={filteredPosts} />
           )}
         </div>
 
+
         {/* Submit Concern Modal - Show on both views */}
-        {isFormOpen && !isModeratorPage && (
+        {isFormOpen && (
           <div
             className="form-modal-backdrop"
             onClick={() => setIsFormOpen(false)}

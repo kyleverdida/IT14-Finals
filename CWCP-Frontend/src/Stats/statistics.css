@@ -1,6 +1,6 @@
 /* ===== ROOT CONTAINER ===== */
 .app-root {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background: #f5f7fa;
   padding: clamp(1rem, 3vw, 2rem);
   font-family: system-ui, -apple-system, sans-serif;
@@ -29,21 +29,16 @@
 
 /* ===== STAT CARDS ===== */
 .stats-cards {
-  display: grid;
-  grid-template-columns: 2fr 1fr;   /* LEFT is twice the width of RIGHT */
-  gap: 1.5rem;
-  padding-top: 130px;
-  align-items: stretch;
+  display: block;  /* Changed from grid to block for full width */
+  padding-top: 20px;  /* Reduced from 130px to 20px */
+  width: 100%;
 }
 /* RIGHT COLUMN SIDEBAR */
 .stats-sidebar {
-  display: flex;
-  flex-direction: column;
+  display: grid;  /* Changed to grid for better layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Responsive grid */
   gap: 1rem;
-
-  max-width: 380px;  /* <— prevents the right side from being too wide */
   width: 100%;
-  margin-left: auto; /* <— aligns sidebar to the right cleanly */
 }
 
 

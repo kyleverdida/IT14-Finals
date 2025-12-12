@@ -11,6 +11,7 @@ import TodayPosts from "./stats-elements/statistics-todayposts";
 import GMap2 from "../GMAP/gmap2";
 import GMap from "../GMAP/gmap";
 
+
 export default function Statistics() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,24 +45,24 @@ export default function Statistics() {
       <h1 className="title">City Issue Reporting Statistics</h1>
 
       <div className="stats-cards">
-        <div>
+        {/* <div>
           <GMap2 />
-          {/* <GMap/> */}
-        </div>
+          <GMap/>
+        </div> */}
 
         <div className="stats-sidebar">
           <TotalPostsSubmitted total={stats.totalPosts} />
           <TodayPosts />
           <ResolvedIssues />
           <RejectedIssues count={rejected} />
+          {/* <StatusBarChart data={stats.byStatus} /> */}
+        {/* <AreaDonut data={stats.byArea || []} /> */}
+        
         </div>
 
       </div>
 
-      <div className="charts-wrapper">
-        {/* <StatusBarChart data={stats.byStatus} /> */}
-        {/* <AreaDonut data={stats.byArea || []} /> */}
-      </div>
+      
     </div>
   );
 }
