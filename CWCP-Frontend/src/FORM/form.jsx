@@ -13,29 +13,37 @@ const Form = ({ onClose }) => {
     approved: false,
   });
 
+  const [preview, setPreview] = useState(null); // for live image preview
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, photo: e.target.files[0] });
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, photo: file });
+      setPreview(URL.createObjectURL(file)); // generate preview
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!formData.title.trim()) return alert("Title is required");
+    if (!formData.photo) return alert("Photo is required");
+
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+    if (!allowedTypes.includes(formData.photo.type)) {
+      return alert("Invalid file type");
+    }
+    if (formData.photo.size === 0) return alert("File is empty");
+
     try {
       const data = new FormData();
-
-      const formattedDate = new Date(formData.timestamp).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-
       data.append("title", formData.title);
-      data.append("timestamp", formattedDate);
-      data.append("photo", formData.photo);
+      data.append("timestamp", formData.timestamp);
+      data.append("image", formData.photo); // must match backend
       data.append("area", formData.area);
       data.append("severity", formData.severity);
       data.append("description", formData.description);
@@ -46,14 +54,19 @@ const Form = ({ onClose }) => {
 
       alert("Concern submitted successfully!");
       if (onClose) onClose();
+      setPreview(null); // clear preview after submit
+      setFormData({
+        title: "",
+        timestamp: new Date().toISOString().split("T")[0],
+        photo: null,
+        area: "",
+        severity: "",
+        description: "",
+        approved: false,
+      });
     } catch (error) {
-      if (error.response) {
-        console.error("Error submitting concern:", error.response.data);
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-      } else {
-        console.error("Error:", error.message);
-      }
+      if (error.response) alert(error.response.data.error || "Upload failed");
+      else alert("Upload failed. Please try again.");
     }
   };
 
@@ -98,62 +111,30 @@ const Form = ({ onClose }) => {
             />
           </div>
         </div>
-        <div className="calendar-icon">
-          <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-            <g clipPath="url(#clip0_1_81)">
-              <path
-                d="M11.0833 2.33333H2.91667C2.27233 2.33333 1.75 2.85566 1.75 3.5V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.5C12.25 2.85566 11.7277 2.33333 11.0833 2.33333Z"
-                stroke="#1E1E1E"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M9.33334 1.16667V3.5"
-                stroke="#1E1E1E"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M4.66666 1.16667V3.5"
-                stroke="#1E1E1E"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-              <path
-                d="M1.75 5.83333H12.25"
-                stroke="#1E1E1E"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_1_81">
-                <rect fill="white" height="14" width="14" />
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
       </div>
       <p className="label date-label">Date</p>
 
+      {/* Image Preview */}
+      {preview && (
+        <div className="image-preview">
+          <img
+            src={preview}
+            alt="Preview"
+            style={{ maxWidth: "100%", maxHeight: "200px", marginBottom: "10px" }}
+          />
+        </div>
+      )}
+
       {/* Upload Photo */}
-      <div className="upload-photo" onClick={() => document.getElementById("photo-input")?.click()}>
+      <div
+        className="upload-photo"
+        onClick={() => document.getElementById("photo-input")?.click()}
+      >
         <div className="border-overlay" />
         <div className="upload-photo-content">
           <p className="upload-photo-text">
             {formData.photo ? formData.photo.name : "-- No File Selected --"}
           </p>
-          <div className="upload-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 10V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V10" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M11.3333 5.33333L8 2L4.66667 5.33333" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M8 2V10" stroke="#1E1E1E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
         </div>
         <input
           id="photo-input"
@@ -166,94 +147,65 @@ const Form = ({ onClose }) => {
       </div>
       <p className="label upload-photo-label">Upload Photo</p>
 
-      {/* NEW FLEX CONTAINER: Groups Select Area and Severity for horizontal alignment */}
+      {/* Select Area & Severity */}
       <div className="field-row">
-          
-          {/* Select Area Group */}
-          <div className="field-group">
-            <p className="label select-area-label">Select Area</p>
-            <div className="select-area">
-              <div className="border-overlay" />
-              <select
-                id="area"
-                name="area"
-                className="select-area-select"
-                value={formData.area}
-                onChange={handleChange}
-              >
-                <option value="">-- Choose an Area --</option>
-                <option value="apokon">Apokon</option>
-                <option value="bincungan">Bincungan</option>
-                <option value="busaon">Busaon</option>
-                <option value="canocotan">Canocotan</option>
-                <option value="cuambogan">Cuambogan</option>
-                <option value="la-filipina">La Filipina</option>
-                <option value="liboganon">Liboganon</option>
-                <option value="madaum">Madaum</option>
-                <option value="magdum">Magdum</option>
-                <option value="mankilam">Mankilam</option>
-                <option value="new-balamban">New Balamban</option>
-                <option value="nueva-fuerza">Nueva Fuerza</option>
-                <option value="pagsabangan">Pagsabangan</option>
-                <option value="pandapan">Pandapan</option>
-                <option value="magugpo-poblacion">Magugpo Poblacion</option>
-                <option value="san-agustin">San Agustin</option>
-                <option value="san-isidro">San Isidro</option>
-                <option value="san-miguel-camp-4">San Miguel (Camp 4)</option>
-                <option value="visayan-village">Visayan Village</option>
-                <option value="magugpo-east">Magugpo East</option>
-                <option value="magugpo-north">Magugpo North</option>
-                <option value="magugpo-south">Magugpo South</option>
-                <option value="magugpo-west">Magugpo West</option>
-              </select>
-              <div className="select-area-icon">
-                <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-                  <g>
-                    <path
-                      d="M3.5 5.25L7 8.75L10.5 5.25"
-                      stroke="#1E1E1E"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                    />
-                  </g>
-                </svg>
-              </div>
-            </div>
+        <div className="field-group">
+          <p className="label select-area-label">Select Area</p>
+          <div className="select-area">
+            <div className="border-overlay" />
+            <select
+              id="area"
+              name="area"
+              className="select-area-select"
+              value={formData.area}
+              onChange={handleChange}
+            >
+              <option value="">-- Choose an Area --</option>
+              <option value="apokon">Apokon</option>
+              <option value="bincungan">Bincungan</option>
+              <option value="busaon">Busaon</option>
+              <option value="canocotan">Canocotan</option>
+              <option value="cuambogan">Cuambogan</option>
+              <option value="la-filipina">La Filipina</option>
+              <option value="liboganon">Liboganon</option>
+              <option value="madaum">Madaum</option>
+              <option value="magdum">Magdum</option>
+              <option value="mankilam">Mankilam</option>
+              <option value="new-balamban">New Balamban</option>
+              <option value="nueva-fuerza">Nueva Fuerza</option>
+              <option value="pagsabangan">Pagsabangan</option>
+              <option value="pandapan">Pandapan</option>
+              <option value="magugpo-poblacion">Magugpo Poblacion</option>
+              <option value="san-agustin">San Agustin</option>
+              <option value="san-isidro">San Isidro</option>
+              <option value="san-miguel-camp-4">San Miguel (Camp 4)</option>
+              <option value="visayan-village">Visayan Village</option>
+              <option value="magugpo-east">Magugpo East</option>
+              <option value="magugpo-north">Magugpo North</option>
+              <option value="magugpo-south">Magugpo South</option>
+              <option value="magugpo-west">Magugpo West</option>
+            </select>
           </div>
+        </div>
 
-          {/* Severity Group */}
-          <div className="field-group">
-            <p className="label severity-label">Severity</p>
-            <div className="severity">
-              <div className="border-overlay" />
-              <select
-                id="severity"
-                name="severity"
-                className="severity-select"
-                value={formData.severity}
-                onChange={handleChange}
-              >
-                <option value="">-- Choose Severity --</option>
-                <option value="inconvenient">Inconvenient</option>
-                <option value="hazard">Hazard</option>
-                <option value="life-threatening">Life-Threatening</option>
-              </select>
-              <div className="severity-icon">
-                <svg fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-                  <g>
-                    <path
-                      d="M3.5 5.25L7 8.75L10.5 5.25"
-                      stroke="#1E1E1E"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                    />
-                  </g>
-                </svg>
-              </div>
-            </div>
+        <div className="field-group">
+          <p className="label severity-label">Severity</p>
+          <div className="severity">
+            <div className="border-overlay" />
+            <select
+              id="severity"
+              name="severity"
+              className="severity-select"
+              value={formData.severity}
+              onChange={handleChange}
+            >
+              <option value="">-- Choose Severity --</option>
+              <option value="inconvenient">Inconvenient</option>
+              <option value="hazard">Hazard</option>
+              <option value="life-threatening">Life-Threatening</option>
+            </select>
           </div>
+        </div>
       </div>
 
       {/* Description */}

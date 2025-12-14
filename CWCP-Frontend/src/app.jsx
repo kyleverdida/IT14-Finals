@@ -27,7 +27,7 @@ function App() {
                     <div id="main" style={{ display: 'flex', flexDirection: 'row' }}>
                         
                         <Main />
-                        <div style={{ position: 'sticky', top: 0, height: '100vw', overflowY: 'visible', flex: '0 0 350px' }}>
+                        <div style={{ position: 'sticky', top: 0, overflowY: 'visible', flex: '0 0 350px' }}>
                             <Statistics />
                         </div>
                         {/* GMap added to the /dashboard view */}

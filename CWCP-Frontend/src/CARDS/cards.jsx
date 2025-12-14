@@ -49,7 +49,7 @@ const Cards = ({
 
 
   const imageSrc = photo
-    ? `${API_URL_UPLOAD}/${photo}`
+    ? `${photo}`
     : "https://placehold.co/600x400?text=No+Image";
 
   const showAlert = (message) => {
