@@ -37,14 +37,13 @@
 .dashboard-stats {
   position: sticky;
   top: 80px; /* below header */
-  overflow-y: auto;
+  height: fit-content;
 }
 
 .dashboard-content {
   width: 100%;
   min-width: 0; /* IMPORTANT: prevents overflow gaps */
 }
-
 /* Prevent overflow issues */
 #main > * {
   min-width: 0;

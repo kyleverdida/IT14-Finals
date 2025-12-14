@@ -1,7 +1,6 @@
 /* Main dashboard layout */
 #main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* max 2 items per row */
   gap: 1.5rem;
   align-items: start;
   width: 100%;

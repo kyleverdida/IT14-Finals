@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./HeaderFrame.css";
 
 const HeaderFrame = ({
@@ -12,6 +12,7 @@ const HeaderFrame = ({
   hasActiveFilters,
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className="header-frame">
@@ -76,6 +77,8 @@ const HeaderFrame = ({
 
       {/* RIGHT ACTIONS */}
       <div className="header-right">
+        
+
         <div className="search-section">
           <div className="search-input">
             <input
@@ -123,6 +126,13 @@ const HeaderFrame = ({
             />
           </svg>
           {hasActiveFilters && <span className="filter-dot" />}
+        </button>
+
+        <button
+          className="nav-btn"
+          onClick={() => navigate(location.pathname === "/" ? "/mod" : "/")}
+        >
+          🔒
         </button>
       </div>
     </div>

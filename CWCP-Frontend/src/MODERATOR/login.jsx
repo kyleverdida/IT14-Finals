@@ -97,15 +97,7 @@ const Login = () => {
 
             <button type="submit">Login</button>
 
-            <div className="forgot">
-              <button
-                type="button"
-                className="forgot-password"
-                onClick={() => navigate("/forgot-password")}
-              >
-                Forgot Password?
-              </button>
-            </div>
+
 
             {message && <p className="login-message">{message}</p>}
           </form>
