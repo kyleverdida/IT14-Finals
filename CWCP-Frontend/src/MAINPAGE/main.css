@@ -1,18 +1,20 @@
- body {
-  overflow: hidden; /* Hides both horizontal and vertical scrollbars */
- } 
+
 #main {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1.5rem;
+  
   align-items: start;
   width: 100%;
   padding: 1rem;
   box-sizing: border-box;
 }
-
+.dashboard{
+  display: grid;
+  width: 100%;
+}
 .user-mainpage {
   padding-top: 80px; /* Account for fixed header */
+  width: 100%;
+  
+
 }
 
 .stats-sidebar {

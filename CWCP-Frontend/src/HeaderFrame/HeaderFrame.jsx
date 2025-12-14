@@ -119,12 +119,7 @@ const HeaderFrame = ({
           className="filter-icon"
           onClick={() => setIsFilterOpen(true)}
         >
-          <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-            <path
-              d="M20.5438 13.8542L7.91667 1.22708H27.1938C27.8535 1.22708 28.3285 1.51736 28.6188 2.09792C28.909 2.67847 28.8563 3.23264 28.4604 3.76042L20.5438 13.8542Z"
-              fill="#262222"
-            />
-          </svg>
+          <img src="/filterbutton.svg" alt=""  />
           {hasActiveFilters && <span className="filter-dot" />}
         </button>
 

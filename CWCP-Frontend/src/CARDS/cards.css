@@ -1,12 +1,14 @@
 /* Card Container */
 .card {
   position: relative;
-  width: 618px;
   background: #FFFFFF;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 .card:hover {
@@ -88,6 +90,7 @@
   color: #FFFFFF;
   text-transform: capitalize;
   min-width: 100px;
+  text-align: center;
 }
 
 .status-tag.status-pending {
@@ -213,6 +216,10 @@
   .card {
     width: 100%;
   }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Wrapper */
@@ -221,6 +228,7 @@
   max-width: 618px;
   margin: 0 auto;
   padding: 0 12px;
+  
 }
 .card-container {
   display: flex;
@@ -284,4 +292,12 @@
 
 .severity-neutral {
   background: #777; /* gray */
+}
+
+/* Cards Grid Container */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 }

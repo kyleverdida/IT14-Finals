@@ -9,7 +9,7 @@ const AllConcerns = ({ posts }) => {
   }
 
   return (
-    <div className="cards">
+    <div className="cards-grid">
       {filteredPosts.map((concern) => (
         <Cards
           key={concern._id}

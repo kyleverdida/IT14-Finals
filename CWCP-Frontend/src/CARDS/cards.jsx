@@ -33,7 +33,7 @@ const Cards = ({
   _id,
   title,
   area,
-  comment,
+  description,
   status,
   severity,
   photo,
@@ -44,7 +44,7 @@ const Cards = ({
   const [showRejectionModal, setShowRejectionModal] = useState(false); // Add this state
   const severityClass = getSeverityColor(severity);
   const API_URL = import.meta.env.VITE_API_URL;
-  const API_URL_UPLOAD = import.meta.env.VITE_API_URL_UPLOAD;
+
   const rejectionReason = rejection_reason || "";
 
 
@@ -214,7 +214,7 @@ const Cards = ({
 
             {/* Description - directly under Area, no box */}
             <p className="comment-plain">
-              <strong>Description:</strong> {comment}
+              <strong>Description:</strong> {description}
             </p>
 
             {renderButtons()}

@@ -9,7 +9,7 @@ const Rejected = ({ posts }) => {
   }
 
   return (
-    <div className="cards">
+    <div className="cards-grid">
       {rejectedPosts.map((concern) => (
         <Cards key={concern._id} {...concern} />
       ))}

@@ -185,7 +185,7 @@ const Main = () => {
           </aside>
 
           {/* RIGHT: Main Content */}
-          <section className="dashboard-content">
+          <div className="dashboard-content">
             {activeView === "home" && !isModeratorPage && <Home />}
 
             {activeView === "all" && <AllConcerns posts={filteredPosts} />}
@@ -195,7 +195,7 @@ const Main = () => {
             {activeView === "pending" && <Pending posts={filteredPosts} />}
 
             {activeView === "rejected" && <Rejected posts={filteredPosts} />}
-          </section>
+          </div>
         </div>
 
         {/* Submit Concern Modal - Show on both views */}

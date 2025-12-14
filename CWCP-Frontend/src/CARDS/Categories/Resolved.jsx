@@ -9,7 +9,7 @@ const Resolved = ({ posts }) => {
   }
 
   return (
-    <div className="cards">
+    <div className="cards-grid">
       {resolvedPosts.map((concern) => (
         <Cards key={concern._id} {...concern} />
       ))}

@@ -9,7 +9,7 @@ const Pending = ({ posts }) => {
   }
 
   return (
-    <div className="cards">
+    <div className="cards-grid">
       {pendingPosts.map((concern) => (
         <Cards key={concern._id} {...concern} />
       ))}

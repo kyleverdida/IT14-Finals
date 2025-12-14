@@ -1,12 +1,13 @@
 /* Main dashboard layout */
-#main {
+/* #main {
   display: grid;
   gap: 1.5rem;
   align-items: start;
   width: 100%;
   padding: 1rem;
   box-sizing: border-box;
-}
+  
+} */
 
 /* Make children stretch nicely */
 #main > * {
