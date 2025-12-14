@@ -9,7 +9,7 @@ import LoadingScreen from "./LoadingScreen/loadingscreen.jsx"
 import Error from "./Error/error.jsx";
 import Statistics from "./Stats/statistics.jsx";
 import GMap from "./GMAP/gmap.jsx";
-
+import './app.css'
 function App() {
     const [loading, setLoading] = useState(true);
 
@@ -24,14 +24,14 @@ function App() {
             path: "/",
             element: (
                 <>
-                    <div id="main" style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div id="main">
                         
+
                         <Main />
-                        <div style={{ position: 'sticky', top: 0, overflowY: 'visible', flex: '0 0 350px' }}>
-                            <Statistics />
-                        </div>
-                        {/* GMap added to the /dashboard view */}
+                        
+                        {/* Any new components added here will auto-flow */}
                     </div>
+
 
                 </>
             ),
@@ -44,10 +44,7 @@ function App() {
             path: "/dashboard",
             element: (
                 <>
-                    <div id="main" style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ position: 'sticky', top: 0, height: '100vh', overflowY: 'visible', flex: '0 0 350px' }}>
-                            <Statistics />
-                        </div>
+                    <div id="main">
                         <Main />
                         {/* GMap added to the /dashboard view */}
                     </div>

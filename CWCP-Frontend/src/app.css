@@ -1,0 +1,23 @@
+/* Main dashboard layout */
+#main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* max 2 items per row */
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Make children stretch nicely */
+#main > * {
+  min-width: 0;
+}
+
+
+/* Optional: responsive behavior */
+@media (max-width: 900px) {
+  #main {
+    grid-template-columns: 1fr; /* 1 per row on smaller screens */
+  }
+}

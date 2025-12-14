@@ -1,655 +1,132 @@
-/* Date Inner Fix (Kept from previous input) */
-.date-inner {
-  padding-right: 40px !important;
-}
+/* ================================
+   CONCERN FORM – CLEAN REDESIGN
+   ================================ */
 
-/* Main Container from Figma */
-.form-popup {
+.concern-form {
+  max-width: 720px;
+  margin: 0 auto;
   background: #ffffff;
-  position: relative;
-  border-radius: 12px;
-  width: 712px;
-  min-height: 680px;
-  padding-bottom: 20px;
-}
-
-/* Submit Button */
-.submit-concern {
-  position: absolute;
-  background: #00b034;
-  box-sizing: border-box;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  left: 276px;
-  overflow: clip;
-  padding: 10px 24px;
-  border-radius: 8px;
-  top: 575px;
-  border: none;
-  cursor: pointer;
-}
-
-.submit-concern p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 17.705px;
-  font-style: normal;
-  position: relative;
-  flex-shrink: 0;
-  font-size: 16.343px;
-  white-space: nowrap;
-  color: white;
-  letter-spacing: 0.2696px;
-  margin: 0;
-}
-
-/* Description */
-.description {
-  position: absolute;
-  background: white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 90px;
-  align-items: flex-start;
-  left: 33px;
-  padding: 18px 26px;
-  border-radius: 30px;
-  top: 445px;
-  width: 636px;
-}
-
-.description .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.placeholder {
-  display: inline-grid;
-  grid-template-columns: max-content;
-  grid-template-rows: max-content;
-  line-height: 0;
-  place-items: start;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.placeholder p {
-  grid-area: 1 / 1;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   font-family: "Outfit", sans-serif;
-  font-weight: 100;
-  line-height: normal;
-  margin-left: 0;
-  margin-top: 0;
-  position: relative;
-  font-size: 14px;
-  color: black;
-  white-space: nowrap;
 }
 
-.placeholder p.light {
-  font-weight: 300;
-}
-
-/* Description Label */
-.description-label {
-  position: absolute;
-  left: 33px;
-  top: 415px;
-  z-index: 1;
-}
-
-/* New Flex Container Styles for Side-by-Side Fields */
-.field-row {
-  position: absolute;
-  top: 317px;
-  left: 33px;
-  width: 636px; 
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  z-index: 1; /* Ensure this row is above description */
-}
-
-.field-group {
-    display: flex;
-    flex-direction: column; 
-    width: 309px;
-}
-
-
-/* Severity */
-.severity {
-  position: relative; 
-  background: white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  align-items: flex-start;
-  justify-content: center;
-  /* REMOVED: left: 360px; top: 345px; (Now controlled by .field-row) */
-  padding: 18px 26px;
-  border-radius: 30px;
-  width: 309px;
-}
-
-.severity .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.severity-label {
-  /* REMOVED: position: absolute; left: 360px; top: 317px; (Now controlled by .field-group) */
-  font-family: "Outfit", sans-serif; /* Added to retain label style */
-  font-weight: 500;
-  height: 21px;
-  line-height: 17.705px;
-  font-size: 14px;
-  color: black;
-  letter-spacing: 0.2696px;
-  width: 200px;
-  margin-bottom: 6px; /* Space between label and input */
-  z-index: 1;
-}
-
-/* Select Area */
-.select-area {
-  position: relative; 
-  background: white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  align-items: flex-start;
-  justify-content: center;
-  /* REMOVED: left: 33px; top: 345px; (Now controlled by .field-row) */
-  padding: 18px 26px;
-  border-radius: 30px;
-  width: 309px;
-}
-
-.select-area .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.select-area-label {
-  /* REMOVED: position: absolute; left: 33px; top: 317px; (Now controlled by .field-group) */
-  font-family: "Outfit", sans-serif; /* Added to retain label style */
-  font-weight: 500;
-  height: 21px;
-  line-height: 17.705px;
-  font-size: 14px;
-  color: black;
-  letter-spacing: 0.2696px;
-  width: 200px;
-  margin-bottom: 6px; /* Space between label and input */
-  z-index: 1;
-}
-
-/* * UNIFIED ICON POSITIONING (Applies to all select/dropdown icons) */
-.select-area-icon,
-.severity-icon {
-  position: absolute;
-  right: 25px; 
-  left: auto;
-  top: 50%; 
-  transform: translateY(-50%); 
-  width: 14px;
-  height: 14px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.select-area-icon svg,
-.severity-icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Upload Photo (No changes needed, kept for context) */
-.upload-photo {
-  position: absolute;
-  background: white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  align-items: flex-start;
-  justify-content: center;
-  left: 360px;
-  padding: 18px 26px;
-  border-radius: 30px;
-  top: 245px;
-  width: 309px;
-  cursor: pointer;
-}
-
-.upload-photo .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.upload-photo-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.upload-photo-text {
-  font-family: "Outfit", sans-serif;
-  font-weight: 300;
-  line-height: 17.705px;
-  font-size: 14px;
-  color: black;
-  letter-spacing: 0.2696px;
-  margin: 0;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-right: 30px;
-}
-
-.upload-icon {
-  position: absolute;
-  right: 26px;
-  width: 14px;
-  height: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.upload-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.upload-photo-label {
-  position: absolute;
-  left: 360px;
-  top: 217px;
-  z-index: 1;
-}
-
-/* Date (No changes needed, kept for context) */
-.date-field {
-  position: absolute;
-  background: white;
-  height: 56px;
-  left: 33px;
-  border-radius: 30px;
-  top: 245px;
-  width: 309px;
-}
-
-.date-field .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.date-content {
-  width: 100%;
-  height: 100%;
-}
-
-.date-inner {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 26px;
-  position: relative;
-  width: 309px;
-}
-
-.date-label {
-  position: absolute;
-  left: 33px;
-  top: 217px;
-  z-index: 1;
-}
-
-.date-field .calendar-icon {
-  position: absolute;
-  right: 26px;
-  width: 14px;
-  height: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.date-field .calendar-icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Concern Title (No changes needed, kept for context) */
-.concern-title {
-  position: absolute;
-  background: white;
-  height: 56px;
-  left: 33px;
-  border-radius: 30px;
-  top: 155px;
-  width: 636px;
-}
-
-.concern-title .border-overlay {
-  position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  inset: 0;
-  pointer-events: none;
-}
-
-.concern-title-content {
-  width: 100%;
-  height: 100%;
-}
-
-.concern-title-inner {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 56px;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 26px;
-  position: relative;
-  width: 636px;
-}
-
-.concern-title-label {
-  position: absolute;
-  left: 33px;
-  top: 127px;
-  z-index: 1;
-}
-
-/* Labels (Kept generic label for other elements, but specific labels modified above) */
-.label {
-  font-family: "Outfit", sans-serif;
-  font-weight: 500;
-  height: 21px;
-  line-height: 17.705px;
-  font-size: 14px;
-  color: black;
-  letter-spacing: 0.2696px;
-  width: 200px;
-}
-
-/* Subtitle and Main Title (No changes needed, kept for context) */
-.subtitle {
-  position: absolute;
-  font-family: "Outfit", sans-serif;
-  font-weight: 300;
-  line-height: 1.4;
-  left: 33px;
-  font-size: 14px;
-  color: black;
-  top: 77px;
-  letter-spacing: 0.2696px;
-  width: 431px;
-}
-
-.main-title {
-  position: absolute;
-  font-family: "Outfit", sans-serif;
-  font-weight: 500;
-  line-height: 1.4;
-  left: 33px;
+/* Header */
+.form-header h2 {
+  margin: 0 0 6px 0;
   font-size: 24px;
-  color: black;
-  top: 30px;
-  letter-spacing: 0.2696px;
-  width: 460px;
-  white-space: nowrap;
+  font-weight: 500;
 }
 
-/* Inputs embedded in Figma-style fields */
-.concern-title-input,
-.date-input,
-.select-area-select,
-.severity-select,
-.description-textarea {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: "Outfit", sans-serif;
+.form-header p {
+  margin: 0 0 28px 0;
   font-size: 14px;
-  color: #000000;
-  padding: 0;
-  margin: 0;
+  font-weight: 300;
+  color: #555;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field.full {
+  grid-column: span 2;
+}
+
+/* Labels */
+.field label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #000;
+}
+
+/* Inputs */
+.field input,
+.field select,
+.field textarea {
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.field textarea {
+  height: auto;
+  padding: 14px 18px;
   resize: none;
 }
 
-.description-textarea {
-  min-height: 50px;
-  line-height: 1.4;
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #00b034;
 }
 
-.concern-title-input::placeholder,
-.description-textarea::placeholder,
-.date-input::placeholder,
-.select-area-select::placeholder,
-.severity-select::placeholder {
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.hidden-file-input {
-  display: none;
-}
-
-/* Select styling */
-.select-area-select,
-.severity-select {
+/* Select arrow cleanup */
+.field select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  cursor: pointer;
-  /* CRITICAL: Add padding to clear the icon space */
-  padding-right: 40px; 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
 }
 
-/* Date input styling */
-.date-input {
-  cursor: pointer;
-  padding-right: 30px;
+/* Preview */
+.preview {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.date-input::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
+.preview img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Submit Button */
+.submit {
+  margin-top: 28px;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+  height: 52px;
+  border-radius: 26px;
+  border: none;
+  background: #00b034;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-/* ================================================================== */
-/* RESPONSIVE MODAL SYSTEM                                            */
-/* ================================================================== */
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
+/* ================================
+   RESPONSIVE
+   ================================ */
 @media (max-width: 768px) {
-  /* Re-ordering for Mobile */
-  .form-popup {
-    width: 90%;
-    min-height: auto;
-    padding: 24px 16px 40px 16px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  .grid {
+    grid-template-columns: 1fr;
   }
 
-  .main-title {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin-bottom: 8px;
-    font-size: 20px;
-    width: 100%;
-    order: 1;
-  }
-
-  .subtitle {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    margin-bottom: 20px;
-    width: 100%;
-    order: 2;
-  }
-  
-  /* Date and Upload photo labels are side-by-side on desktop but stack on mobile
-     We need to reorder them in the flow:
-     Date Label (5) -> Date Field (6) -> Upload Label (7) -> Upload Field (8)
-     This is already handled by the mobile order below.
-  */
-
-  /* Force field row (Select Area/Severity) to display vertically on mobile */
-  .field-row {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    flex-direction: column;
-    gap: 20px; /* Adjust spacing for vertical stack */
-    margin-bottom: 20px;
-    order: 9;
-  }
-
-  /* Break the field-group order to match the rest of the form flow */
-  .field-group:nth-child(1) { order: 1; } /* Select Area */
-  .field-group:nth-child(2) { order: 2; } /* Severity */
-
-  /* Re-ordering for the single-column layout flow */
-  .concern-title-label { order: 3; }
-  .concern-title { order: 4; }
-  .date-label { order: 5; }
-  .date-field { order: 6; }
-  .upload-photo-label { order: 7; }
-  .upload-photo { order: 8; }
-  
-  .description-label { order: 10; }
-  .description { order: 11; }
-  .submit-concern { order: 12; }
-
-  /* Reset relative positioning for other elements */
-  .concern-title,
-  .date-field,
-  .upload-photo,
-  .description {
-    position: relative !important;
-    width: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-    margin-bottom: 20px;
-  }
-
-  /* Reset relative positioning for labels */
-  .concern-title-label,
-  .date-label,
-  .upload-photo-label,
-  .description-label {
-    position: relative !important;
-    left: 0 !important;
-    top: 0 !important;
-    margin-bottom: 6px;
-  }
-
-  /* Ensure elements inside field-group take full width on mobile */
-  .select-area,
-  .severity {
-    width: 100% !important;
-    margin-bottom: 0 !important;
-  }
-  
-  /* Reset label margins within field-group */
-  .select-area-label,
-  .severity-label {
-      margin-bottom: 6px !important;
-      position: relative !important;
-      width: 100% !important;
-  }
-
-  .date-inner {
-    padding-right: 40px !important;
-  }
-
-  .date-field .calendar-icon {
-    right: 26px !important;
-  }
-  
-  .upload-photo-text {
-    font-size: 14px;
-  }
-
-  .submit-concern {
-    position: relative !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100%;
-    margin-top: 10px;
-  }
-}
-
-/* ------------------------------ */
-/* Phones (Very Small Screens)    */
-/* ------------------------------ */
-@media (max-width: 480px) {
-  .form-popup {
-    padding: 20px 12px 32px 12px;
-  }
-
-  .main-title {
-    font-size: 18px;
-  }
-
-  .subtitle {
-    font-size: 12px;
-  }
-
-  .concern-title-input,
-  .date-input,
-  .select-area-select,
-  .severity-select,
-  .description-textarea {
-    font-size: 12px;
-  }
-
-  .upload-photo-text {
-    font-size: 10px;
+  .field.full {
+    grid-column: span 1;
   }
 }

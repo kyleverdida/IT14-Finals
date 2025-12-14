@@ -4,7 +4,6 @@
   background: #f5f7fa;
   padding: clamp(1rem, 3vw, 2rem);
   font-family: system-ui, -apple-system, sans-serif;
-  
 }
 
 .loading-container,
@@ -22,26 +21,24 @@
 .title {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: #1F2253;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  color: #1f2253;
+  margin: 0 0px;
   text-align: center;
 }
 
 /* ===== STAT CARDS ===== */
 .stats-cards {
-  display: block;  /* Changed from grid to block for full width */
-  padding-top: 20px;  /* Reduced from 130px to 20px */
+  display: block; /* Changed from grid to block for full width */
+  padding-top: 20px; /* Reduced from 130px to 20px */
   width: 100%;
 }
 /* RIGHT COLUMN SIDEBAR */
 .stats-sidebar {
-  display: grid;  /* Changed to grid for better layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Responsive grid */
+  display: grid; /* Changed to grid for better layout */
+  grid-template-columns: 1fr; /* Single column for sidebar */
   gap: 1rem;
   width: 100%;
 }
-
-
 
 .stat-card {
   background: white;
@@ -50,6 +47,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #e6edff;
   transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .stat-card:hover {
@@ -61,7 +60,7 @@
   margin: 0 0 0.5rem 0;
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: #1F2253;
+  color: #1f2253;
 }
 
 .stat-title {
@@ -74,7 +73,7 @@
 .stat-subtitle {
   margin: 0;
   font-size: clamp(0.8rem, 1.2vw, 0.85rem);
-  color: #00B034;
+  color: #00b034;
   font-weight: 500;
 }
 
@@ -112,7 +111,7 @@
   margin: 0 0 1rem 0;
   font-size: clamp(1.1rem, 2.5vw, 1.25rem);
   font-weight: 600;
-  color: #1F2253;
+  color: #1f2253;
 }
 
 .legend-item {
@@ -145,30 +144,30 @@
   .app-root {
     padding: 1rem;
   }
-  
+
   .cards {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .title {
     font-size: 1.5rem;
   }
-  
+
   .stat-card {
     padding: 1rem;
   }
-  
+
   .stat-value {
     font-size: 1.5rem;
   }
-  
+
   .chart-container,
   .donut-container,
   .severity-container {
     padding: 1rem;
   }
-  
+
   .charts-wrapper {
     gap: 1rem;
   }
@@ -179,7 +178,7 @@
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .charts-wrapper {
     grid-template-columns: 1fr;
   }
@@ -190,7 +189,7 @@
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .charts-wrapper {
     grid-template-columns: 1fr;
   }
@@ -201,7 +200,6 @@
   .cards {
     grid-template-columns: repeat(4, 1fr);
   }
-  
 }
 
 /* Extra Large Devices (Large Desktops, 1440px - 1919px) */
@@ -209,7 +207,7 @@
   .cards {
     grid-template-columns: repeat(4, 1fr);
   }
-  
+
   .app-root {
     max-width: 1400px;
     margin: 0 auto;
@@ -222,12 +220,12 @@
     max-width: 1600px;
     margin: 0 auto;
   }
-  
+
   .cards {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
-  
+
   .charts-wrapper {
     gap: 2rem;
   }
@@ -252,7 +250,7 @@
   .stat-card {
     padding: 1.25rem;
   }
-  
+
   .stat-value {
     font-size: 1.75rem;
   }
@@ -264,7 +262,7 @@
     padding: 1rem;
     background: white;
   }
-  
+
   .stat-card,
   .chart-container,
   .donut-container,

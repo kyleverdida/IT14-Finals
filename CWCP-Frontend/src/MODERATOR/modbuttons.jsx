@@ -6,12 +6,12 @@ const modbuttons = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <div className="mod-buttons">
-        <button onClick={() => navigate("/mod")}>Moderator Login</button>
-        <button onClick={() => navigate("/error")}>Error</button>
-      </div>
-    </div>
+
+
+    <button onClick={() => navigate("/mod")}>🔒</button>
+
+
+
   )
 }
 

@@ -13,6 +13,7 @@ import AllConcerns from "../CARDS/Categories/AllConcerns.jsx";
 import Resolved from "../CARDS/Categories/Resolved.jsx";
 import Pending from "../CARDS/Categories/Pending.jsx";
 import Rejected from "../CARDS/Categories/Rejected.jsx";
+import Statistics from "../Stats/statistics.jsx";
 
 
 const Main = () => {
@@ -177,28 +178,25 @@ const Main = () => {
         )}
 
         {/* Main Content */}
-        <div className="main-content">
-          {activeView === "home" && !isModeratorPage && (
-            <Home />
-          )}
+        <div className="dashboard-layout">
+          {/* LEFT: Statistics */}
+          <aside className="dashboard-stats">
+            <Statistics />
+          </aside>
 
-          {activeView === "all" && (
-            <AllConcerns posts={filteredPosts} />
-          )}
+          {/* RIGHT: Main Content */}
+          <section className="dashboard-content">
+            {activeView === "home" && !isModeratorPage && <Home />}
 
-          {activeView === "resolved" && (
-            <Resolved posts={filteredPosts} />
-          )}
+            {activeView === "all" && <AllConcerns posts={filteredPosts} />}
 
-          {activeView === "pending" && (
-            <Pending posts={filteredPosts} />
-          )}
+            {activeView === "resolved" && <Resolved posts={filteredPosts} />}
 
-          {activeView === "rejected" && (
-            <Rejected posts={filteredPosts} />
-          )}
+            {activeView === "pending" && <Pending posts={filteredPosts} />}
+
+            {activeView === "rejected" && <Rejected posts={filteredPosts} />}
+          </section>
         </div>
-
 
         {/* Submit Concern Modal - Show on both views */}
         {isFormOpen && (

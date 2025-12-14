@@ -1,362 +1,107 @@
-/* Root wrapper for user main page */
-.user-mainpage {
-  font-family: "Poppins", sans-serif;
-  
-}
-
-/* Hide scrollbars globally */
-html, body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.user-mainpage *,
-.user-mainpage *::before,
-.user-mainpage *::after {
+ body {
+  overflow: hidden; /* Hides both horizontal and vertical scrollbars */
+ } 
+#main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
-/* Dashboard Container */
-.user-mainpage .dashboard {
-  background-color: #e8e8e8;
-  height: 100vh; /* Fixed height to full viewport */
-  width: 84vw; /* Fixed width to full viewport */
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-top: 191px;
-  padding-bottom: 100px;
-  box-sizing: border-box; /* Include padding in size */
-  overflow-x: hidden; /* Prevent horizontal overflow */
+.user-mainpage {
+  padding-top: 80px; /* Account for fixed header */
 }
 
+.stats-sidebar {
+  width: 100%;
+  max-width: 380px;
 
-/* ========================================
-   CARDS CONTAINER
-   ======================================== */
-.user-mainpage .cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: flex-start;
-  justify-content: space-evenly;
+
+}
+
+.stat-card {
+  width: 100%;
+}
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr; /* stats | content */
+  width: 100%;
+  max-width: 100%;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.dashboard-stats {
+  position: sticky;
+  top: 80px; /* below header */
+  overflow-y: auto;
+}
+
+.dashboard-content {
+  width: 100%;
+  min-width: 0; /* IMPORTANT: prevents overflow gaps */
+}
+
+/* Prevent overflow issues */
+#main > * {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  #main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Modal Styles */
+.form-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-}
-
-.user-mainpage #noposts {
-  margin: 150px auto;
-  font-size: 2rem;
-  color: #666;
-}
-
-/* Main Content Container - Fixed Width, Auto Height */
-.main-content {
-  width: 800px;
-  height: auto; /* Allow height to expand to fit content */
-  overflow: visible; /* No scrolling, show all content */
-  background-color: #e8e8e8;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* ========================================
-   TABLET RESPONSIVENESS (768px - 1024px)
-   ======================================== */
-@media (max-width: 1024px) {
-  .user-mainpage .dashboard {
-    padding-top: 180px;
-  }
-
-  .user-mainpage .header-frame {
-    width: 95%;
-    min-height: 120px;
-    padding: 20px 30px;
-    gap: 20px;
-  }
-
-  .user-mainpage .logo-section {
-    max-width: 250px;
-    gap: 12px;
-  }
-
-  .user-mainpage .logo-image {
-    width: 45px;
-    height: 38px;
-  }
-
-  .user-mainpage .top-text {
-    font-size: 9px;
-    line-height: 11px;
-  }
-
-  .user-mainpage .city-text {
-    font-size: 18px;
-    line-height: 16px;
-  }
-
-  .user-mainpage .portal-title {
-    font-size: 13px;
-    line-height: 16px;
-  }
-
-  .user-mainpage .portal-subtitle {
-    font-size: 7.5px;
-    line-height: 16px;
-  }
-
-  .user-mainpage .nav-buttons-section {
-    gap: 25px;
-  }
-
-  .user-mainpage .nav-btn {
-    font-size: 14px;
-  }
-
-  .user-mainpage .search-section {
-    max-width: 220px;
-  }
-
-  .user-mainpage .search-input {
-    height: 36px;
-  }
-
-  .user-mainpage .btn {
-    font-size: 16px;
-    padding: 10px 28px;
-  }
-
-  .user-mainpage .filter-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .user-mainpage .home-section {
-    padding: 25px;
-  }
-
-  .user-mainpage .home-section h2 {
-    font-size: 20px;
-  }
-
-  .user-mainpage .home-section p {
-    font-size: 14px;
-  }
+.form-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 750px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* ========================================
-   MOBILE RESPONSIVENESS (up to 767px)
-   ======================================== */
-@media (max-width: 767px) {
-  .user-mainpage .dashboard {
-    padding-top: 200px;
-  }
-
-  .user-mainpage .header-frame {
-    width: 95%;
-    min-height: auto;
-    top: 10px;
-    padding: 15px;
-    border-radius: 15px;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  /* Logo Section - Mobile */
-  .user-mainpage .logo-section {
-    width: 100%;
-    max-width: 100%;
-    gap: 10px;
-  }
-
-  .user-mainpage .logo-image {
-    width: 35px;
-    height: 30px;
-  }
-
-  .user-mainpage .top-text {
-    font-size: 7px;
-    line-height: 9px;
-  }
-
-  .user-mainpage .city-text {
-    font-size: 13px;
-    line-height: 15px;
-  }
-
-  .user-mainpage .portal-title {
-    font-size: 9px;
-    line-height: 11px;
-  }
-
-  .user-mainpage .portal-subtitle {
-    font-size: 6.5px;
-    line-height: 8px;
-  }
-
-  /* Navigation Buttons - Mobile */
-  .user-mainpage .nav-buttons-section {
-    width: 100%;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .user-mainpage .nav-btn {
-    font-size: 14px;
-  }
-
-  /* Search Section - Mobile */
-  .user-mainpage .search-section {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .user-mainpage .search-input {
-    height: 38px;
-  }
-
-  /* Button and Filter Section - Mobile */
-  .user-mainpage .button-section {
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .user-mainpage .btn {
-    font-size: 14px;
-    padding: 11px 20px;
-    flex: 1;
-  }
-
-  .user-mainpage .filter-icon {
-    width: 38px;
-    height: 38px;
-  }
-
-  /* Main Content - Mobile */
-  .user-mainpage .main-content {
-    padding: 20px 10px;
-  }
-
-  .user-mainpage .no-concerns-text {
-    font-size: 18px;
-  }
-
-  .user-mainpage .home-view {
-    padding: 15px;
-    gap: 25px;
-  }
-
-  .user-mainpage .home-section {
-    padding: 20px;
-  }
-
-  .user-mainpage .home-section h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-
-  .user-mainpage .home-section p {
-    font-size: 13px;
-    margin-bottom: 12px;
-  }
-
-  /* Cards - Mobile */
-  .user-mainpage .cards {
-    gap: 15px;
-    justify-content: center;
-  }
-
-  /* Modal - Mobile */
-  .user-mainpage .form-modal {
-    width: 95%;
-    max-height: 85vh;
-    padding: 15px;
-  }
-
-  .user-mainpage .modal-content-sidebar {
-    width: 320px;
-  }
+.form-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
 }
 
-/* ========================================
-   SMALL MOBILE (up to 480px)
-   ======================================== */
-@media (max-width: 480px) {
-  .user-mainpage .dashboard {
-    padding-top: 220px;
-  }
-
-  .user-mainpage .header-frame {
-    padding: 12px;
-    gap: 10px;
-  }
-
-  .user-mainpage .logo-section {
-    gap: 8px;
-  }
-
-  .user-mainpage .logo-image {
-    width: 32px;
-    height: 28px;
-  }
-
-  .user-mainpage .top-text {
-    font-size: 6.5px;
-    line-height: 8px;
-  }
-
-  .user-mainpage .city-text {
-    font-size: 12px;
-    line-height: 14px;
-  }
-
-  .user-mainpage .portal-title {
-    font-size: 8.5px;
-    line-height: 10px;
-  }
-
-  .user-mainpage .portal-subtitle {
-    font-size: 6px;
-    line-height: 7.5px;
-  }
-
-  .user-mainpage .nav-buttons-section {
-    gap: 25px;
-  }
-
-  .user-mainpage .nav-btn {
-    font-size: 13px;
-  }
-
-  .user-mainpage .search-input {
-    height: 36px;
-  }
-
-  .user-mainpage .button-section {
-    gap: 8px;
-  }
-
-  .user-mainpage .btn {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-
-  .user-mainpage .filter-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .user-mainpage .no-concerns-text {
-    font-size: 16px;
-  }
-
-
-
-  .user-mainpage .modal-content-sidebar {
-    width: 280px;
-  }
+.form-modal-close:hover {
+  background: #f0f0f0;
 }
