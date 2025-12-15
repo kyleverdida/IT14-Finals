@@ -42,7 +42,6 @@ export default function Statistics() {
 
   return (
     <div className="app-root">
-      <h1 className="title">City Issue Reporting Statistics</h1>
 
       <div className="stats-cards">
         {/* <div>

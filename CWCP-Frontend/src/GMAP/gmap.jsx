@@ -44,8 +44,8 @@ const AreaSelector = ({ setMarkerPos, setAreaStats }) => {
   return (
     <div className="area-selector">
       <h3>Select Area</h3>
-      <select onChange={handleChange}>
-        <option value="">-- Choose an Area --</option>
+      <select onChange={handleChange} defaultValue="">
+        <option value="" disabled>Choose an area</option>
         <option value="apokon">Apokon</option>
         <option value="bincungan">Bincungan</option>
         <option value="busaon">Busaon</option>
@@ -104,13 +104,17 @@ const GMap = () => {
           {areaStats && (
             <div className="area-stats">
               <h3>Area Stats</h3>
-              <p><strong>Area:</strong> {areaStats.area}</p>
+              <p><strong>Area:</strong> {areaStats.area
+                .toLowerCase()
+                .replace(/[-—]/g, " ")   // remove dash / em dash
+                .replace(/\b\w/g, c => c.toUpperCase())}</p>
               <p><strong>Total Concerns:</strong> {areaStats.totalConcerns}</p>
 
-              <p><strong>Resolved:</strong> {areaStats.status.resolved}</p>
-              <p><strong>Pending:</strong> {areaStats.status.pending}</p>
-              <p><strong>Ongoing:</strong> {areaStats.status.ongoing}</p>
-              <p><strong>Rejected: </strong> {areaStats.status.rejected}</p>
+              <p><strong>Resolved:</strong> <span>{areaStats.status.resolved}</span></p>
+              <p><strong>Pending:</strong> <span>{areaStats.status.pending}</span></p>
+              <p><strong>Ongoing:</strong> <span>{areaStats.status.ongoing}</span></p>
+              <p><strong>Rejected:</strong> <span>{areaStats.status.rejected}</span></p>
+
 
             </div>
           )}

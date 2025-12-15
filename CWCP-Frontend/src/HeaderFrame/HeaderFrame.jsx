@@ -72,12 +72,20 @@ const HeaderFrame = ({
           >
             Rejected
           </button>
+
         )}
+        <button
+          className={`nav-btn ${activeView === "rejected" ? "active" : ""}`}
+          onClick={() => setActiveView("map")}
+        >
+          Map
+        </button>
+
       </div>
 
       {/* RIGHT ACTIONS */}
       <div className="header-right">
-        
+
 
         <div className="search-section">
           <div className="search-input">
@@ -119,7 +127,7 @@ const HeaderFrame = ({
           className="filter-icon"
           onClick={() => setIsFilterOpen(true)}
         >
-          <img src="/filterbutton.svg" alt=""  />
+          <img src="/filterbutton.svg" alt="" />
           {hasActiveFilters && <span className="filter-dot" />}
         </button>
 

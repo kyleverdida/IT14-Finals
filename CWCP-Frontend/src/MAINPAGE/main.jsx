@@ -5,8 +5,7 @@ import "./main.css";
 
 import Cards from "../CARDS/cards.jsx";
 import Form from "../FORM/form.jsx";
-import Filter from "../filter/filters.jsx";
-import Searchbar from "../SEARCHBAR/searchbar.jsx";
+import Filter from "../FILTER/filters.jsx";
 import Home from "../home/home.jsx"
 import HeaderFrame from "../HeaderFrame/HeaderFrame.jsx";
 import AllConcerns from "../CARDS/Categories/AllConcerns.jsx";
@@ -14,6 +13,7 @@ import Resolved from "../CARDS/Categories/Resolved.jsx";
 import Pending from "../CARDS/Categories/Pending.jsx";
 import Rejected from "../CARDS/Categories/Rejected.jsx";
 import Statistics from "../Stats/statistics.jsx";
+import GMap from "../GMAP/gmap.jsx";
 
 
 const Main = () => {
@@ -195,6 +195,8 @@ const Main = () => {
             {activeView === "pending" && <Pending posts={filteredPosts} />}
 
             {activeView === "rejected" && <Rejected posts={filteredPosts} />}
+
+            {activeView === "map" && <GMap />}
           </div>
         </div>
 

@@ -10,6 +10,8 @@ import Error from "./Error/error.jsx";
 import Statistics from "./Stats/statistics.jsx";
 import GMap from "./GMAP/gmap.jsx";
 import './app.css'
+import AllConcerns from "./CARDS/Categories/AllConcerns.jsx";
+import HeaderFrame from "./HeaderFrame/HeaderFrame.jsx";
 function App() {
     const [loading, setLoading] = useState(true);
 
@@ -59,16 +61,7 @@ function App() {
                 </>
             )
         },
-        {
-            path: "/statistics",
-            element: (
-                <>
-                    <div id="main">
-                        <Statistics />
-                    </div>
-                </>
-            ),
-        },
+        
     ]);
 
     return (
