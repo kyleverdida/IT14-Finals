@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import "./form.css";
@@ -14,7 +13,8 @@ const Form = ({ onClose }) => {
     approved: false,
   });
 
-  const [preview, setPreview] = useState(null); // for live image preview
+  const [preview, setPreview] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,12 +24,36 @@ const Form = ({ onClose }) => {
     const file = e.target.files[0];
     if (file) {
       setFormData({ ...formData, photo: file });
-      setPreview(URL.createObjectURL(file)); // generate preview
+      setPreview(URL.createObjectURL(file));
     }
   };
 
+  const validateFields = () => {
+    const newErrors = {};
+
+    if (!formData.title.trim()) newErrors.title = true;
+    if (!formData.timestamp) newErrors.timestamp = true;
+    if (!formData.photo) newErrors.photo = true;
+    if (!formData.area) newErrors.area = true;
+    if (!formData.severity) newErrors.severity = true;
+    if (!formData.description.trim()) newErrors.description = true;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const isFormValid =
+    formData.title.trim() &&
+    formData.timestamp &&
+    formData.photo &&
+    formData.area &&
+    formData.severity &&
+    formData.description.trim();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateFields()) return;
 
     if (!formData.title.trim()) return alert("Title is required");
     if (!formData.photo) return alert("Photo is required");
@@ -44,7 +68,7 @@ const Form = ({ onClose }) => {
       const data = new FormData();
       data.append("title", formData.title);
       data.append("timestamp", formData.timestamp);
-      data.append("image", formData.photo); // must match backend
+      data.append("image", formData.photo);
       data.append("area", formData.area);
       data.append("severity", formData.severity);
       data.append("description", formData.description);
@@ -55,7 +79,8 @@ const Form = ({ onClose }) => {
 
       alert("Concern submitted successfully!");
       if (onClose) onClose();
-      setPreview(null); // clear preview after submit
+
+      setPreview(null);
       setFormData({
         title: "",
         timestamp: new Date().toISOString().split("T")[0],
@@ -65,6 +90,7 @@ const Form = ({ onClose }) => {
         description: "",
         approved: false,
       });
+      setErrors({});
     } catch (error) {
       if (error.response) alert(error.response.data.error || "Upload failed");
       else alert("Upload failed. Please try again.");
@@ -85,9 +111,8 @@ const Form = ({ onClose }) => {
           <div className="concern-title-inner">
             <input
               type="text"
-              id="title"
               name="title"
-              className="concern-title-input"
+              className={`concern-title-input ${errors.title ? "error-field" : ""}`}
               placeholder="e.g., Palm Incident"
               value={formData.title}
               onChange={handleChange}
@@ -104,31 +129,22 @@ const Form = ({ onClose }) => {
           <div className="date-inner">
             <input
               type="date"
-              id="timestamp"
               name="timestamp"
-              className="date-input"
+              className={`date-input ${errors.timestamp ? "error-field" : ""}`}
               value={formData.timestamp}
               onChange={handleChange}
             />
           </div>
         </div>
+        <div className="calendar-icon">
+          <img src="../src/assets/calendar-icon.svg" alt="Calendar Icon" />
+        </div>
       </div>
       <p className="label date-label">Date</p>
 
-      {/* Image Preview */}
-      {preview && (
-        <div className="image-preview">
-          <img
-            src={preview}
-            alt="Preview"
-            style={{ maxWidth: "100%", maxHeight: "200px", marginBottom: "10px" }}
-          />
-        </div>
-      )}
-
       {/* Upload Photo */}
       <div
-        className="upload-photo"
+        className={`upload-photo ${errors.photo ? "error-field" : ""}`}
         onClick={() => document.getElementById("photo-input")?.click()}
       >
         <div className="border-overlay" />
@@ -137,27 +153,28 @@ const Form = ({ onClose }) => {
             {formData.photo ? formData.photo.name : "-- No File Selected --"}
           </p>
         </div>
+        <div className="upload-icon">
+          <img src="../src/assets/upload-icon.svg" alt="Upload Icon" />
+        </div>
         <input
           id="photo-input"
           className="hidden-file-input"
           type="file"
-          name="photo"
           accept="image/*"
           onChange={handleFileChange}
         />
       </div>
       <p className="label upload-photo-label">Upload Photo</p>
 
-      {/* Select Area & Severity */}
+      {/* Area & Severity */}
       <div className="field-row">
         <div className="field-group">
           <p className="label select-area-label">Select Area</p>
           <div className="select-area">
             <div className="border-overlay" />
             <select
-              id="area"
               name="area"
-              className="select-area-select"
+              className={`select-area-select ${errors.area ? "error-field" : ""}`}
               value={formData.area}
               onChange={handleChange}
             >
@@ -194,9 +211,8 @@ const Form = ({ onClose }) => {
           <div className="severity">
             <div className="border-overlay" />
             <select
-              id="severity"
               name="severity"
-              className="severity-select"
+              className={`severity-select ${errors.severity ? "error-field" : ""}`}
               value={formData.severity}
               onChange={handleChange}
             >
@@ -213,9 +229,8 @@ const Form = ({ onClose }) => {
       <div className="description">
         <div className="border-overlay" />
         <textarea
-          id="description"
           name="description"
-          className="description-textarea"
+          className={`description-textarea ${errors.description ? "error-field" : ""}`}
           placeholder="Describe the concern in detail..."
           value={formData.description}
           onChange={handleChange}
@@ -223,8 +238,12 @@ const Form = ({ onClose }) => {
       </div>
       <p className="label description-label">Description</p>
 
-      {/* Submit button */}
-      <button type="submit" className="submit-concern">
+      {/* Submit */}
+      <button
+        type="submit"
+        className="submit-concern"
+        disabled={!isFormValid}
+      >
         <p>Submit Concern</p>
       </button>
     </form>

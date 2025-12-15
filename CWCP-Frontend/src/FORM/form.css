@@ -273,15 +273,15 @@
 .upload-icon {
   position: absolute;
   right: 26px;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
 }
 
-.upload-icon svg {
+.upload-icon img {
   width: 100%;
   height: 100%;
 }
@@ -339,15 +339,15 @@
 .date-field .calendar-icon {
   position: absolute;
   right: 26px;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
 }
 
-.date-field .calendar-icon svg {
+.date-field .calendar-icon img {
   display: block;
   width: 100%;
   height: 100%;
