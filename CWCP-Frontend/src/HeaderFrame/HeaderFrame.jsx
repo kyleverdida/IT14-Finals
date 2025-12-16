@@ -26,7 +26,7 @@ const HeaderFrame = ({
           <p className="top-text">REPUBLIC OF THE PHILIPPINES</p>
           <p className="top-text">PROVINCE OF DAVAO DEL NORTE</p>
           <p className="city-text">CITY OF TAGUM</p>
-          <p className="portal-title">CITY WIDE CONCERN PORTAL</p>
+          <p className="portal-title">BARANGAY CANOCOTAN CONCERN PORTAL</p>
           <p className="portal-subtitle">
             KEEPING COMMUNITIES SAFE AND CONNECTED!
           </p>

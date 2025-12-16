@@ -191,10 +191,9 @@ const Cards = ({
             <img src={imageSrc} alt={title} />
             <div className="severity-bar"></div>
           </div>
-
+          <h3>{title}</h3>
           <div className="card-body">
             <div className="card-header">
-              <h3>{title}</h3>
 
               {/* Status Tag */}
               <span className={`status-tag status-${status?.toLowerCase()}`}>

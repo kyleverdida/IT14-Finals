@@ -70,13 +70,15 @@
   gap: 15px;
 }
 
-.card-header h3 {
+h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 21.96px;
   color: #000000;
   margin: 0;
   flex: 1;
+  padding-top: 30px;
+  padding-left: 30px;
 }
 
 /* Status Tag */

@@ -18,7 +18,7 @@ const postSchema = new mongoose.Schema(
     },
     severity: {
       type: String,
-      enum: ["inconvenient", "hazard", "life-threatening"],
+      // enum: ["inconvenient", "hazard", "life-threatening"],
       required: true,
     },
     description: {
