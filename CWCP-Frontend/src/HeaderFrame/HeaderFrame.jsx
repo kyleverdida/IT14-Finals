@@ -74,12 +74,12 @@ const HeaderFrame = ({
           </button>
 
         )}
-        <button
+        {/* <button
           className={`nav-btn ${activeView === "rejected" ? "active" : ""}`}
           onClick={() => setActiveView("map")}
         >
           Map
-        </button>
+        </button> */}
 
       </div>
 
