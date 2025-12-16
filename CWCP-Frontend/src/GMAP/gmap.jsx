@@ -5,7 +5,7 @@ import {
   Marker,
   useMap
 } from "@vis.gl/react-google-maps";
-import "./GMap.css";
+import "./gmap.css";
 
 const AreaSelector = ({ setMarkerPos, setAreaStats }) => {
   const map = useMap("main-map");

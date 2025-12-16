@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./RejectionModal.css";
+import "./rejectionmodal.css";
 import CustomAlert from "../Custom Alert/customalert"; // Add this import
 
 const RejectionModal = ({ onConfirm, onCancel }) => {

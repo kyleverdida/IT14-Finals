@@ -137,7 +137,7 @@ const Form = ({ onClose }) => {
           </div>
         </div>
         <div className="calendar-icon">
-          <img src="../src/assets/calendar-icon.svg" alt="Calendar Icon" />
+          <img src="../calendar-icon.svg" alt="Calendar Icon" />
         </div>
       </div>
       <p className="label date-label">Date</p>
@@ -154,7 +154,7 @@ const Form = ({ onClose }) => {
           </p>
         </div>
         <div className="upload-icon">
-          <img src="../src/assets/upload-icon.svg" alt="Upload Icon" />
+          <img src="../upload-icon.svg" alt="Upload Icon" />
         </div>
         <input
           id="photo-input"

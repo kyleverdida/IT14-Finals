@@ -58,7 +58,7 @@ const Cards = ({
 
   const closeAlert = () => {
     setAlertMessage(null);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleAPIAction = async (url, method, successMsg, errorMsg, body = null) => {
