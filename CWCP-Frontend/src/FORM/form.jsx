@@ -73,11 +73,16 @@ const Form = ({ onClose }) => {
       data.append("severity", formData.severity);
       data.append("description", formData.description);
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/post`, data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/post`,
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
-      alert("Concern submitted successfully!");
+      const concernId = res.data.id;
+
+      alert(`Concern submitted successfully!\nReference ID: ${concernId}`);
+
       if (onClose) onClose();
 
       setPreview(null);
