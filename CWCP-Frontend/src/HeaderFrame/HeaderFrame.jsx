@@ -19,7 +19,7 @@ const HeaderFrame = ({
       {/* LOGO */}
       <div className="logo-section">
         <div className="logo-image">
-          <img src="/CWCP-LOGO.svg" alt="City Logo" />
+          <img src="/cwcp-city-logo.svg" alt="City Logo" />
         </div>
 
         <div className="header-text">
