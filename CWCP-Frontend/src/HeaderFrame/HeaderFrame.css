@@ -1,5 +1,6 @@
+
 /* ========================================
-   HEADER FRAME (NAVBAR)
+   HEADER FRAME (NAVBAR) - BASE STYLES
    ======================================== */
 .header-frame {
   position: fixed;
@@ -10,16 +11,15 @@
   background: #ffffff;
 
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto; /* ← FIX */
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
 
   border-bottom: 1px solid #e6e6e6;
   z-index: 1000;
 }
 
-
 /* ========================================
-   LOGO
+   LOGO SECTION
    ======================================== */
 .logo-section {
   display: flex;
@@ -27,11 +27,13 @@
   gap: 12px;
   flex-shrink: 0;
   padding: 0 30px;
+  min-width: 0;
 }
 
 .logo-image {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
 }
 
 .logo-image img {
@@ -44,6 +46,8 @@
   display: flex;
   flex-direction: column;
   line-height: 1.1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .top-text {
@@ -51,6 +55,9 @@
   font-size: 10px;
   font-weight: 600;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .city-text {
@@ -58,6 +65,9 @@
   font-size: 16px;
   font-weight: 700;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .portal-title {
@@ -66,28 +76,31 @@
   font-weight: 700;
   color: #00642f;
   margin: 2px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .portal-subtitle {
   font-family: "Quattrocento Sans", sans-serif;
   font-size: 9px;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ========================================
-   NAVIGATION
+   NAVIGATION BUTTONS
    ======================================== */
 .nav-buttons-section {
   display: flex;
   justify-content: center;
   gap: 24px;
   min-width: 0;
-}
-
-.nav-buttons-section {
-  min-width: 0; /* CRITICAL */
-  overflow: hidden; /* prevents pushing right section */
+  overflow: hidden;
   flex-wrap: nowrap;
+  padding: 0 10px;
 }
 
 .nav-btn {
@@ -100,6 +113,12 @@
   font-size: 15px;
   font-weight: 500;
   color: #03045e;
+  padding: 4px 8px;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  color: #00642f;
 }
 
 .nav-btn.active {
@@ -116,7 +135,7 @@
 }
 
 /* ========================================
-   RIGHT ACTIONS
+   RIGHT ACTIONS SECTION
    ======================================== */
 .header-right {
   display: flex;
@@ -126,20 +145,23 @@
   flex-shrink: 0;
 }
 
-/* SEARCH */
+/* SEARCH INPUT */
 .search-section {
   position: relative;
-  width: 220px;
+  width: 180px;
+  flex-shrink: 0;
 }
 
 .search-input {
-  height: 36px;
-  border-radius: 8px;
+  height: 32px;
+  border-radius: 6px;
   background: #f6f6fb;
-  border: 2px solid #e0e0e0;
-  padding: 0 36px 0 12px;
+  border: 1px solid #e0e0e0;
+  padding: 0 32px 0 10px;
   display: flex;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-input input {
@@ -149,19 +171,27 @@
   background: transparent;
 
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #262222;
+  min-width: 0;
+}
+
+.search-input input::placeholder {
+  color: #999;
 }
 
 .search-icon {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* SUBMIT */
+/* SUBMIT BUTTON */
 .btn-submit {
   background: #34c759;
   color: #ffffff;
@@ -170,18 +200,41 @@
   cursor: pointer;
 
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 8px 18px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* FILTER */
+.btn-submit:hover {
+  background: #2db84d;
+}
+
+/* FILTER BUTTON */
 .filter-icon {
   position: relative;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.filter-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .filter-dot {
@@ -194,42 +247,513 @@
   border-radius: 50%;
   border: 2px solid #ffffff;
 }
-.filter-icon  {
-  width: 40px;
-  height: 40px;
-}
-
-.filter-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-@media (max-width: 1100px) {
-  .top-text,
-  .portal-subtitle {
-    display: none;
-  }
-}
-
-@media (max-width: 1000px) {
-  .search-section {
-    width: 160px;
-  }
-}
-
-@media (max-width: 900px) {
-  .btn-submit {
-    display: none;
-  }
-}
 
 /* ========================================
    CONTENT OFFSET
    ======================================== */
 .main-content {
   padding-top: 100px;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Large Tablets & Small Desktops (1100px - 1200px) */
+@media (max-width: 1200px) {
+  .header-right {
+    padding: 0 20px;
+    gap: 10px;
+  }
+
+  .logo-section {
+    padding: 0 20px;
+  }
+
+  .nav-buttons-section {
+    gap: 18px;
+  }
+
+  .nav-btn {
+    font-size: 14px;
+  }
+}
+
+/* Hide less critical text at 1100px */
+@media (max-width: 1100px) {
+  .top-text,
+  .portal-subtitle {
+    display: none;
+  }
+
+  .city-text {
+    font-size: 14px;
+  }
+
+  .portal-title {
+    font-size: 12px;
+  }
+  
+  .search-section {
+    width: 160px;
+  }
+}
+
+/* Medium Tablets (900px - 1100px) */
+@media (max-width: 1024px) {
+  .header-frame {
+    height: 70px;
+  }
+
+  .search-section {
+    width: 140px;
+  }
+
+  .nav-buttons-section {
+    gap: 12px;
+  }
+
+  .nav-btn {
+    font-size: 13px;
+    padding: 4px 6px;
+  }
+
+  .btn-submit {
+    font-size: 12px;
+    padding: 5px 10px;
+    height: 30px;
+  }
+  
+  .logo-section {
+    padding: 0 15px;
+    gap: 10px;
+  }
+  
+  .header-right {
+    padding: 0 15px;
+    gap: 8px;
+  }
+  
+  .filter-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .search-input {
+    height: 30px;
+  }
+}
+
+/* Tablets (768px - 900px) */
+@media (max-width: 900px) {
+  .header-frame {
+    height: 65px;
+  }
+
+  .search-section {
+    width: 120px;
+  }
+
+  .logo-section {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .header-right {
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .nav-buttons-section {
+    gap: 10px;
+  }
+
+  .nav-btn {
+    font-size: 12px;
+    padding: 4px 5px;
+  }
+  
+  .btn-submit {
+    font-size: 11px;
+    padding: 5px 8px;
+    height: 28px;
+  }
+  
+  .city-text {
+    font-size: 13px;
+  }
+
+  .portal-title {
+    font-size: 11px;
+  }
+  
+  .filter-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .search-input {
+    height: 28px;
+  }
+  
+  .search-input input {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Landscape & Small Tablets (600px - 768px) */
+@media (max-width: 768px) {
+  .header-frame {
+    height: 60px;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .logo-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .city-text {
+    font-size: 12px;
+  }
+
+  .portal-title {
+    font-size: 10px;
+  }
+
+  .nav-buttons-section {
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-start;
+    padding: 0 8px;
+  }
+
+  .nav-buttons-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+
+  .search-section {
+    width: 100px;
+  }
+
+  .search-input {
+    height: 30px;
+  }
+
+  .search-input input {
+    font-size: 11px;
+  }
+
+  .filter-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .btn-submit {
+    font-size: 10px;
+    padding: 4px 6px;
+    height: 30px;
+  }
+}
+
+/* Mobile Portrait (480px - 600px) */
+@media (max-width: 600px) {
+  .header-frame {
+    height: 110px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 50px;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  /* Top Row: Logo and Actions */
+  .logo-section {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 10px;
+    gap: 8px;
+    align-self: center;
+  }
+
+  .header-right {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    padding: 0;
+    gap: 6px;
+  }
+
+  /* Bottom Row: Navigation */
+  .nav-buttons-section {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    align-self: center;
+  }
+
+  .nav-buttons-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .city-text {
+    font-size: 11px;
+  }
+
+  .portal-title {
+    font-size: 9px;
+  }
+
+  .nav-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .search-section {
+    width: 90px;
+  }
+
+  .search-input {
+    height: 28px;
+    padding: 0 28px 0 8px;
+  }
+
+  .search-input input {
+    font-size: 10px;
+  }
+
+  .search-icon {
+    right: 6px;
+  }
+
+  .search-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .filter-icon {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+  }
+
+  .filter-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .btn-submit {
+    font-size: 9px;
+    padding: 4px 6px;
+    height: 28px;
+  }
+
+  /* Adjust main content padding */
+  .main-content {
+    padding-top: 120px;
+  }
+}
+
+/* Small Mobile (400px - 480px) */
+@media (max-width: 480px) {
+  .header-frame {
+    height: 105px;
+    grid-template-rows: 55px 50px;
+  }
+
+  .header-text {
+    max-width: 120px;
+  }
+
+  .city-text {
+    font-size: 10px;
+  }
+
+  .portal-title {
+    font-size: 8px;
+  }
+
+  .search-section {
+    width: 85px;
+  }
+
+  .search-input input {
+    font-size: 9px;
+  }
+
+  .nav-btn {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  
+  .btn-submit {
+    font-size: 8px;
+    padding: 4px 5px;
+    height: 26px;
+  }
+  
+  .main-content {
+    padding-top: 115px;
+  }
+}
+
+/* Extra Small Mobile (up to 400px) */
+@media (max-width: 400px) {
+  .header-frame {
+    height: 100px;
+    grid-template-rows: 50px 50px;
+  }
+
+  .logo-section {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+
+  .city-text {
+    font-size: 9px;
+  }
+
+  .portal-title {
+    font-size: 7px;
+  }
+
+  .header-right {
+    top: 12px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .search-section {
+    width: 75px;
+  }
+
+  .search-input {
+    height: 26px;
+    padding: 0 24px 0 6px;
+  }
+
+  .search-input input {
+    font-size: 8px;
+  }
+
+  .search-icon svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .filter-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nav-buttons-section {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .nav-btn {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  
+  .btn-submit {
+    font-size: 7px;
+    padding: 3px 4px;
+    height: 24px;
+  }
+
+  .main-content {
+    padding-top: 110px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & TOUCH IMPROVEMENTS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  .nav-btn {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-icon {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  
+  .btn-submit {
+    min-height: 40px;
+  }
+
+  .search-input {
+    min-height: 40px;
+  }
+}
+
+/* ========================================
+   LANDSCAPE MOBILE OPTIMIZATION
+   ======================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header-frame {
+    height: 50px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: 1fr;
+  }
+  
+  .header-right {
+    position: static;
+  }
+
+  .logo-image {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nav-btn {
+    font-size: 10px;
+  }
+
+  .search-input {
+    height: 28px;
+  }
+
+  .filter-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .btn-submit {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .main-content {
+    padding-top: 60px;
+  }
 }
