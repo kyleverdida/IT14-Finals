@@ -38,7 +38,7 @@ const Login = () => {
           <div className="logo-section">
             <div className="logo-image-container">
               <img
-                src="/CWCP-LOGO.svg"
+                src="/cwcp-city-logo.svg"
                 alt="City Logo"
                 className="login-logo-image"
               />
@@ -50,7 +50,7 @@ const Login = () => {
             </div>
 
             <h1 className="text-portal-title">
-              CITY WIDE CONCERN PORTAL
+              CANOCOTAN CONCERN PORTAL
             </h1>
 
             <p className="text-tagline">
@@ -63,7 +63,7 @@ const Login = () => {
         <div className="right-panel">
           <div className="login-card">
             <h2 className="login-title">Hello!</h2>
-            <p className="login-subtitle">CWCP Moderator Login</p>
+            <p className="login-subtitle">BCCP Moderator Login</p>
 
             <form
               onSubmit={(e) => {

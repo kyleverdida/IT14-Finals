@@ -1,4 +1,3 @@
-
 /* =========================
    BASE RESET
    ========================= */
@@ -30,11 +29,13 @@
 .left-panel {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 60px;
 }
 
 .logo-section {
   max-width: 520px;
+  width: 100%;
 }
 
 .logo-image-container {
@@ -46,6 +47,8 @@
 
 .login-logo-image {
   width: 100px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .text-republic p {
@@ -70,6 +73,7 @@
   font-family: "Poppins", sans-serif;
   color: #00642f;
   margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .text-tagline {
@@ -134,6 +138,7 @@
   border-radius: 30px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   font-size: 14px;
+  width: 100%;
 }
 
 .login-card input:focus {
@@ -150,6 +155,8 @@
   color: white;
   font-size: 16px;
   cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
 }
 
 .login-card button:hover {
@@ -159,42 +166,303 @@
 .login-message {
   font-size: 13px;
   color: #b91c1c;
+  text-align: center;
+  margin-top: 5px;
 }
 
 /* =========================
-   RESPONSIVE
+   TABLET LANDSCAPE (1024px - 1280px)
+   ========================= */
+@media (max-width: 1280px) {
+  .left-panel {
+    padding: 40px;
+  }
+  
+  .text-republic p:nth-child(3) {
+    font-size: 28px;
+  }
+  
+  .text-portal-title {
+    font-size: 28px;
+  }
+}
+
+/* =========================
+   TABLET PORTRAIT (768px - 1024px)
    ========================= */
 @media (max-width: 1024px) {
   .login-container {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
   }
 
   .left-panel {
-    justify-content: center;
-    padding: 30px 20px;
-    text-align: center;
-  }
-
-  .logo-image-container {
-    flex-direction: column;
-    align-items: center;
+    display: none;
   }
 
   .right-panel {
-    padding: 20px 20px 60px;
+    padding: 40px 30px;
+    min-height: 100vh;
   }
 }
 
-@media (max-width: 480px) {
+/* =========================
+   MOBILE LANDSCAPE (568px - 768px)
+   ========================= */
+@media (max-width: 768px) {
+  .left-panel {
+    padding: 30px 20px;
+  }
+
+  .logo-image-container {
+    gap: 15px;
+  }
+
+  .login-logo-image {
+    width: 80px;
+  }
+
+  .text-republic p:nth-child(1),
+  .text-republic p:nth-child(2) {
+    font-size: 12px;
+  }
+
+  .text-republic p:nth-child(3) {
+    font-size: 22px;
+  }
+
   .text-portal-title {
     font-size: 22px;
+  }
+
+  .text-tagline {
+    font-size: 14px;
+  }
+
+  .right-panel {
+    padding: 30px 20px 50px;
+  }
+
+  .login-card {
+    padding: 28px 24px;
+    max-width: 100%;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .login-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   MOBILE PORTRAIT (480px - 568px)
+   ========================= */
+@media (max-width: 568px) {
+  .left-panel {
+    padding: 25px 20px;
+  }
+
+  .logo-image-container {
+    gap: 12px;
+  }
+
+  .login-logo-image {
+    width: 70px;
+  }
+
+  .text-republic p:nth-child(3) {
+    font-size: 20px;
+  }
+
+  .text-portal-title {
+    font-size: 20px;
+  }
+
+  .right-panel {
+    padding: 25px 20px 40px;
+  }
+
+  .login-card {
+    padding: 24px 20px;
+    border-radius: 12px;
   }
 
   .login-title {
     font-size: 22px;
   }
 
+  .login-subtitle {
+    font-size: 15px;
+  }
+
+  .login-card input {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .login-card button {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (320px - 480px)
+   ========================= */
+@media (max-width: 480px) {
+  .left-panel {
+    padding: 20px 16px;
+  }
+
+  .logo-image-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .login-logo-image {
+    width: 60px;
+  }
+
+  .text-republic p:nth-child(1),
+  .text-republic p:nth-child(2) {
+    font-size: 11px;
+  }
+
+  .text-republic p:nth-child(3) {
+    font-size: 18px;
+  }
+
+  .text-portal-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .text-tagline {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .right-panel {
+    padding: 20px 16px 30px;
+  }
+
   .login-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
+    gap: 15px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-subtitle {
+    font-size: 14px;
+  }
+
+  .login-card form {
+    gap: 15px;
+  }
+
+  .login-card label {
+    font-size: 11px;
+  }
+
+  .login-card input {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+
+  .login-card button {
+    padding: 12px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .login-message {
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL MOBILE (< 360px)
+   ========================= */
+@media (max-width: 360px) {
+  .login-logo-image {
+    width: 50px;
+  }
+
+  .text-republic p:nth-child(3) {
+    font-size: 16px;
+  }
+
+  .text-portal-title {
+    font-size: 16px;
+  }
+
+  .text-tagline {
+    font-size: 12px;
+  }
+
+  .login-card {
+    padding: 18px 14px;
+  }
+
+  .login-title {
+    font-size: 18px;
+  }
+
+  .login-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   LANDSCAPE ORIENTATION FIX
+   ========================= */
+@media (max-height: 600px) and (orientation: landscape) {
+  .login-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    min-height: auto;
+  }
+
+  .left-panel {
+    padding: 30px 20px;
+  }
+
+  .logo-image-container {
+    margin-bottom: 15px;
+  }
+
+  .text-portal-title {
+    margin-bottom: 5px;
+  }
+
+  .right-panel {
+    padding: 30px 20px;
+    min-height: 100vh;
+  }
+
+  .login-card {
+    padding: 20px;
+    gap: 12px;
+  }
+
+  .login-card form {
+    gap: 12px;
+  }
+
+  .login-card input {
+    padding: 10px 18px;
+  }
+
+  .login-card button {
+    padding: 10px;
+    margin-top: 5px;
   }
 }
